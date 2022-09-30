@@ -22,8 +22,7 @@ import { increment } from 'src/state-management/action/sidebarAction'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.counState.sidebarShow)
-  const email=useSelector((state)=>state.profileState)
-console.log(email)
+ 
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>

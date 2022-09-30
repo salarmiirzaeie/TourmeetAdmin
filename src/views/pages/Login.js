@@ -43,9 +43,14 @@ const Login = () => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                       setTimeout(() => {
-                        login(values).then((res) => {
-                          if (res.status == 200) {
-                            localStorage.setItem('token', res.data)
+                        login(values).then(async(res) => {
+                          if ((res.status == 206)) {
+                           await localStorage.setItem("token",res.data.token )
+                            dispatch(profile(res.data))
+                            navigate('/adminDashboard')
+                          } else if (res.status == 200) {
+
+                           await localStorage.setItem("token",res.data.token)
                             dispatch(profile(res.data))
                             navigate('/dashboard')
                           } else {

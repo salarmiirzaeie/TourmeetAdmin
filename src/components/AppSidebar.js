@@ -6,28 +6,29 @@ import CIcon from '@coreui/icons-react'
 
 import { AppSidebarNav } from './AppSidebarNav'
 
-import { logoNegative } from 'src/assets/brand/logo-negative'
-import { sygnet } from 'src/assets/brand/sygnet'
+
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
 // sidebar nav config
 import navigation from '../_nav'
+import navigation2 from '../_nav2'
+
 import { increment } from 'src/state-management/action/sidebarAction'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.counState.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.counState.sidebarShow)
-
+  const admin = useSelector((state) => state.profileState.admin)
   return (
     <CSidebar
       position="fixed"
       unfoldable={unfoldable}
       visible={sidebarShow}
       onVisibleChange={(visible) => {
-        dispatch(increment( { sidebarShow: visible }))
+        dispatch(increment({ sidebarShow: visible }))
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
@@ -38,12 +39,12 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          <AppSidebarNav items={admin?navigation2:navigation} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
         className="d-none d-lg-flex"
-        onClick={() =>  dispatch(increment( { sidebarUnfoldable: !unfoldable }))}
+        onClick={() => dispatch(increment({ sidebarUnfoldable: !unfoldable }))}
       />
     </CSidebar>
   )

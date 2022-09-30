@@ -23,10 +23,10 @@ import {
   cilAccountLogout,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { useNavigate } from 'react-router-dom'
 import avatar8 from './../../assets/images/avatars/8.jpg'
-import { logOut } from 'src/services/usersService'
-
+import { useDispatch } from 'react-redux'
+import { profile } from 'src/state-management/action/profileAction'
+import { useNavigate } from 'react-router-dom'
 const AppHeaderDropdown = () => {
   const navigate = useNavigate()
   return (
@@ -88,7 +88,15 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem>
+        <CDropdownItem
+          href="#"
+          onClick={async() => {
+
+            await localStorage.removeItem('token')
+            navigate('/login')
+
+          }}
+        >
           <CIcon icon={cilAccountLogout} className="me-2" />
           logOut
         </CDropdownItem>

@@ -2,16 +2,20 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
   cilBell,
+  cilBolt,
   cilCalculator,
   cilChartPie,
   cilCursor,
   cilDrop,
+  cilMediaStop,
   cilNotes,
   cilPencil,
   cilPlus,
   cilPuzzle,
+  cilRunning,
   cilSpeedometer,
   cilStar,
+  cilToilet,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -26,43 +30,33 @@ const _nav = [
     //   text: 'NEW',
     // },
   },
-  {
-    component: CNavItem,
-    name: 'ایجادتور',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
-  },
+  
   // {
   //   component: CNavTitle,
   //   name: 'Extras',
   // },
-  // {
-  //   component: CNavGroup,
-  //   name: 'Pages',
-  //   icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
-  //   items: [
-  //     {
-  //       component: CNavItem,
-  //       name: 'Login',
-  //       to: '/login',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Register',
-  //       to: '/register',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Error 404',
-  //       to: '/404',
-  //     },
-  //     {
-  //       component: CNavItem,
-  //       name: 'Error 500',
-  //       to: '/500',
-  //     },
-  //   ],
-  // },
+  {
+    component: CNavGroup,
+    name: 'تور',
+    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'ایجادتور',
+        to: '/dashboard/createPost',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+
+      },
+      {
+        component: CNavItem,
+        name: 'تورهای من',
+        to: '/dashboard/myTours',
+        icon: <CIcon icon={cilRunning} customClassName="nav-icon" />,
+
+      }
+     
+    ],
+  },
 ]
 
 export default _nav

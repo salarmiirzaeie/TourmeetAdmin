@@ -1,37 +1,66 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
-
+import { useSelector } from 'react-redux'
 // routes config
 import routes from '../routes'
-
+import routes2 from 'src/routes2'
 const AppContent = () => {
-  const token = localStorage.getItem('token')
-
-  return (
-    <CContainer lg>
-      <Suspense fallback={<CSpinner color="primary" />}>
-        <Routes>
-          {routes.map((route, idx) => {
-            if (token) {
-              return (
-                route.element && (
-                  <Route
-                    key={idx}
-                    path={route.path}
-                    exact={route.exact}
-                    name={route.name}
-                    element={<route.element />}
-                  />
+  const token = localStorage.getItem("token")
+  const admin = useSelector((state) => state.profileState.admin)
+  if (admin) {
+    return (
+      <CContainer lg>
+        <Suspense fallback={<CSpinner color="primary" />}>
+          <Routes>
+            {routes2.map((route, idx) => {
+              if (token) {
+                return (
+                  route.element && (
+                    <Route
+                      key={idx}
+                      path={route.path}
+                      exact={route.exact}
+                      name={route.name}
+                      element={<route.element />}
+                    />
+                  )
                 )
-              )
-            }
-          })}
-          <Route path="*" element={<Navigate to="login" replace />} />
-        </Routes>
-      </Suspense>
-    </CContainer>
-  )
+              }
+            })}
+
+            <Route path="*" element={<Navigate to={token ? 'adminDashboard' : '/login'} replace />} />
+          </Routes>
+        </Suspense>
+      </CContainer>
+    )
+  } else {
+    return (
+      <CContainer lg>
+        <Suspense fallback={<CSpinner color="primary" />}>
+          <Routes>
+            {routes.map((route, idx) => {
+              if (token) {
+                return (
+                  route.element && (
+                    <Route
+                      key={idx}
+                      path={route.path}
+                      exact={route.exact}
+                      name={route.name}
+                      element={<route.element />}
+                    />
+                  )
+                )
+              }
+            })}
+
+            <Route path="*" element={<Navigate to={token ? 'dashboard' : '/login'} replace />} />
+          </Routes>
+        </Suspense>
+      </CContainer>
+    )
+  }
 }
 
 export default React.memo(AppContent)

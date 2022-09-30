@@ -46,6 +46,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.3.0",
     "redux": "4.2.0",
+    "redux-persist": "^6.0.0",
     "simplebar-react": "^2.3.7"
   },
   "devDependencies": {
@@ -65,6 +66,8 @@
     "npm": ">=6"
   },
   "react-dotenv": {
-    "whitelist": ["API_URL"]
+    "whitelist": [
+      "API_URL"
+    ]
   }
 }
