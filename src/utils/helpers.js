@@ -1,5 +1,6 @@
 const { default: axios } = require('axios')
 const apiPort = 'http://localhost:3333/users'
+const moment =require("jalali-moment")
 
 exports.truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -11,9 +12,10 @@ exports.truncate = (str, len) => {
   }
   return str
 }
-
+exports.formDate=date=>{
+    return moment(date).locale("fa").format("D MMM YYYY")
+}
 exports.isAuth = (token) => {
-
   const res = axios
     .get(`${apiPort}/isAuth`, {
       headers: {

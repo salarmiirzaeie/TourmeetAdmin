@@ -4,14 +4,19 @@ import {
   cilBell,
   cilBolt,
   cilCalculator,
+  cilCash,
   cilChartPie,
   cilCursor,
+  cilDelete,
   cilDrop,
+  cilFilterPhoto,
+  cilImage,
   cilMediaStop,
   cilNotes,
   cilPencil,
   cilPlus,
   cilPuzzle,
+  cilRecycle,
   cilRunning,
   cilSpeedometer,
   cilStar,
@@ -53,9 +58,26 @@ const _nav = [
         to: '/dashboard/myTours',
         icon: <CIcon icon={cilRunning} customClassName="nav-icon" />,
 
+      },
+      {
+        component: CNavItem,
+        name: 'تورهای ردشده',
+        to: '/dashboard/rejectedTours',
+        icon: <CIcon icon={cilDelete} customClassName="nav-icon" />,
+
       }
      
     ],
+  },
+  {
+    component: CNavItem,
+    name: 'گالری',
+    to: '/dashboard/galleryPage',
+    icon: <CIcon icon={cilImage} customClassName="nav-icon" />,
+    // badge: {
+    //   color: 'info',
+    //   text: 'NEW',
+    // },
   },
 ]
 

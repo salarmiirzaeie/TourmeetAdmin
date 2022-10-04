@@ -1,10 +1,9 @@
 import axios from 'axios'
-const apiPort = 'http://localhost:3333/users'
+const apiPort = 'http://localhost:3333/'
 const token = localStorage.getItem('token')
-
-export const login = (data) => {
+export const getIndex = () => {
   const res = axios
-    .post(`${apiPort}/login`, data)
+    .get(`${apiPort}`)
     .then((response) => {
       return response
     })
@@ -13,10 +12,13 @@ export const login = (data) => {
     })
   return res
 }
-export const register = (data) => {
+export const getPost = (data) => {
+  // console.log(data)
   const res = axios
-    .post(`${apiPort}/register`, data)
+    .get(`${apiPort}post/${data}`, {})
     .then((response) => {
+      // console.log(response.data)
+
       return response
     })
     .catch((err) => {

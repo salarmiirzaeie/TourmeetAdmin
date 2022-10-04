@@ -7,37 +7,37 @@ import {
   CPagination,
   CRow,
   CPaginationItem,
-  CButton,
-  CCardFooter,
 } from '@coreui/react'
-import { getRequestedPosts } from 'src/services/adminService'
-import { Posts } from 'src/components/Posts'
 
-const requestedposts = () => {
-  const [posts, setposts] = useState([])
-  useEffect(() => {
-    getRequestedPosts().then((res) => {
-      console.log(res.data)
-      setposts(res.data)
-    })
-  }, [])
+import { myPosts } from 'src/services/postService'
+import { useSelector } from 'react-redux'
+import { Posts } from 'src/components/Posts'
+import { getIndex } from 'src/services/blogService'
+
+const touristDashboard = () => {
+    const [posts, setposts] = useState([])
+    useEffect(() => {
+      getIndex().then((res) => {
+          // console.log(res.data.posts)
+        setposts(res.data.posts)
+      })
+    }, [])
   return (
     <>
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>تورهای درخواستی</CCardHeader>
+            <CCardHeader>تورهای شما</CCardHeader>
             <CCardBody>
-              <Posts adress={'/adminDashboard/requestedPostPage/'} posts={posts} />
-
-              <br />
+              <Posts adress={'/touristDashboard/postPageT/'} posts={posts} />
+              {/* <br />
               <CPagination className="justify-content-center" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
-              </CPagination>
+              </CPagination> */}
             </CCardBody>
           </CCard>
         </CCol>
@@ -45,4 +45,5 @@ const requestedposts = () => {
     </>
   )
 }
-export default requestedposts
+
+export default touristDashboard

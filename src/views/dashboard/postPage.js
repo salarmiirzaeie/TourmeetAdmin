@@ -5,15 +5,13 @@ import SinglePost from 'src/components/SinglePost'
 import { getSinglePost } from 'src/services/postService'
 import { useParams } from 'react-router-dom'
 const postPage = () => {
-  // const params=useParams()
-  // console.log(params)
+  const params = useParams()
   const [post, setpost] = useState({})
-  getSinglePost(params.id).then((res) => {
-    if (res.status==200) {
+  useEffect(() => {
+    getSinglePost(params.id).then((res) => {
       setpost(res.data)
-
-    }
-  })
+    })
+  }, [])
   return (
     <CCard>
       {/* <singlePost id={params.id}/> */}

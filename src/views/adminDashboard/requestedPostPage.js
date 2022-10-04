@@ -1,23 +1,33 @@
 import { CCard } from '@coreui/react'
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { AcceptControl } from 'src/components/AcceptControl'
 import SinglePost from 'src/components/SinglePost'
-import { acceptPost } from 'src/services/postService'
+import { acceptPost, getSinglePost } from 'src/services/postService'
 
 export default function postPage() {
+  const navigate=useNavigate()
   const params = useParams()
-  const id=params.id
-  const accept = (isAccept) => {
-    acceptPost({id,isAccept}).then((res) => {
-      alert(res.data.message)
+  const [post, setpost] = useState({})
+  useEffect(() => {
+    getSinglePost(params.id).then((res) => {
+      setpost(res.data)
+    })
+  }, [])
+  const changeAccept = (data) => {
+    const id = params.id
+    data = { data, id }
+    acceptPost(data).then((res) => {
+      if (res.status==200) {
+        navigate('/adminDashboard/requestedposts')
+        
+      }
     })
   }
   return (
     <CCard>
-      {/* <singlePost id={params.id}/> */}
-      <AcceptControl accept={accept} />
-      <SinglePost id={id} />
+      <AcceptControl accept={changeAccept} />
+      <SinglePost data={post} />
     </CCard>
   )
 }

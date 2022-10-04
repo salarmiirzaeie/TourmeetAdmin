@@ -42,24 +42,26 @@ const Login = () => {
                       return errors
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                      setTimeout(() => {
-                        login(values).then(async(res) => {
-                          if ((res.status == 206)) {
-                           await localStorage.setItem("token",res.data.token )
+                      login(values).then((res) => {
+                        setTimeout(() => {
+                          if (res.status == 206) {
+                            localStorage.setItem('token', res.data.token)
                             dispatch(profile(res.data))
-                            navigate('/adminDashboard')
+                            navigate('adminDashboard')
                           } else if (res.status == 200) {
-
-                           await localStorage.setItem("token",res.data.token)
+                            localStorage.setItem('token', res.data.token)
                             dispatch(profile(res.data))
-                            navigate('/dashboard')
+                            navigate('dashboard')
+                          } else if (res.status == 207) {
+                            localStorage.setItem('token', res.data.token)
+                            dispatch(profile(res.data))
+                            navigate('touristDashboard')
                           } else {
                             alert(res.data.message)
                           }
-                        })
-
-                        setSubmitting(false)
-                      }, 400)
+                          setSubmitting(false)
+                        }, 400)
+                      })
                     }}
                   >
                     {({

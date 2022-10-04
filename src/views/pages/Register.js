@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CButton,
   CCard,
@@ -10,6 +10,8 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
+  CButtonGroup,
+  CFormCheck,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
@@ -18,16 +20,16 @@ import { useNavigate } from 'react-router-dom'
 import { register } from 'src/services/usersService'
 const Register = () => {
   const navigate = useNavigate()
-
+  const[type,setType]=useState("tourist")
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md={9} lg={7} xl={6}>
-            <CCard  className="mx-4">
+            <CCard className="mx-4 rounded-3">
               <CCardBody className="p-4">
                 <Formik
-                  initialValues={{ email: '', password: '', name: '',confirmPassword:'' }}
+                  initialValues={{ email: '', password: '', name: '', confirmPassword: '',type:'' }}
                   validate={(values) => {
                     const errors = {}
                     if (!values.email) {
@@ -39,6 +41,7 @@ const Register = () => {
                   }}
                   onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
+                      values.type=type
                       register(values).then((res) => {
                         if (res.status == 201) {
                           navigate('/login')
@@ -71,6 +74,28 @@ const Register = () => {
                     <CForm>
                       <h1>ثبت نام</h1>
                       <p className="text-medium-emphasis">حساب خودراایجادکنید</p>
+                      <CButtonGroup className="mb-3" role="group" aria-label="button group">
+                        <CFormCheck
+                          type="radio"
+                          button={{ color: 'success', variant: 'outline' }}
+                          name="vbtnradio"
+                          id="vbtnradio1"
+                          autoComplete="off"
+                          label="گردشگر"
+                          defaultChecked
+                          onClick={()=>setType("tourist")}
+                        />
+                        <CFormCheck
+                          type="radio"
+                          button={{ color: 'success', variant: 'outline' }}
+                          name="vbtnradio"
+                          id="vbtnradio2"
+                          autoComplete="off"
+                          label="تور"
+                          onClick={()=>setType("tour")}
+                        />
+                        
+                      </CButtonGroup>
                       <CInputGroup className="mb-3">
                         <CInputGroupText>
                           <CIcon icon={cilUser} />
@@ -136,7 +161,7 @@ const Register = () => {
                           onClick={handleSubmit}
                           color="success"
                         >
-                         ایجادحساب
+                          ایجادحساب
                         </CButton>
                       </div>
                     </CForm>

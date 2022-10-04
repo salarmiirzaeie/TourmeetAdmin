@@ -14,6 +14,7 @@ import 'simplebar/dist/simplebar.min.css'
 // sidebar nav config
 import navigation from '../_nav'
 import navigation2 from '../_nav2'
+import navigation3 from '../_nav3'
 
 import { increment } from 'src/state-management/action/sidebarAction'
 
@@ -21,7 +22,7 @@ const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.counState.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.counState.sidebarShow)
-  const admin = useSelector((state) => state.profileState.admin)
+  const type = useSelector((state) => state.profileState.type)
   return (
     <CSidebar
       position="fixed"
@@ -39,7 +40,7 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={admin?navigation2:navigation} />
+          <AppSidebarNav items={type=="admin"?navigation2:type=="tour"?navigation:navigation3} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler

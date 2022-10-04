@@ -62,7 +62,7 @@ const Placeholders = () => {
                   </CCardImage>
                   <CCardBody>
                     <CPlaceholder component={CCardTitle} animation="glow" xs={7}>
-                      <CPlaceholder xs={6} />
+                      <CPlaceholder  xs={6} />
                     </CPlaceholder>
                     <CPlaceholder component={CCardText} animation="glow">
                       <CPlaceholder xs={7} />

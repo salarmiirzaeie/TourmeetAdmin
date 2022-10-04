@@ -7,29 +7,30 @@ import {
   CPagination,
   CRow,
   CPaginationItem,
-  CButton,
-  CCardFooter,
 } from '@coreui/react'
-import { getRequestedPosts } from 'src/services/adminService'
+
+import { myPosts } from 'src/services/postService'
+import { useSelector } from 'react-redux'
 import { Posts } from 'src/components/Posts'
 
-const requestedposts = () => {
+const rejectedTours= () => {
+  const userId = useSelector((state) => state.profileState.userId)
   const [posts, setposts] = useState([])
   useEffect(() => {
-    getRequestedPosts().then((res) => {
-      console.log(res.data)
+    myPosts(userId).then((res) => {
+      res.data = res.data.filter((p) => p.isAccept == 'reject')
       setposts(res.data)
     })
   }, [])
+
   return (
     <>
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>تورهای درخواستی</CCardHeader>
+            <CCardHeader>تورهای شما</CCardHeader>
             <CCardBody>
-              <Posts adress={'/adminDashboard/requestedPostPage/'} posts={posts} />
-
+              <Posts adress={'/dashboard/postPage/'} posts={posts} />
               <br />
               <CPagination className="justify-content-center" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
@@ -45,4 +46,5 @@ const requestedposts = () => {
     </>
   )
 }
-export default requestedposts
+
+export default rejectedTours

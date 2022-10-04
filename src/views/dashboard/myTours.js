@@ -16,11 +16,13 @@ import { Posts } from 'src/components/Posts'
 const myTours = () => {
   const userId = useSelector((state) => state.profileState.userId)
   const [posts, setposts] = useState([])
-  myPosts(userId).then((res) => {
-    if (res.status == 200) {
+  useEffect(() => {
+    myPosts(userId).then((res) => {
+      res.data = res.data.filter((p) => p.isAccept != 'reject')
       setposts(res.data)
-    }
-  })
+    })
+  }, [])
+
   return (
     <>
       <CRow>
@@ -29,14 +31,14 @@ const myTours = () => {
             <CCardHeader>تورهای شما</CCardHeader>
             <CCardBody>
               <Posts adress={'/dashboard/postPage/'} posts={posts} />
-              <br />
+              {/* <br />
               <CPagination className="justify-content-center" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
-              </CPagination>
+              </CPagination> */}
             </CCardBody>
           </CCard>
         </CCol>

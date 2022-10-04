@@ -26,7 +26,7 @@ import CIcon from '@coreui/icons-react'
 import avatar8 from './../../assets/images/avatars/8.jpg'
 import { useDispatch } from 'react-redux'
 import { profile } from 'src/state-management/action/profileAction'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const AppHeaderDropdown = () => {
   const navigate = useNavigate()
   return (
@@ -65,8 +65,9 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
-        <CDropdownItem href="#">
+        <CDropdownItem href="/#/dashboard/profileAdmin">
           <CIcon icon={cilUser} className="me-2" />
+          {/* <Link to={"/dashboard/profileAdmin"}> Profile</Link> */}
           Profile
         </CDropdownItem>
         <CDropdownItem href="#">
@@ -90,11 +91,9 @@ const AppHeaderDropdown = () => {
         <CDropdownDivider />
         <CDropdownItem
           href="#"
-          onClick={async() => {
-
-            await localStorage.removeItem('token')
-            navigate('/login')
-
+          onClick={() => {
+            localStorage.removeItem('token')
+            navigate('login')
           }}
         >
           <CIcon icon={cilAccountLogout} className="me-2" />

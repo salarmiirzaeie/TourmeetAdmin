@@ -66,11 +66,11 @@ export const deletePost = (data) => {
     })
   return res
 }
-export const acceptPost = (data) => {
-  console.log(data)
+export const editPost = (data) => {
   const res = axios
-    .put(`${apiPort}/accept-post`,data, {
+    .put(`${apiPort}/edit-post/${data.id}`, data.values, {
       headers: {
+        'content-type': 'multipart/form-data',
         Authorization: `Bearer ${token}`,
       },
     })
@@ -83,4 +83,52 @@ export const acceptPost = (data) => {
   return res
 }
 
-
+export const acceptPost = (data) => {
+  console.log(data)
+  const res = axios
+    .put(`${apiPort}/accept-post`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const addToGallery = (data) => {
+  const res = axios
+    .put(`${apiPort}/add-gallery/${data.userId}`, data.files, {
+      headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const joinTour = (data) => {
+  console.log(data)
+  const res = axios
+    .put(`${apiPort}/join-tour`, data, {
+      headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}

@@ -9,6 +9,7 @@ import {
   CFormLabel,
   CFormTextarea,
   CInputGroup,
+  CSpinner,
 } from '@coreui/react'
 
 import { Formik } from 'formik'
@@ -16,6 +17,7 @@ import { createPost } from 'src/services/postService'
 
 const createpost = () => {
   const [file, setfile] = useState('')
+  const [visible, setVisible] = useState(false)
   return (
     <>
       <CCard className="mb-4">
@@ -32,16 +34,16 @@ const createpost = () => {
                 const errors = {}
                 return errors
               }}
-              onSubmit={(values, { setSubmitting }, action) => {
+              onSubmit={(values, { setSubmitting }) => {
+                setSubmitting(false)
+
                 values.thumbnail = file
+
                 setTimeout(() => {
+
                   createPost(values).then((res) => {
-                    if (res.status == 200) {
-                    } else {
-                    }
                     alert(res.data.message)
                   })
-                  // setSubmitting(false)
                 }, 400)
               }}
             >
@@ -57,9 +59,8 @@ const createpost = () => {
                 handleBlur,
 
                 handleSubmit,
-
                 isSubmitting,
-                resetForm,
+                setSubmitting
 
                 /* and other goodies */
               }) => (
@@ -94,7 +95,20 @@ const createpost = () => {
                     />
                   </CInputGroup>
 
-                  <CButton onClick={() => handleSubmit} type="submit" disabled={isSubmitting}>
+                  <CButton
+                    onClick={() => {
+                      handleSubmit
+                      setSubmitting(true)
+                    }}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    <CSpinner
+                      component="span"
+                      size="sm"
+                      hidden={isSubmitting ? false : true}
+                      aria-hidden="true"
+                    />
                     ثبت
                   </CButton>
                 </form>
