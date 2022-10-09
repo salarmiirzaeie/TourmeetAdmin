@@ -24,8 +24,9 @@ import {
   CFormLabel,
   CFormTextarea,
   CInputGroup,
+  CCardText,
+  CFormSelect
 } from '@coreui/react'
-import AngularImg from 'src/assets/images/angular.jpg'
 import { Formik } from 'formik'
 
 import { deletePost, editPost } from 'src/services/postService'
@@ -45,30 +46,18 @@ const SinglePost = (data) => {
     <CCard>
       <CRow className="p-2">
         {/* <CCardHeader>تورها </CCardHeader> */}
-        <CCol xs={6} md={{ cols: 12 }}>
+        <CCol xs={12} md={6} xl={6}>
           {data.data.thumbnail ? (
             <CCard>
               <CCarousel indicators controls>
-                <CCarouselItem>
-                  <img
-                    className="d-block w-100"
-                    src={`http://localhost:3333/uploads/thumbnails/${data.data.thumbnail}`}
-                  />
-                </CCarouselItem>
-                <CCarouselItem>
-                  <img
-                    className="d-block w-100"
-                    src={`http://localhost:3333/uploads/thumbnails/${data.data.thumbnail}`}
-                    alt="slide 2"
-                  />
-                </CCarouselItem>
-                <CCarouselItem>
-                  <img
-                    className="d-block w-100"
-                    src={`http://localhost:3333/uploads/thumbnails/${data.data.thumbnail}`}
-                    alt="slide 3"
-                  />
-                </CCarouselItem>
+                {data.data.thumbnail.map((name, i) => (
+                  <CCarouselItem key={i}>
+                    <img
+                      className="d-block w-100"
+                      src={`http://localhost:3333/uploads/thumbnails/${name}`}
+                    />
+                  </CCarouselItem>
+                ))}
               </CCarousel>
             </CCard>
           ) : (
@@ -76,13 +65,16 @@ const SinglePost = (data) => {
           )}
         </CCol>
         {editMode ? (
-          <CCol xs={6}>
+          <CCol xs={12} md={6} xl={6}>
             <Formik
               initialValues={{
                 title: data.data.title,
                 body: data.data.body,
                 thumbnail: file.name,
                 isAccept: 'waiting',
+                capacity: data.data.capacity,
+                durationTime: data.data.durationTime,
+                date: data.data.date,
               }}
               validate={(values) => {
                 const errors = {}
@@ -137,6 +129,33 @@ const SinglePost = (data) => {
                     onBlur={handleBlur}
                     value={values.body}
                   />
+                  <CFormLabel>ظرفیت</CFormLabel>
+
+                  <CFormInput
+                    name="body"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.capacity}
+                  />
+                  <CFormLabel>طول تور</CFormLabel>
+
+                  <CFormSelect name="durationTime"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.durationTime}>
+                    <option value="1day">یک روز</option>
+                    <option value="2days">دوروز</option>
+                    <option value="3days">سه روز</option>
+                  </CFormSelect>
+                  <CFormLabel>تاریخ برگذاری</CFormLabel>
+
+                  <CFormInput
+                  type='date'
+                    name="date"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.date}
+                  />
                   <CFormLabel>عکس</CFormLabel>
 
                   <CInputGroup className="mb-3">
@@ -150,79 +169,89 @@ const SinglePost = (data) => {
                       id="thumbnail"
                     />
                   </CInputGroup>
-                  {type=="tour"? <CCardFooter>
-                    <CButton
-                      color="success"
-                      onClick={() => {
-                        handleSubmit
-                        setSubmitting(true)
-                      }}
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      <CSpinner
-                        component="span"
-                        size="sm"
-                        hidden={isSubmitting ? false : true}
-                        aria-hidden="true"
-                      />
-                      ثبت
-                    </CButton>
-                    <CButton color="danger" onClick={() => setEditMode(false)}>
-                      انصراف
-                    </CButton>
-                  </CCardFooter>:''}
-                 
+                  {type == 'tour' ? (
+                    <CCardFooter>
+                      <CButton
+                        color="success"
+                        onClick={() => {
+                          handleSubmit
+                          setSubmitting(true)
+                        }}
+                        type="submit"
+                        disabled={isSubmitting}
+                      >
+                        <CSpinner
+                          component="span"
+                          size="sm"
+                          hidden={isSubmitting ? false : true}
+                          aria-hidden="true"
+                        />
+                        ثبت
+                      </CButton>
+                      <CButton color="danger" onClick={() => setEditMode(false)}>
+                        انصراف
+                      </CButton>
+                    </CCardFooter>
+                  ) : (
+                    ''
+                  )}
                 </form>
               )}
             </Formik>
           </CCol>
         ) : (
-          <CCol xs={6}>
+          <CCol xs={12} md={6} xl={6}>
             <CListGroup flush>
               <CListGroupItem>{data.data.title}</CListGroupItem>
 
               <CListGroupItem>{data.data.body}</CListGroupItem>
+              <CListGroupItem>{data.data.capacity}</CListGroupItem>
+              <CListGroupItem>{data.data.durationTime}</CListGroupItem>
+              <CListGroupItem>{formDate(data.data.date)}</CListGroupItem>
+
               <CListGroupItem>
                 <CBadge color={data.data.isAccept === 'accept' ? 'success' : 'danger'}>
                   {data.data.isAccept}
                 </CBadge>
               </CListGroupItem>
-              <CListGroupItem>{formDate(data.data.createdAt)}</CListGroupItem>
             </CListGroup>
-            {type=="tour"? <CCardFooter>
-              <CButton
-                onClick={() => setEditMode(true)}
-                className="justify-content-end"
-                color="warning"
-              >
-                ویرایش
-              </CButton>
-              <CButton color="danger" onClick={() => setVisible(!visible)}>
-                حذف
-              </CButton>
-              <CModal visible={visible} onClose={() => setVisible(false)}>
-                <CModalBody>آیامطمئن به حذف پست هستید؟</CModalBody>
-                <CModalFooter>
-                  <CButton
-                    onClick={() => {
-                      deletePost(data.data._id).then((res) => {
-                        if (res.status == 200) {
-                          navigate('/dashboard/myTours')
-                        } else {
-                          setVisible(false)
-                          alert(res.data.message)
-                        }
-                      })
-                    }}
-                    color="primary"
-                  >
-                    بله
-                  </CButton>
-                </CModalFooter>
-              </CModal>
-            </CCardFooter>:''}
-           
+            {type == 'tour' ? (
+              <CCardFooter>
+                <CButton
+                  onClick={() => setEditMode(true)}
+                  className="justify-content-end"
+                  color="warning"
+                >
+                  ویرایش
+                </CButton>
+                <CButton color="danger" onClick={() => setVisible(!visible)}>
+                  حذف
+                </CButton>
+                <CCardText>{formDate(data.data.createdAt)}</CCardText>
+                <CModal visible={visible} onClose={() => setVisible(false)}>
+                  <CModalBody>آیامطمئن به حذف پست هستید؟</CModalBody>
+                  <CModalFooter>
+                    <CButton
+                      onClick={() => {
+                        deletePost(data.data._id).then((res) => {
+                          if (res.status == 200) {
+                            navigate('/dashboard/myTours')
+                          } else {
+                            setVisible(false)
+                            alert(res.data.message)
+                          }
+                        })
+                      }}
+                      color="primary"
+                    >
+                      بله
+                    </CButton>
+                  </CModalFooter>
+                </CModal>
+              </CCardFooter>
+            ) : (
+              ''
+            )}
           </CCol>
         )}
       </CRow>

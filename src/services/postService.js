@@ -101,7 +101,7 @@ export const acceptPost = (data) => {
 }
 export const addToGallery = (data) => {
   const res = axios
-    .put(`${apiPort}/add-gallery/${data.userId}`, data.files, {
+    .post(`${apiPort}/add-gallery`, data, {
       headers: {
         'content-type': 'multipart/form-data',
         Authorization: `Bearer ${token}`,
@@ -116,11 +116,40 @@ export const addToGallery = (data) => {
   return res
 }
 export const joinTour = (data) => {
-  console.log(data)
   const res = axios
     .put(`${apiPort}/join-tour`, data, {
       headers: {
         'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const getGalley = (data) => {
+  const res = axios
+    .get(`${apiPort}/get-gallery/${data}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const deletegallery= (data) => {
+  const res = axios
+    .delete(`${apiPort}/delete-gallery/${data}`, {
+      headers: {
         Authorization: `Bearer ${token}`,
       },
     })

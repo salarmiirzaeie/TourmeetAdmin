@@ -53,6 +53,7 @@ const profileAdmin = React.lazy(() => import('./views/dashboard/profileAdmin'))
 
 const rejectedTours = React.lazy(() => import('./views/dashboard/rejectedTours'))
 const galleryPage = React.lazy(() => import('./views/dashboard/galleryPage'))
+const security = React.lazy(() => import('./views/dashboard/security'))
 
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const createPost=React.lazy(()=>import('./views/dashboard/createPost'))
@@ -65,6 +66,7 @@ const routes = [
   { path: '/dashboard/postPage/:id', name: 'postPage', element: postPage },
   { path: '/dashboard/profileAdmin', name: 'profileAdmin', element: profileAdmin },
   { path: '/dashboard/galleryPage', name: 'galleryPage', element: galleryPage },
+  { path: '/dashboard/security', name: 'security', element: security },
 
   { path: '/base', name: 'Base', element: Cards, exact: true },
   { path: '/base/accordion', name: 'Accordion', element: Accordion },

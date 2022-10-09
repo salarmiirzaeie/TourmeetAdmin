@@ -17,28 +17,31 @@ import {
   CInputGroup,
 } from '@coreui/react'
 import Gallery from 'src/components/Gallery'
-import { addToGallery } from 'src/services/postService'
+import { addToGallery, getGalley } from 'src/services/postService'
 import { useSelector } from 'react-redux'
 
 const galleryPage = () => {
   const userId = useSelector((state) => state.profileState.userId)
-  const [files, setfile] = useState([])
-  const arr = [{s:'cat'}, {s:'dog'}, {s:'fish'}];
-
+  const [file, setfile] = useState([])
+  const [photos,setPhotos]=useState([])
+  useEffect(() => {
+    getGalley(userId).then((res) => {
+      setPhotos(res.data)
+    })
+  }, [])
   return (
     <>
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader> گالری</CCardHeader>
+            <CCardHeader>گالری</CCardHeader>
             <CCardBody>
               <CInputGroup className="mb-3">
                 <CButton
                   onClick={() => {
-                    // const files = [...files]
-                    files = Array.from(files)
+                   const files = Array.prototype.slice.call(file)
                     const data={files,userId}
-                    addToGallery(data).then((res) => {console.log(res.data.message)})
+                    addToGallery(data).then((res) => {alert(res.data.message)})
                   }}
                 >
                   Upload
@@ -54,7 +57,7 @@ const galleryPage = () => {
                 />
               </CInputGroup>
 
-              <Gallery />
+              <Gallery data={photos} />
             </CCardBody>
           </CCard>
         </CCol>

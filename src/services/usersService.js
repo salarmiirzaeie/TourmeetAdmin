@@ -24,3 +24,14 @@ export const register = (data) => {
     })
   return res
 }
+export const resetPassword = (data) => {
+  const res = axios
+    .post(`${apiPort}/reset-password/${token}`, data)
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}

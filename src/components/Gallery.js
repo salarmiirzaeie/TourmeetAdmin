@@ -14,99 +14,32 @@ import {
   CPopover,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilMonitor, cilStream } from '@coreui/icons'
+import { cilDelete, cilMonitor, cilStream } from '@coreui/icons'
+import { deletegallery } from 'src/services/postService'
+import { createBrowserHistory } from 'history'
+import { useNavigate } from 'react-router-dom'
 
-const Gallery = () => {
+const Gallery = (data) => {
+const navigate=useNavigate()
   return (
     <>
       <CRow xs={{ cols: 1, gutter: 1 }} md={{ cols: 4 }}>
-        <CCol xs>
-          <CPopover
-            content={
-              <CListGroup flush>
-                <CListGroupItem>cc</CListGroupItem>
-                <CListGroupItem>ssccz</CListGroupItem>
-                <CListGroupItem>ssccz</CListGroupItem>
-
-              </CListGroup>
-            }
-            placement="left"
-          >
-            <CButton style={{ position: 'absolute' }} color="transparent" size="sm">
-              <CIcon style={{ color: 'white' }} size="xxl" icon={cilStream} />
+        {data.data.map((post, i) => (
+          <CCol key={i} xs>
+            <CButton style={{ position: 'absolute' }} onClick={()=>{
+              deletegallery(post._id).then((res)=>{
+                // alert(res.data.message)
+                navigate(0)
+              })
+            }} color="transparent" size="sm">
+              <CIcon style={{ color: 'white' }} size="xxl" icon={cilDelete} />
             </CButton>
-          </CPopover>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>{' '}
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>{' '}
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>{' '}
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>{' '}
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>{' '}
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>{' '}
-        <CCol xs>
-          <CCardImage
-            orientation="top"
-            src={`http://localhost:3333/uploads/thumbnails/-HtVYZBuN_5xI7lVjc8_Sunsetv2.0.jpg`}
-          />
-        </CCol>
+            <CCardImage
+              orientation="top"
+              src={`http://localhost:3333/uploads/thumbnails/${post.name}`}
+            />
+          </CCol>
+        ))}
       </CRow>
     </>
   )
