@@ -26,7 +26,43 @@ export const register = (data) => {
 }
 export const resetPassword = (data) => {
   const res = axios
-    .post(`${apiPort}/reset-password/${token}`, data)
+    .post(`${apiPort}/reset-password/${token}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const acceptTour = (data) => {
+  console.log(data)
+  const res = axios
+    .put(`${apiPort}/accept-tour`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const editProfile = (data) => {
+  const res = axios
+    .post(`${apiPort}/edit-profile`, data, {
+      headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((response) => {
       return response
     })

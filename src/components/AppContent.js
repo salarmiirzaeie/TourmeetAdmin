@@ -3,9 +3,9 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 import { useSelector } from 'react-redux'
 // routes config
-import routes from '../routes'
-import routes2 from 'src/routes2'
-import routes3 from 'src/routes3'
+import routes from '../routes/routes'
+import routes2 from 'src/routes/routes2'
+import routes3 from 'src/routes/routes3'
 
 import { isAuth } from 'src/utils/helpers'
 const AppContent = () => {
@@ -80,7 +80,7 @@ const AppContent = () => {
         </Suspense>
       </CContainer>
     )
-  }else if(type=="tourist") {
+  }else {
     return (
       <CContainer lg>
         <Suspense fallback={<CSpinner color="primary" />}>

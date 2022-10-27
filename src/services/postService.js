@@ -115,6 +115,22 @@ export const addToGallery = (data) => {
     })
   return res
 }
+export const addPermissions = (data) => {
+  const res = axios
+    .put(`${apiPort}/add-permissions`, data, {
+      headers: {
+        'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
 export const joinTour = (data) => {
   const res = axios
     .put(`${apiPort}/join-tour`, data, {
@@ -134,6 +150,22 @@ export const joinTour = (data) => {
 export const getGalley = (data) => {
   const res = axios
     .get(`${apiPort}/get-gallery/${data}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+
+export const getPermissions = (data) => {
+  const res = axios
+    .get(`${apiPort}/get-permissions/${data}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

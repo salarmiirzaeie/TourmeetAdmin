@@ -1,21 +1,23 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import HomeAppContent from 'src/components/HomeAppContent'
+import HomeHeader from 'src/components/HomeHeader'
 import { AppContent, AppSidebar, AppHeader, AppFooter } from '../components/index'
 
-const DefaultLayout = () => {
+const HomeLayout = () => {
   const type = useSelector((state) => state.profileState.type)
   return (
     <div>
-      <AppSidebar />
+      {/* <AppSidebar /> */}
       <div className="wrapper d-flex flex-column min-vh-100 bg-light">
-        <AppHeader />
-        <div className="body flex-grow-1 px-3">
-          <AppContent />
+        <HomeHeader />
+        <div className="body ">
+          <HomeAppContent />
         </div>
-        {type == 'tourist' ? <AppFooter /> : ''}
+       <AppFooter />
       </div>
     </div>
   )
 }
 
-export default DefaultLayout
+export default HomeLayout

@@ -18,6 +18,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { Formik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { register } from 'src/services/usersService'
+import swal from 'sweetalert'
 const Register = () => {
   const navigate = useNavigate()
   const[type,setType]=useState("tourist")
@@ -46,7 +47,7 @@ const Register = () => {
                         if (res.status == 201) {
                           navigate('/login')
                         } else {
-                          alert(res.data.message)
+                          swal("خطا",res.data.message,"error")
                         }
                       })
 

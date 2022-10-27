@@ -50,6 +50,7 @@ const security = () => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                       setTimeout(() => {
+                        // values={...values,}
                         resetPassword(values).then((res) => {
                           alert(res.data.message)
                         })

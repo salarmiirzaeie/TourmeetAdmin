@@ -17,17 +17,18 @@ import {
   CInputGroup,
 } from '@coreui/react'
 import Gallery from 'src/components/Gallery'
-import { addToGallery, getGalley } from 'src/services/postService'
+import { addPermissions, addToGallery, getGalley, getPermissions } from 'src/services/postService'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import Permissions from 'src/components/Pesrmissions'
 
-const galleryPage = () => {
+const permissionsPage = () => {
   const navigate=useNavigate()
   const userId = useSelector((state) => state.profileState.userId)
   const [file, setfile] = useState([])
   const [photos,setPhotos]=useState([])
   useEffect(() => {
-    getGalley(userId).then((res) => {
+    getPermissions(userId).then((res) => {
       setPhotos(res.data)
     })
   }, [])
@@ -36,14 +37,18 @@ const galleryPage = () => {
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>گالری</CCardHeader>
+            <CCardHeader>مجوزها</CCardHeader>
             <CCardBody>
               <CInputGroup className="mb-3">
                 <CButton
                   onClick={() => {
                    const files = Array.prototype.slice.call(file)
                     const data={files,userId}
-                    addToGallery(data).then((res) => {navigate(0)})
+                    addPermissions(data).then((res) => {
+                        if (res.status==200) {
+                            alert(res.data.message)
+                        }
+                    })
                   }}
                 >
                   Upload
@@ -58,8 +63,7 @@ const galleryPage = () => {
                   id="inputGroupFile01"
                 />
               </CInputGroup>
-
-              <Gallery data={photos} />
+<Permissions data={photos}/>
             </CCardBody>
           </CCard>
         </CCol>
@@ -68,4 +72,4 @@ const galleryPage = () => {
   )
 }
 
-export default galleryPage
+export default permissionsPage

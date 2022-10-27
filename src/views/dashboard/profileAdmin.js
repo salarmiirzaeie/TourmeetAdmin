@@ -21,17 +21,22 @@ import {
   CProgress,
   CRow,
 } from '@coreui/react'
+import { profile } from 'src/state-management/action/profileAction'
+
 import { cilDelete, cilMonitor, cilPlus, cilStream } from '@coreui/icons'
 import { useRef } from 'react'
 import { Formik } from 'formik'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import CIcon from '@coreui/icons-react'
+import { editProfile } from 'src/services/usersService'
 
 const profileAdmin = () => {
+  const dispatch = useDispatch()
   const avatar = useRef()
   const [file, setfile] = useState('')
   const [editmode, setEditmode] = useState(true)
-  const profile = useSelector((state) => state.profileState)
+  const profilee = useSelector((state) => state.profileState)
+
   return (
     <>
       <CRow>
@@ -43,24 +48,28 @@ const profileAdmin = () => {
                 <CCardBody>
                   <Formik
                     initialValues={{
-                      name: profile.name,
-                      email: profile.userEmail,
-                      description: profile.description,
-                      profilePhoto: '',
+                      name: profilee.name,
+                      email: profilee.userEmail,
+                      description: profilee.description,
+                      profilePhoto: file,
+                      phoneNumber: '',
                     }}
                     validate={(values) => {
                       const errors = {}
                       return errors
                     }}
                     onSubmit={(values, { setSubmitting }) => {
-                      // values.thumbnail = file
-                      // let data = { id, values }
-                      // console.log(values)
-                      // setTimeout(() => {
-                      //   editPost(data).then((res) => {
-                      //     navigate('/dashboard/myTours')
-                      //   })
-                      // }, 400)
+                      editProfile(values).then((res) => {
+                        setTimeout(() => {
+                          if (res.status == 200) {
+                            // console.log(res.data)
+                            dispatch(profile(res.data))
+                          } else {
+                            swal('خطا', res.data.message, 'error')
+                          }
+                          setSubmitting(false)
+                        }, 400)
+                      })
                     }}
                   >
                     {({
@@ -99,6 +108,15 @@ const profileAdmin = () => {
                           value={values.email}
                           disabled={editmode}
                         />
+                        <CFormLabel>تلفن</CFormLabel>
+                        <CFormInput
+                          type="text"
+                          name="phoneNumber"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.phoneNumber}
+                          disabled={editmode}
+                        />
                         <CFormLabel>درباره</CFormLabel>
                         <CFormTextarea
                           name="description"
@@ -116,8 +134,33 @@ const profileAdmin = () => {
                           ref={avatar}
                           onChange={(event) => {
                             setfile(event.currentTarget.files[0])
+                            // console.log(event.currentTarget.files[0])
                           }}
                         />
+                        <div className="mt-4">
+                          <CButton
+                            hidden={!editmode}
+                            onClick={() => setEditmode(false)}
+                            color="success"
+                          >
+                            ویرایش
+                          </CButton>
+                          <CButton
+                            hidden={editmode}
+                            onClick={handleSubmit}
+                            color="info"
+                            type="submit"
+                          >
+                            ثبت
+                          </CButton>
+                          <CButton
+                            onClick={() => setEditmode(true)}
+                            hidden={editmode}
+                            color="danger"
+                          >
+                            انصراف
+                          </CButton>
+                        </div>
                       </form>
                     )}
                   </Formik>
@@ -127,7 +170,7 @@ const profileAdmin = () => {
                 <CCardImage
                   className="rounded-circle"
                   orientation="top"
-                  src={`http://localhost:3333/uploads/${profile.profilePhoto}`}
+                  src={`http://localhost:3333/uploads/${profilee.profilePhoto}`}
                 />
                 <CButton
                   hidden={editmode}
@@ -140,26 +183,6 @@ const profileAdmin = () => {
                 </CButton>
               </CCol>
             </CRow>
-            <CCardFooter>
-              <CButton
-                hidden={!editmode}
-                onClick={() => setEditmode(false)}
-                color="success"
-              >
-                ویرایش
-              </CButton>
-              <CButton
-                hidden={editmode}
-                // onClick={() => setEditmode(false)}
-                color="info"
-                type="submit"
-              >
-                ثبت
-              </CButton>
-              <CButton onClick={() => setEditmode(true)} hidden={editmode} color="danger">
-                انصراف
-              </CButton>
-            </CCardFooter>
           </CCard>
         </CCol>
       </CRow>

@@ -17,3 +17,18 @@ export const getRequestedPosts = () => {
     })
   return res
 }
+export const getRequestedTours = () => {
+  const res = axios
+    .get(`${apiPort}/requestedTours`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}

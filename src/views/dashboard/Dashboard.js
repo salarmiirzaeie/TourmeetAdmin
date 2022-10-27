@@ -4,6 +4,7 @@ import {
   CAccordionBody,
   CAccordionHeader,
   CAccordionItem,
+  CAlert,
   CAvatar,
   CButton,
   CButtonGroup,
@@ -22,6 +23,8 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
+  CWidgetStatsB,
+  CWidgetStatsC,
 } from '@coreui/react'
 import { CChartDoughnut, CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
@@ -47,98 +50,83 @@ import {
   cilPeople,
   cilUser,
   cilUserFemale,
+  cilUserFollow,
+  cilBasket,
 } from '@coreui/icons'
-
-
 
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import { myPosts } from 'src/services/postService'
 import { useSelector } from 'react-redux'
 import { JoinedUserstb } from 'src/components/JoinedUserstb'
+import { useNavigate } from 'react-router-dom'
+import { isAuth } from 'src/utils/helpers'
 
 const dashboard = () => {
-  
-  const [posts, setposts] = useState([])
-  const userId = useSelector((state) => state.profileState.userId)
-
-  useEffect(() => {
-    myPosts(userId).then((res) => {
-      res.data = res.data.filter((p) => p.isAccept == 'accept')
-      setposts(res.data)
-
-    })
-  }, [])
+  // const navigate = useNavigate()
+  // const [posts, setposts] = useState([])
 
   return (
     <>
       <CRow>
         <CCol xs>
-          {posts.map((post,i)=>(
+          {/* {posts.map((post, i) => (
             <CCard key={i} className="mb-4">
-            <CCardHeader>{post.title}</CCardHeader>
-            <CCardBody>
-              <CRow>
-                <CCol xs={12} md={9} xl={9}>
-                  <CListGroup>
-                    <CListGroupItem>jj</CListGroupItem>
-                    <CListGroupItem>jj</CListGroupItem>
-                    <CListGroupItem>jj</CListGroupItem>
-                    <CListGroupItem>jj</CListGroupItem>
-                    <CListGroupItem>jj</CListGroupItem>
-                    <CListGroupItem>jj</CListGroupItem>
-                    <CListGroupItem>jj</CListGroupItem>
-
-                  </CListGroup>
-                 
-
-                
-                </CCol>
-                <CCol  xs={12} md={3} xl={3}>
-                  <CChartDoughnut
-                    data={{
-                      datasets: [
-                        {
-                          backgroundColor: ['#DD1B16','green'],
-                          data: [post.joinedUsers.length,post.capacity-post.joinedUsers.length],
-                        },
-                      ],
-                    }}
-                  />
-                </CCol>
-              </CRow>
-              <CAccordion className='mt-1' flush>
-                <CAccordionItem itemKey={3}>
-                  <CAccordionHeader>افرادعضوشده</CAccordionHeader>
-                  <CAccordionBody>
-                    <CTable align="middle" className="mb-0 border" hover responsive>
-                      <CTableHead color="light">
-                        <CTableRow>
-                          <CTableHeaderCell className="text-center">
-                            <CIcon icon={cilPeople} />
-                          </CTableHeaderCell>
-                          <CTableHeaderCell>User</CTableHeaderCell>
-                          <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
-                          <CTableHeaderCell>Usage</CTableHeaderCell>
-                          <CTableHeaderCell className="text-center">
-                            Payment Method
-                          </CTableHeaderCell>
-                          <CTableHeaderCell>Activity</CTableHeaderCell>
-                        </CTableRow>
-                      </CTableHead>
-                      <CTableBody>
-                        <JoinedUserstb users={post.joinedUsers}/>
-                      </CTableBody>
-                    </CTable>
-                  </CAccordionBody>
-                </CAccordionItem>
-              </CAccordion>
-
-            </CCardBody>
-          </CCard>
-          ))}
-          
-        
+              <CCardHeader>{post.title}</CCardHeader>
+              <CCardBody>
+                <CRow>
+                  <CCol md={9} xl={9}>
+                    <WidgetsDropdown />
+                  </CCol>
+                  <CCol md={3} xl={3}>
+                    <CRow>
+                      <CCol>
+                        <CChartDoughnut
+                          data={{
+                            datasets: [
+                              {
+                                backgroundColor: ['#DD1B16', 'green'],
+                                data: [
+                                  post.joinedUsers.length,
+                                  post.capacity - post.joinedUsers.length,
+                                ],
+                              },
+                            ],
+                          }}
+                        />
+                      </CCol>
+                    </CRow>
+                  </CCol>
+                </CRow>
+                <CAccordion className="mt-1" flush>
+                  <CAccordionItem itemKey={3}>
+                    <CAccordionHeader>افرادعضوشده</CAccordionHeader>
+                    <CAccordionBody>
+                      <CTable align="middle" className="mb-0 border" hover responsive>
+                        <CTableHead color="light">
+                          <CTableRow>
+                            <CTableHeaderCell className="text-center">
+                              <CIcon icon={cilPeople} />
+                            </CTableHeaderCell>
+                            <CTableHeaderCell>User</CTableHeaderCell>
+                            <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
+                            <CTableHeaderCell>Usage</CTableHeaderCell>
+                            <CTableHeaderCell className="text-center">
+                              Payment Method
+                            </CTableHeaderCell>
+                            <CTableHeaderCell>Activity</CTableHeaderCell>
+                          </CTableRow>
+                        </CTableHead>
+                        <CTableBody>
+                          <JoinedUserstb users={post.joinedUsers} />
+                        </CTableBody>
+                      </CTable>
+                    </CAccordionBody>
+                  </CAccordionItem>
+                </CAccordion>
+              </CCardBody>
+            </CCard>
+          ))} */}
         </CCol>
       </CRow>
     </>

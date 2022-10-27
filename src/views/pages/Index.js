@@ -15,6 +15,7 @@ import CIcon from '@coreui/icons-react'
 import { cilMagnifyingGlass } from '@coreui/icons'
 import { Posts } from 'src/components/Posts'
 import { getIndex } from 'src/services/blogService'
+import { HomePosts } from 'src/components/HomePosts'
 
 const Index = () => {
   const [posts, setposts] = useState([])
@@ -32,7 +33,7 @@ const Index = () => {
             <CCard className="mb-4">
               <CCardHeader>تورهای شما</CCardHeader>
               <CCardBody>
-                <Posts adress={'/Post/'} posts={posts} />
+                <HomePosts adress={'/Post/'} posts={posts} />
               </CCardBody>
             </CCard>
           </CCol>

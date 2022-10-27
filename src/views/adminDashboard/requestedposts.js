@@ -17,7 +17,6 @@ const requestedposts = () => {
   const [posts, setposts] = useState([])
   useEffect(() => {
     getRequestedPosts().then((res) => {
-      console.log(res.data)
       setposts(res.data)
     })
   }, [])

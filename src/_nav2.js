@@ -7,6 +7,7 @@ import {
   cilCursor,
   cilDoor,
   cilDrop,
+  cilHotTub,
   cilNotes,
   cilPencil,
   cilPlus,
@@ -33,6 +34,12 @@ const _nav = [
     to: '/adminDashboard/requestedposts',
     icon: <CIcon icon={cilDoor} customClassName="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: 'شرکت های درانتظار',
+    to: '/adminDashboard/requestedTours',
+    icon: <CIcon icon={cilHotTub} customClassName="nav-icon" />,
+  }
   // {
   //   component: CNavTitle,
   //   name: 'Extras',

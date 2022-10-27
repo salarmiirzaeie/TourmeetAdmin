@@ -1,21 +1,28 @@
 import React from 'react'
-import { CFooter } from '@coreui/react'
+import { CCol, CFooter, CNav, CNavItem, CNavLink, CRow } from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilHome, cilList, cilListFilter, cilListHighPriority, cilListLowPriority, cilListRich, cilUser, cilUserFemale, cilUserFollow, cilUserPlus, cilUserX } from '@coreui/icons'
 
 const AppFooter = () => {
   return (
-    <CFooter>
-      <div>
-        <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">
-          CoreUI
-        </a>
-        <span className="ms-1">&copy; 2022 creativeLabs.</span>
-      </div>
-      <div className="ms-auto">
-        <span className="me-1">Powered by</span>
-        <a href="https://coreui.io/react" target="_blank" rel="noopener noreferrer">
-          CoreUI React Admin &amp; Dashboard Template
-        </a>
-      </div>
+    <CFooter position="sticky" className="d-md-none p-0 rounded-3 bg-white">
+      <CNav variant="pills" className="w-100" layout="fill">
+        <CNavItem>
+          <CNavLink href='/#/touristDashboard' className="text-center">
+            <CIcon icon={cilHome} />
+          </CNavLink>
+        </CNavItem>
+        <CNavItem className="">
+          <CNavLink href='#' className="text-center">
+            <CIcon icon={cilListRich} />
+          </CNavLink>
+        </CNavItem>
+        <CNavItem>
+        <CNavLink href='/#/touristDashboard/profile' className="text-center rounded-3 bg-light">
+            <CIcon icon={cilUser} />
+          </CNavLink>
+        </CNavItem>
+      </CNav>
     </CFooter>
   )
 }

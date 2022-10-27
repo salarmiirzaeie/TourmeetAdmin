@@ -25,7 +25,7 @@ import {
   CFormTextarea,
   CInputGroup,
   CCardText,
-  CFormSelect
+  CFormSelect,
 } from '@coreui/react'
 import { Formik } from 'formik'
 
@@ -33,13 +33,14 @@ import { deletePost, editPost } from 'src/services/postService'
 import { useNavigate } from 'react-router-dom'
 import { formDate } from 'src/utils/helpers'
 import { useSelector } from 'react-redux'
+import swal from 'sweetalert'
 const SinglePost = (data) => {
   const type = useSelector((state) => state.profileState.type)
   const navigate = useNavigate()
   const [visible, setVisible] = useState(false)
   const [editMode, setEditMode] = useState(false)
 
-  const [file, setfile] = useState('')
+  const [file, setfile] = useState([])
   let id = data.data._id
 
   return (
@@ -49,7 +50,7 @@ const SinglePost = (data) => {
         <CCol xs={12} md={6} xl={6}>
           {data.data.thumbnail ? (
             <CCard>
-              <CCarousel indicators controls>
+              <CCarousel transition='crossfade' pause={'hover'} indicators controls>
                 {data.data.thumbnail.map((name, i) => (
                   <CCarouselItem key={i}>
                     <img
@@ -70,7 +71,7 @@ const SinglePost = (data) => {
               initialValues={{
                 title: data.data.title,
                 body: data.data.body,
-                thumbnail: file.name,
+                thumbnail: data.data.thumbnail,
                 isAccept: 'waiting',
                 capacity: data.data.capacity,
                 durationTime: data.data.durationTime,
@@ -81,9 +82,9 @@ const SinglePost = (data) => {
                 return errors
               }}
               onSubmit={(values, { setSubmitting }) => {
-                values.thumbnail = file
+                const files = Array.prototype.slice.call(file)
+                values.thumbnail = files
                 let data = { id, values }
-                console.log(values)
 
                 setTimeout(() => {
                   editPost(data).then((res) => {
@@ -132,17 +133,19 @@ const SinglePost = (data) => {
                   <CFormLabel>ظرفیت</CFormLabel>
 
                   <CFormInput
-                    name="body"
+                    name="capacity"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.capacity}
                   />
                   <CFormLabel>طول تور</CFormLabel>
 
-                  <CFormSelect name="durationTime"
+                  <CFormSelect
+                    name="durationTime"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.durationTime}>
+                    value={values.durationTime}
+                  >
                     <option value="1day">یک روز</option>
                     <option value="2days">دوروز</option>
                     <option value="3days">سه روز</option>
@@ -150,7 +153,7 @@ const SinglePost = (data) => {
                   <CFormLabel>تاریخ برگذاری</CFormLabel>
 
                   <CFormInput
-                  type='date'
+                    type="date"
                     name="date"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -160,13 +163,13 @@ const SinglePost = (data) => {
 
                   <CInputGroup className="mb-3">
                     <CFormInput
-                      value={values.thumbnail}
                       onChange={(event) => {
-                        setfile(event.currentTarget.files[0])
+                        setfile(event.currentTarget.files)
                       }}
                       onBlur={handleBlur}
                       type="file"
                       id="thumbnail"
+                      multiple={true}
                     />
                   </CInputGroup>
                   {type == 'tour' ? (
@@ -224,30 +227,31 @@ const SinglePost = (data) => {
                 >
                   ویرایش
                 </CButton>
-                <CButton color="danger" onClick={() => setVisible(!visible)}>
-                  حذف
-                </CButton>
-                <CCardText>{formDate(data.data.createdAt)}</CCardText>
-                <CModal visible={visible} onClose={() => setVisible(false)}>
-                  <CModalBody>آیامطمئن به حذف پست هستید؟</CModalBody>
-                  <CModalFooter>
-                    <CButton
-                      onClick={() => {
-                        deletePost(data.data._id).then((res) => {
+                <CButton
+                  color="danger"
+                  onClick={() => {
+                    swal({
+                      title: 'آیامطمئن به حذف هستید؟',
+                      text: 'باحذف کردن دیگربه آن دسترسی نخواهیدداشت!',
+                      icon: 'warning',
+                      buttons: true,
+                      dangerMode: true,
+                    }).then(() => {
+                      deletePost(data.data._id)
+                        .then((res) => {
                           if (res.status == 200) {
                             navigate('/dashboard/myTours')
                           } else {
-                            setVisible(false)
-                            alert(res.data.message)
+                            swal(res.data.message, 'error')
                           }
                         })
-                      }}
-                      color="primary"
-                    >
-                      بله
-                    </CButton>
-                  </CModalFooter>
-                </CModal>
+                        .catch(() => {})
+                    })
+                  }}
+                >
+                  حذف
+                </CButton>
+                <CCardText>{formDate(data.data.createdAt)}</CCardText>
               </CCardFooter>
             ) : (
               ''
