@@ -8,6 +8,7 @@ import {
   cilChartPie,
   cilCursor,
   cilDelete,
+  cilDollar,
   cilDrop,
   cilFilterPhoto,
   cilImage,
@@ -40,6 +41,29 @@ const _nav = [
   //   component: CNavTitle,
   //   name: 'Extras',
   // },
+  {
+    component: CNavGroup,
+    name: 'مالی',
+    icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'برداشت وجه',
+        to: '/dashboard/createPost',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+
+      },
+      {
+        component: CNavItem,
+        name: 'تراکنش ها',
+        to: '/dashboard/createPost',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+
+      },
+     
+     
+    ],
+  },
   {
     component: CNavGroup,
     name: 'تور',

@@ -353,7 +353,7 @@ const Buttons = () => {
             </p>
             <DocsExample href="components/buttons#block-buttons">
               <div className="d-grid gap-2">
-                <CButton color="primary">Button</CButton>
+                <CButton color="primary">Bzutton</CButton>
                 <CButton color="primary">Button</CButton>
               </div>
             </DocsExample>
@@ -365,7 +365,7 @@ const Buttons = () => {
             </p>
             <DocsExample href="components/buttons#block-buttons">
               <div className="d-grid gap-2 d-md-block">
-                <CButton color="primary">Button</CButton>
+                <CButton color="primary">Butaton</CButton>
                 <CButton color="primary">Button</CButton>
               </div>
             </DocsExample>
