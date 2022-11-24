@@ -34,6 +34,8 @@ const createpost = () => {
                 date: '',
                 durationTime: '1day',
                 capacity: 0,
+                type:'',
+                price:0
               }}
               validate={(values) => {
                 const errors = {}
@@ -96,6 +98,14 @@ const createpost = () => {
                     onBlur={handleBlur}
                     value={values.capacity}
                   />
+                  <CFormLabel>قیمت(تومان)</CFormLabel>
+                  <CFormInput
+                    type="number"
+                    name="price"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.price}
+                  />
                   <CFormLabel>تاریخ</CFormLabel>
                   <CFormInput
                     type="date"
@@ -114,6 +124,22 @@ const createpost = () => {
                     <option value="1day">یک روز</option>
                     <option value="2days">دوروز</option>
                     <option value="3days">سه روز</option>
+                  </CFormSelect>
+                  <CFormLabel>دسته بندی</CFormLabel>
+                  <CFormSelect
+                    name="type"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.type}
+                  >
+                    <option value=""></option>
+                    <option value="forest">طبیعت گردی</option>
+
+                    <option value="mountain">کوهنوردی</option>
+                    <option value="offroad">آفرود</option>
+                    <option value="sea">دریا</option>
+                    <option value="desert">کویر</option>
+                    <option value="historical">اماکن تاریخی</option>
                   </CFormSelect>
 
                   <CFormLabel>عکس</CFormLabel>
