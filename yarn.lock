@@ -2767,14 +2767,6 @@
     "babel-plugin-macros" "^3.1.0"
     "babel-plugin-transform-react-remove-prop-types" "^0.4.24"
 
-"babel-runtime@^6.26.0":
-  "integrity" "sha1-llxwWGaOgrVde/4E/yM3vItWR/4="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/babel-runtime/-/babel-runtime-6.26.0.tgz"
-  "version" "6.26.0"
-  dependencies:
-    "core-js" "^2.4.0"
-    "regenerator-runtime" "^0.11.0"
-
 "balanced-match@^1.0.0":
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw== sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/balanced-match/-/balanced-match-1.0.2.tgz"
@@ -3319,11 +3311,6 @@
   "integrity" "sha512-oN88zz7nmKROMy8GOjs+LN+0LedIvbMdnB5XsTlhcOg1WGARt9l0LFg0zohdoFmCsEZ1h2ZbSQ6azj3M+vhzwQ== sha1-GB0bYyH7Kf6ZwWofKL64QKuErTY="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/core-js-pure/-/core-js-pure-3.22.3.tgz"
   "version" "3.22.3"
-
-"core-js@^2.4.0":
-  "integrity" "sha1-2TM9+nsGXjR8xWgiGdb2kIWcwuw="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/core-js/-/core-js-2.6.12.tgz"
-  "version" "2.6.12"
 
 "core-js@^3.0.1", "core-js@^3.19.2", "core-js@^3.22.3":
   "integrity" "sha512-1t+2a/d2lppW1gkLXx3pKPVGbBdxXAkqztvWb1EJ8oF8O2gIGiytzflNiFEehYwVK/t2ryUsGBoOFFvNx95mbg== sha1-SYxB2ZdlTLAOgcelS0TwqyGrAdU="
@@ -5505,11 +5492,6 @@
     "filelist" "^1.0.1"
     "minimatch" "^3.0.4"
 
-"jalaali-js@^1.1.0":
-  "integrity" "sha1-9O5L9obtMruWVvEBIlvkt6HD/SE="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/jalaali-js/-/jalaali-js-1.2.6.tgz"
-  "version" "1.2.6"
-
 "jalali-moment@^3.3.11":
   "integrity" "sha512-tdSaRs9cjWjOIaWhcsGFZMhZQhfgok5J0TwqFpBIZPudZxxa6yjUPoLCOwuvbAtRpiZn7k/mvazAJh+vEN5suw== sha1-yqMGdR0TgshkhXG8oXQ6q/J2YMM="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/jalali-moment/-/jalali-moment-3.3.11.tgz"
@@ -6443,24 +6425,7 @@
   dependencies:
     "minimist" "^1.2.6"
 
-"moment-jalaali@^0.9.6":
-  "integrity" "sha1-bEYK7e4IoeRdP2WMfP/WbNTcokw="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/moment-jalaali/-/moment-jalaali-0.9.6.tgz"
-  "version" "0.9.6"
-  dependencies:
-    "jalaali-js" "^1.1.0"
-    "moment" "^2.22.2"
-    "moment-timezone" "^0.5.21"
-    "rimraf" "^3.0.2"
-
-"moment-timezone@^0.5.21":
-  "integrity" "sha1-wUj1FJ/ZHdPim/SBq8iDDsuha4k="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/moment-timezone/-/moment-timezone-0.5.40.tgz"
-  "version" "0.5.40"
-  dependencies:
-    "moment" ">= 2.9.0"
-
-"moment@^2.22.2", "moment@^2.26.0", "moment@>= 2.9.0":
+"moment@^2.26.0":
   "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w== sha1-Pb4FKIn+fBsu2Wb8s6dzKJZO8Qg="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/moment/-/moment-2.29.4.tgz"
   "version" "2.29.4"
@@ -7650,14 +7615,6 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
-"react-advance-jalaali-datepicker@^1.4.0":
-  "integrity" "sha1-E6gjrK6mTiptbo2r/AxrlGcYSV8="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/react-advance-jalaali-datepicker/-/react-advance-jalaali-datepicker-1.4.0.tgz"
-  "version" "1.4.0"
-  dependencies:
-    "babel-runtime" "^6.26.0"
-    "moment-jalaali" "^0.9.6"
-
 "react-app-polyfill@^3.0.0":
   "integrity" "sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w== sha1-lSIeCpvSWeXKaxd8e7HLZ2j2j9c="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/react-app-polyfill/-/react-app-polyfill-3.0.0.tgz"
@@ -7705,7 +7662,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-"react-dom@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0", "react-dom@^17", "react-dom@^17.0.2", "react-dom@<18.0.0", "react-dom@>=16.8", "react-dom@>=16.8.0", "react-dom@16.x || 17.x || 18.x":
+"react-dom@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0", "react-dom@^17", "react-dom@^17.0.2", "react-dom@<18.0.0", "react-dom@>=16.8", "react-dom@>=16.8.0":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA== sha1-7P+2hF462Nv83EmPDQqTlzZQLCM="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -7854,7 +7811,7 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
-"react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0", "react@^16.8.3 || ^17 || ^18", "react@^17", "react@^17.0.2", "react@<18.0.0", "react@>= 16", "react@>=16.8", "react@>=16.8.0", "react@16.x || 17.x || 18.x", "react@17.0.2":
+"react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0", "react@^16.8.3 || ^17 || ^18", "react@^17", "react@^17.0.2", "react@<18.0.0", "react@>= 16", "react@>=16.8", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA== sha1-0LXMUW0p6z7uOD91tihkz7aAADc="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -7929,11 +7886,6 @@
   "integrity" "sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A== sha1-uTRtiCfo9aMve6KWN9OYtpAUhIo="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/regenerate/-/regenerate-1.4.2.tgz"
   "version" "1.4.2"
-
-"regenerator-runtime@^0.11.0":
-  "integrity" "sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk="
-  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz"
-  "version" "0.11.1"
 
 "regenerator-runtime@^0.13.4", "regenerator-runtime@^0.13.9":
   "integrity" "sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA== sha1-iSV0Kpj/2QgUmI11Zq0wyjsmO1I="

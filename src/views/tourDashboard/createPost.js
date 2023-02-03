@@ -20,7 +20,7 @@ import { createPost } from 'src/services/postService'
 import swal from 'sweetalert'
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
-import DatePicker from 'react-multi-date-picker'
+import DatePicker, { DateObject } from 'react-multi-date-picker'
 
 
 function CustomRangeInput({ openCalendar, value }) {
@@ -28,12 +28,6 @@ function CustomRangeInput({ openCalendar, value }) {
   let to = value[1] || "";
 
   value = from && to ? "از " + from + "، تا " + to : from;
-
-  // const myInputStyle = {
-  //   width: "100 %"
-  // }
-
-
   return (
     <input
       style={{
@@ -49,8 +43,8 @@ function CustomRangeInput({ openCalendar, value }) {
 const createpost = () => {
   const [file, setfile] = useState([])
 
-
   const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
+
   return (
     <>
       <CCard className="mb-4">
@@ -90,6 +84,7 @@ const createpost = () => {
               }}
             >
               {({
+
                 values,
 
                 errors,
@@ -141,6 +136,7 @@ const createpost = () => {
                   />
                   <CFormLabel>تاریخ</CFormLabel>
                   <br />
+
                   <DatePicker
                     style={{
                       width: "100%",
@@ -151,6 +147,7 @@ const createpost = () => {
                     containerStyle={{
                       width: "100%"
                     }}
+                    minDate={new DateObject({ calendar: persian }).set("day",)}
                     weekDays={weekDays}
                     inputClass="custom-input"
                     range
@@ -159,21 +156,8 @@ const createpost = () => {
                     calendar={persian}
                     locale={persian_fa}
                     calendarPosition="bottom-center"
+
                   />
-
-
-                  {/* https://github.com/A-Kasaaian/react-advance-jalaali-datepicker */}
-                  {/* <DateRangePicker
-                    placeholderStart="تاریخ رفت"
-                    placeholderEnd="تاریخ برگشت"
-                    format="jYYYY/jMM/jDD"
-                    onChangeStart={this.change}
-                    onChangeEnd={this.changeTimeDate}
-                    idStart="rangePickerStart"
-                    idEnd="rangePickerEnd"
-                    inputTextAlign="center"
-                    controlValue="true"
-                  /> */}
                   {/* <CFormInput
                     type="date"
                     name="date"
@@ -190,7 +174,7 @@ const createpost = () => {
                     value={values.durationTime}
                   >
                     <option value="1day">یک روز</option>
-                    <option value="2days">دوروز</option>
+                    <option value="2days">دو روز</option>
                     <option value="3days">سه روز</option>
                   </CFormSelect>
                   <CFormLabel>دسته بندی</CFormLabel>
