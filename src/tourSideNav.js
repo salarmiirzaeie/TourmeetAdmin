@@ -36,7 +36,7 @@ const _nav = [
     //   text: 'NEW',
     // },
   },
-  
+
   // {
   //   component: CNavTitle,
   //   name: 'Extras',
@@ -60,8 +60,8 @@ const _nav = [
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
 
       },
-     
-     
+
+
     ],
   },
   {
@@ -90,7 +90,7 @@ const _nav = [
         icon: <CIcon icon={cilDelete} customClassName="nav-icon" />,
 
       }
-     
+
     ],
   },
   {

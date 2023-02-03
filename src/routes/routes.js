@@ -1,63 +1,19 @@
 import React from 'react'
 
-const Dashboard = React.lazy(() => import('../views/dashboard/Dashboard'))
+const Dashboard = React.lazy(() => import('../views/tourDashboard/Dashboard'))
 const Colors = React.lazy(() => import('../views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('../views/theme/typography/Typography'))
+const myTours = React.lazy(() => import('../views/tourDashboard/myTours'))
+const postPage = React.lazy(() => import('../views/tourDashboard/postPage'))
+const profileAdmin = React.lazy(() => import('../views/tourDashboard/profileAdmin'))
 
-// Base
-// const Accordion = React.lazy(() => import('../views/base/accordion/Accordion'))
-// const Breadcrumbs = React.lazy(() => import('../views/base/breadcrumbs/Breadcrumbs'))
-// const Cards = React.lazy(() => import('../views/base/cards/Cards'))
-// const Carousels = React.lazy(() => import('../views/base/carousels/Carousels'))
-// const Collapses = React.lazy(() => import('../views/base/collapses/Collapses'))
-// const ListGroups = React.lazy(() => import('../views/base/list-groups/ListGroups'))
-// const Navs = React.lazy(() => import('../views/base/navs/Navs'))
-// const Paginations = React.lazy(() => import('../views/base/paginations/Paginations'))
-// const Placeholders = React.lazy(() => import('../views/base/placeholders/Placeholders'))
-// const Popovers = React.lazy(() => import('../views/base/popovers/Popovers'))
-// const Progress = React.lazy(() => import('../views/base/progress/Progress'))
-// const Spinners = React.lazy(() => import('../views/base/spinners/Spinners'))
-// const Tables = React.lazy(() => import('../views/base/tables/Tables'))
-// const Tooltips = React.lazy(() => import('../views/base/tooltips/Tooltips'))
-
-// Buttons
-// const Buttons = React.lazy(() => import('../views/buttons/buttons/Buttons'))
-// const ButtonGroups = React.lazy(() => import('../views/buttons/button-groups/ButtonGroups'))
-// const Dropdowns = React.lazy(() => import('../views/buttons/dropdowns/Dropdowns'))
-
-//Forms
-// const ChecksRadios = React.lazy(() => import('../views/forms/checks-radios/ChecksRadios'))
-// const FloatingLabels = React.lazy(() => import('../views/forms/floating-labels/FloatingLabels'))
-// const FormControl = React.lazy(() => import('../views/forms/form-control/FormControl'))
-// const InputGroup = React.lazy(() => import('../views/forms/input-group/InputGroup'))
-// const Layout = React.lazy(() => import('../views/forms/layout/Layout'))
-// const Range = React.lazy(() => import('../views/forms/range/Range'))
-// const Select = React.lazy(() => import('../views/forms/select/Select'))
-// const Validation = React.lazy(() => import('../views/forms/validation/Validation'))
-
-// const Charts = React.lazy(() => import('../views/charts/Charts'))
-
-// Icons
-// const CoreUIIcons = React.lazy(() => import('../views/icons/coreui-icons/CoreUIIcons'))
-// const Flags = React.lazy(() => import('../views/icons/flags/Flags'))
-// const Brands = React.lazy(() => import('../views/icons/brands/Brands'))
-
-// Notifications
-// const Alerts = React.lazy(() => import('../views/notifications/alerts/Alerts'))
-// const Badges = React.lazy(() => import('../views/notifications/badges/Badges'))
-// const Modals = React.lazy(() => import('../views/notifications/modals/Modals'))
-// const Toasts = React.lazy(() => import('../views/notifications/toasts/Toasts'))
-const myTours = React.lazy(() => import('../views/dashboard/myTours'))
-const postPage = React.lazy(() => import('../views/dashboard/postPage'))
-const profileAdmin = React.lazy(() => import('../views/dashboard/profileAdmin'))
-
-const rejectedTours = React.lazy(() => import('../views/dashboard/rejectedTours'))
-const galleryPage = React.lazy(() => import('../views/dashboard/galleryPage'))
-const security = React.lazy(() => import('../views/dashboard/security'))
-const permissionsPage = React.lazy(() => import('../views/dashboard/permissionsPage'))
+const rejectedTours = React.lazy(() => import('../views/tourDashboard/rejectedTours'))
+const galleryPage = React.lazy(() => import('../views/tourDashboard/galleryPage'))
+const security = React.lazy(() => import('../views/tourDashboard/security'))
+const permissionsPage = React.lazy(() => import('../views/tourDashboard/permissionsPage'))
 
 const Widgets = React.lazy(() => import('../views/widgets/Widgets'))
-const createPost = React.lazy(() => import('../views/dashboard/createPost'))
+const createPost = React.lazy(() => import('../views/tourDashboard/createPost'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -69,6 +25,50 @@ const routes = [
   { path: '/dashboard/galleryPage', name: 'galleryPage', element: galleryPage },
   { path: '/dashboard/security', name: 'security', element: security },
   { path: '/dashboard/permissionsPage', name: 'permissionsPage', element: permissionsPage },
+  // Base
+  // const Accordion = React.lazy(() => import('../views/base/accordion/Accordion'))
+  // const Breadcrumbs = React.lazy(() => import('../views/base/breadcrumbs/Breadcrumbs'))
+  // const Cards = React.lazy(() => import('../views/base/cards/Cards'))
+  // const Carousels = React.lazy(() => import('../views/base/carousels/Carousels'))
+  // const Collapses = React.lazy(() => import('../views/base/collapses/Collapses'))
+  // const ListGroups = React.lazy(() => import('../views/base/list-groups/ListGroups'))
+  // const Navs = React.lazy(() => import('../views/base/navs/Navs'))
+  // const Paginations = React.lazy(() => import('../views/base/paginations/Paginations'))
+  // const Placeholders = React.lazy(() => import('../views/base/placeholders/Placeholders'))
+  // const Popovers = React.lazy(() => import('../views/base/popovers/Popovers'))
+  // const Progress = React.lazy(() => import('../views/base/progress/Progress'))
+  // const Spinners = React.lazy(() => import('../views/base/spinners/Spinners'))
+  // const Tables = React.lazy(() => import('../views/base/tables/Tables'))
+  // const Tooltips = React.lazy(() => import('../views/base/tooltips/Tooltips'))
+
+  // Buttons
+  // const Buttons = React.lazy(() => import('../views/buttons/buttons/Buttons'))
+  // const ButtonGroups = React.lazy(() => import('../views/buttons/button-groups/ButtonGroups'))
+  // const Dropdowns = React.lazy(() => import('../views/buttons/dropdowns/Dropdowns'))
+
+  //Forms
+  // const ChecksRadios = React.lazy(() => import('../views/forms/checks-radios/ChecksRadios'))
+  // const FloatingLabels = React.lazy(() => import('../views/forms/floating-labels/FloatingLabels'))
+  // const FormControl = React.lazy(() => import('../views/forms/form-control/FormControl'))
+  // const InputGroup = React.lazy(() => import('../views/forms/input-group/InputGroup'))
+  // const Layout = React.lazy(() => import('../views/forms/layout/Layout'))
+  // const Range = React.lazy(() => import('../views/forms/range/Range'))
+  // const Select = React.lazy(() => import('../views/forms/select/Select'))
+  // const Validation = React.lazy(() => import('../views/forms/validation/Validation'))
+
+  // const Charts = React.lazy(() => import('../views/charts/Charts'))
+
+  // Icons
+  // const CoreUIIcons = React.lazy(() => import('../views/icons/coreui-icons/CoreUIIcons'))
+  // const Flags = React.lazy(() => import('../views/icons/flags/Flags'))
+  // const Brands = React.lazy(() => import('../views/icons/brands/Brands'))
+
+  // Notifications
+  // const Alerts = React.lazy(() => import('../views/notifications/alerts/Alerts'))
+  // const Badges = React.lazy(() => import('../views/notifications/badges/Badges'))
+  // const Modals = React.lazy(() => import('../views/notifications/modals/Modals'))
+  // const Toasts = React.lazy(() => import('../views/notifications/toasts/Toasts'))
+
 
   // { path: '/base', name: 'Base', element: Cards, exact: true },
   // { path: '/base/accordion', name: 'Accordion', element: Accordion },

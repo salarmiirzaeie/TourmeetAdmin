@@ -12,9 +12,9 @@ import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 
 // sidebar nav config
-import navigation from '../_nav'
-import navigation2 from '../_nav2'
-import navigation3 from '../_nav3'
+import navigation from '../tourSideNav'
+import navigation2 from '../adminSideNav'
+import navigation3 from '../touristSideNav'
 
 import { increment } from 'src/state-management/action/sidebarAction'
 
@@ -40,7 +40,7 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={type=="admin"?navigation2:type=="tour"?navigation:navigation3} />
+          <AppSidebarNav items={type == "admin" ? navigation2 : type == "tour" ? navigation : navigation3} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
