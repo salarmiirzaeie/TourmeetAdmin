@@ -7,7 +7,7 @@ import { acceptPost, getSinglePost } from 'src/services/postService'
 import { acceptTour } from 'src/services/usersService'
 
 export default function requestedTourPage() {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const params = useParams()
   const [post, setpost] = useState({})
   useEffect(() => {
@@ -15,11 +15,11 @@ export default function requestedTourPage() {
     //   setpost(res.data)
     // })
   }, [])
-  const changeAccept = (data) => {
+  const changeAccept = async (data) => {
     const id = params.id
     data = { data, id }
-    acceptTour(data).then((res) => {
-      if (res.status==200) {
+    await acceptTour(data).then((res) => {
+      if (res.status == 200) {
         navigate('/adminDashboard/requestedTours')
       }
     })

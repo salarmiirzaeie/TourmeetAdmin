@@ -76,6 +76,7 @@ const createpost = () => {
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 const files = Array.prototype.slice.call(file)
                 values.thumbnail = files
+                console.log(values)
                 createPost(values).then((res) => {
                   setTimeout(() => {
                     if (res.status == 200) {
