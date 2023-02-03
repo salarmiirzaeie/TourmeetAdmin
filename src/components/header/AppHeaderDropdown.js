@@ -40,24 +40,26 @@ const AppHeaderDropdown = () => {
         <CAvatar src={`http://localhost:3333/uploads/${profile.profilePhoto}`} size="md" />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-light fw-semibold py-2">Account</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">پروفایل</CDropdownHeader>
 
-        <CDropdownItem href="/#/dashboard/permissionsPage">
+        <CDropdownItem href="/#/dashboard/permissionsPage" className='p-3'>
           <CIcon icon={cilCreditCard} className="me-2" />
-          مجوزها
+          {'مجوزها   '}
           <CBadge
+            shape="rounded-pill"
+            // className='p-2'
             color={
               profile.isAccept == 'accept'
                 ? 'success'
                 : profile.isAccept == 'waiting'
-                ? 'info'
-                : 'danger'
+                  ? 'info'
+                  : 'danger'
             }
           >
             {profile.isAccept}
           </CBadge>
         </CDropdownItem>
-        <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">تنظیمات</CDropdownHeader>
         <CDropdownItem href="/#/dashboard/profileAdmin">
           <CIcon icon={cilUser} className="me-2" />
           {/* <Link to={"/dashboard/profileAdmin"}> Profile</Link> */}

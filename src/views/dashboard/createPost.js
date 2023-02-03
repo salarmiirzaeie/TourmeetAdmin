@@ -12,20 +12,52 @@ import {
   CSpinner,
   CFormSelect,
   CForm,
+  CListGroup,
 } from '@coreui/react'
 
 import { Formik } from 'formik'
 import { createPost } from 'src/services/postService'
 import swal from 'sweetalert'
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+import DatePicker from 'react-multi-date-picker'
 
+
+function CustomRangeInput({ openCalendar, value }) {
+  let from = value[0] || "";
+  let to = value[1] || "";
+
+  value = from && to ? "از " + from + "، تا " + to : from;
+
+  // const myInputStyle = {
+  //   width: "100 %"
+  // }
+
+
+  return (
+    <input
+      style={{
+        width: "100%",
+      }}
+
+      onFocus={openCalendar}
+      value={value}
+      readOnly
+    />
+  )
+}
 const createpost = () => {
   const [file, setfile] = useState([])
+
+
+  const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
   return (
     <>
       <CCard className="mb-4">
         <CCardHeader>ایجادتور</CCardHeader>
         <CCardBody>
           <CRow>
+
             <Formik
               initialValues={{
                 title: '',
@@ -34,8 +66,8 @@ const createpost = () => {
                 date: '',
                 durationTime: '1day',
                 capacity: 0,
-                type:'',
-                price:0
+                type: '',
+                price: 0
               }}
               validate={(values) => {
                 const errors = {}
@@ -69,7 +101,7 @@ const createpost = () => {
 
                 handleSubmit,
                 isSubmitting,
-                
+
 
                 /* and other goodies */
               }) => (
@@ -107,13 +139,48 @@ const createpost = () => {
                     value={values.price}
                   />
                   <CFormLabel>تاریخ</CFormLabel>
-                  <CFormInput
+                  <br />
+                  <DatePicker
+                    style={{
+                      width: "100%",
+                      boxSizing: "border-box",
+                      height: "26px",
+                      textAlign: "center"
+                    }}
+                    containerStyle={{
+                      width: "100%"
+                    }}
+                    weekDays={weekDays}
+                    inputClass="custom-input"
+                    range
+                    eachDaysInRange
+                    render={<CustomRangeInput />}
+                    calendar={persian}
+                    locale={persian_fa}
+                    calendarPosition="bottom-center"
+                  />
+
+
+                  {/* https://github.com/A-Kasaaian/react-advance-jalaali-datepicker */}
+                  {/* <DateRangePicker
+                    placeholderStart="تاریخ رفت"
+                    placeholderEnd="تاریخ برگشت"
+                    format="jYYYY/jMM/jDD"
+                    onChangeStart={this.change}
+                    onChangeEnd={this.changeTimeDate}
+                    idStart="rangePickerStart"
+                    idEnd="rangePickerEnd"
+                    inputTextAlign="center"
+                    controlValue="true"
+                  /> */}
+                  {/* <CFormInput
                     type="date"
                     name="date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.date}
-                  />
+                  /> */}
+                  <br />
                   <CFormLabel>طول تور</CFormLabel>
                   <CFormSelect
                     name="durationTime"

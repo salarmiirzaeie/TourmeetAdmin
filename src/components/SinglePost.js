@@ -54,7 +54,7 @@ const SinglePost = (data) => {
                 {data.data.thumbnail.map((name, i) => (
                   <CCarouselItem key={i}>
                     <img
-                      className="d-block w-100"
+                      className="d-block w-50 rounded mx-auto"
                       src={`http://localhost:3333/uploads/thumbnails/${name}`}
                     />
                   </CCarouselItem>
@@ -146,9 +146,9 @@ const SinglePost = (data) => {
                     onBlur={handleBlur}
                     value={values.durationTime}
                   >
-                    <option value="1day">یک روز</option>
-                    <option value="2days">دوروز</option>
-                    <option value="3days">سه روز</option>
+                    <option value="1 روزه">یک روز</option>
+                    <option value="2 روزه">دو روز</option>
+                    <option value="3 روزه">سه روز</option>
                   </CFormSelect>
                   <CFormLabel>تاریخ برگذاری</CFormLabel>
 
@@ -245,7 +245,7 @@ const SinglePost = (data) => {
                             swal(res.data.message, 'error')
                           }
                         })
-                        .catch(() => {})
+                        .catch(() => { })
                     })
                   }}
                 >

@@ -23,10 +23,10 @@ import { useNavigate } from 'react-router-dom'
 import Permissions from 'src/components/Pesrmissions'
 
 const permissionsPage = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const userId = useSelector((state) => state.profileState.userId)
   const [file, setfile] = useState([])
-  const [photos,setPhotos]=useState([])
+  const [photos, setPhotos] = useState([])
   useEffect(() => {
     getPermissions(userId).then((res) => {
       setPhotos(res.data)
@@ -42,12 +42,12 @@ const permissionsPage = () => {
               <CInputGroup className="mb-3">
                 <CButton
                   onClick={() => {
-                   const files = Array.prototype.slice.call(file)
-                    const data={files,userId}
+                    const files = Array.prototype.slice.call(file)
+                    const data = { files, userId }
                     addPermissions(data).then((res) => {
-                        if (res.status==200) {
-                            alert(res.data.message)
-                        }
+                      if (res.status == 200) {
+                        alert(res.data.message)
+                      }
                     })
                   }}
                 >
@@ -63,7 +63,7 @@ const permissionsPage = () => {
                   id="inputGroupFile01"
                 />
               </CInputGroup>
-<Permissions data={photos}/>
+              <Permissions data={photos} />
             </CCardBody>
           </CCard>
         </CCol>

@@ -1,6 +1,5 @@
 import React, { Component, Suspense, useState, useEffect } from 'react'
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
-import HomeLayout from './layout/HomeLayout'
 import './scss/style.scss'
 import { isAuth } from './utils/helpers'
 import Index from './views/pages/Index'
