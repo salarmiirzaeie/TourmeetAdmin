@@ -203,21 +203,34 @@ const SinglePost = (data) => {
             </Formik>
           </CCol>
         ) : (
-          <CCol xs={12} md={6} xl={6}>
-            <CListGroup flush>
-              <CListGroupItem>{data.data.title}</CListGroupItem>
-
-              <CListGroupItem>{data.data.body}</CListGroupItem>
-              <CListGroupItem>{data.data.capacity}</CListGroupItem>
-              <CListGroupItem>{data.data.durationTime}</CListGroupItem>
-              <CListGroupItem>{formDate(data.data.date)}</CListGroupItem>
-
-              <CListGroupItem>
-                <CBadge color={data.data.isAccept === 'accept' ? 'success' : 'danger'}>
-                  {data.data.isAccept}
-                </CBadge>
-              </CListGroupItem>
-            </CListGroup>
+          <CCol xs={12} md={6} xl={6} className="">
+           <CListGroup className="rounded-4">
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">عنوان</CCardText>
+              <p className="m-0"> {data.data.title}</p>
+            </CListGroupItem>
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">ظرفیت</CCardText>
+              <p className="m-0"> {data.data.capacity}</p>
+            </CListGroupItem>
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">تاریخ</CCardText>
+              <p className="m-0"> {formDate(data.data.date)}</p>
+            </CListGroupItem>
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">مدت زمان</CCardText>
+              <p className="m-0"> {data.data.durationTime}</p>
+            </CListGroupItem>
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">قیمت</CCardText>
+              <p className="m-0"> {data.data.price}</p>
+            </CListGroupItem>
+            
+           
+            <CListGroupItem style={{ height: "150px" }}>
+              <CCardText className="text-dark m-0">درباره</CCardText>
+            </CListGroupItem>
+          </CListGroup>
             {type == 'tour' ? (
               <CCardFooter>
                 <CButton

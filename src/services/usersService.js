@@ -39,9 +39,8 @@ export const resetPassword = (data) => {
     })
   return res
 }
-export const acceptTour = (data) => {
-  console.log(data)
-  const res = axios
+export const acceptTour =async (data) => {
+  const res =await axios
     .put(`${apiPort}/accept-tour`, data, {
       headers: {
         Authorization: `Bearer ${token}`,

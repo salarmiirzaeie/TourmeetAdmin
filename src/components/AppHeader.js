@@ -22,13 +22,14 @@ import { increment } from 'src/state-management/action/sidebarAction'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.counState.sidebarShow)
+  const money = useSelector((state) => state.profileState.money)
 
   return (
     <CHeader position="sticky" className="mb-4">
       <CContainer fluid>
         <CHeaderToggler
           className="ps-1"
-          onClick={() => dispatch(increment( {sidebarShow: !sidebarShow }))}
+          onClick={() => dispatch(increment({ sidebarShow: !sidebarShow }))}
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
@@ -36,11 +37,11 @@ const AppHeader = () => {
           {/* <CIcon icon={logo} height={48} alt="Logo" /> */}
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
-          <CNavItem>
+          {/* <CNavItem>
             <CNavLink to="/dashboard" component={NavLink}>
-              Dashboard
+              {money}تومان
             </CNavLink>
-          </CNavItem>
+          </CNavItem> */}
           {/* <CNavItem>
             <CNavLink href="#">Users</CNavLink>
           </CNavItem>
@@ -53,12 +54,12 @@ const AppHeader = () => {
             <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
             </CNavLink>
-          </CNavItem>
+        </CNavItem>*/}
           <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilList} size="lg" />
+            <CNavLink>
+            {money}تومان
             </CNavLink>
-          </CNavItem> */}
+           </CNavItem>
           <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilEnvelopeOpen} size="lg" />
