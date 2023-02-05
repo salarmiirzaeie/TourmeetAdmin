@@ -34,6 +34,9 @@ import { useNavigate } from 'react-router-dom'
 import { formDate } from 'src/utils/helpers'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert'
+import persian from "react-date-object/calendars/persian"
+import persian_fa from "react-date-object/locales/persian_fa"
+import DatePicker, { DateObject } from 'react-multi-date-picker'
 const SinglePost = (data) => {
   const type = useSelector((state) => state.profileState.type)
   const navigate = useNavigate()
@@ -42,6 +45,25 @@ const SinglePost = (data) => {
 
   const [file, setfile] = useState([])
   let id = data.data._id
+
+
+  function CustomRangeInput({ openCalendar, value }) {
+    return (
+      <input
+        style={{
+          width: "100%",
+        }}
+
+        onFocus={openCalendar}
+        value={value}
+        readOnly
+      />
+    )
+  }
+
+  const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
+  const [value, setValue] = useState()
+
 
   return (
     <CCard>
@@ -82,16 +104,18 @@ const SinglePost = (data) => {
                 return errors
               }}
               onSubmit={(values, { setSubmitting }) => {
+                console.log("fuck")
                 const files = Array.prototype.slice.call(file)
                 values.thumbnail = files
                 let data = { id, values }
-
+                console.log(values)
                 setTimeout(() => {
                   editPost(data).then((res) => {
-                    navigate('/dashboard/myTours')
+                    console.log(res)
+                    // navigate('/dashboard/myTours')
                     // window.location.reload()
-                    // alert(res.data.message)
-                    // setSubmitting(false)
+                    swal('Good job!', res.data.message, 'success')
+                    setSubmitting(false)
                   })
                 }, 400)
               }}
@@ -152,13 +176,34 @@ const SinglePost = (data) => {
                   </CFormSelect>
                   <CFormLabel>تاریخ برگذاری</CFormLabel>
 
-                  <CFormInput
+                  <DatePicker
+                    style={{
+                      width: "100%",
+                      boxSizing: "border-box",
+                      height: "26px",
+                      textAlign: "center"
+                    }}
+                    containerStyle={{
+                      width: "100%"
+                    }}
+                    minDate={new DateObject({ calendar: persian }).set("day",)}
+                    weekDays={weekDays}
+                    inputClass="custom-input"
+                    calendar={persian}
+                    locale={persian_fa}
+                    calendarPosition="bottom-center"
+                    value={value}
+                    onChange={setValue}
+
+                  />
+
+                  {/* <CFormInput
                     type="date"
                     name="date"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.date}
-                  />
+                  /> */}
                   <CFormLabel>عکس</CFormLabel>
 
                   <CInputGroup className="mb-3">
@@ -177,7 +222,8 @@ const SinglePost = (data) => {
                       <CButton
                         color="success"
                         onClick={() => {
-                          handleSubmit
+                          handleSubmit()
+
                           setSubmitting(true)
                         }}
                         type="submit"
@@ -204,33 +250,33 @@ const SinglePost = (data) => {
           </CCol>
         ) : (
           <CCol xs={12} md={6} xl={6} className="">
-           <CListGroup className="rounded-4">
-            <CListGroupItem className="justify-content-between d-flex">
-              <CCardText className="text-dark m-0">عنوان</CCardText>
-              <p className="m-0"> {data.data.title}</p>
-            </CListGroupItem>
-            <CListGroupItem className="justify-content-between d-flex">
-              <CCardText className="text-dark m-0">ظرفیت</CCardText>
-              <p className="m-0"> {data.data.capacity}</p>
-            </CListGroupItem>
-            <CListGroupItem className="justify-content-between d-flex">
-              <CCardText className="text-dark m-0">تاریخ</CCardText>
-              <p className="m-0"> {formDate(data.data.date)}</p>
-            </CListGroupItem>
-            <CListGroupItem className="justify-content-between d-flex">
-              <CCardText className="text-dark m-0">مدت زمان</CCardText>
-              <p className="m-0"> {data.data.durationTime}</p>
-            </CListGroupItem>
-            <CListGroupItem className="justify-content-between d-flex">
-              <CCardText className="text-dark m-0">قیمت</CCardText>
-              <p className="m-0"> {data.data.price}</p>
-            </CListGroupItem>
-            
-           
-            <CListGroupItem style={{ height: "150px" }}>
-              <CCardText className="text-dark m-0">درباره</CCardText>
-            </CListGroupItem>
-          </CListGroup>
+            <CListGroup className="rounded-4">
+              <CListGroupItem className="justify-content-between d-flex">
+                <CCardText className="text-dark m-0">عنوان</CCardText>
+                <p className="m-0"> {data.data.title}</p>
+              </CListGroupItem>
+              <CListGroupItem className="justify-content-between d-flex">
+                <CCardText className="text-dark m-0">ظرفیت</CCardText>
+                <p className="m-0"> {data.data.capacity}</p>
+              </CListGroupItem>
+              <CListGroupItem className="justify-content-between d-flex">
+                <CCardText className="text-dark m-0">تاریخ</CCardText>
+                <p className="m-0"> {formDate(data.data.date)}</p>
+              </CListGroupItem>
+              <CListGroupItem className="justify-content-between d-flex">
+                <CCardText className="text-dark m-0">مدت زمان</CCardText>
+                <p className="m-0"> {data.data.durationTime}</p>
+              </CListGroupItem>
+              <CListGroupItem className="justify-content-between d-flex">
+                <CCardText className="text-dark m-0">قیمت</CCardText>
+                <p className="m-0"> {data.data.price}</p>
+              </CListGroupItem>
+
+
+              <CListGroupItem style={{ height: "150px" }}>
+                <CCardText className="text-dark m-0">درباره</CCardText>
+              </CListGroupItem>
+            </CListGroup>
             {type == 'tour' ? (
               <CCardFooter>
                 <CButton

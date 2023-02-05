@@ -1916,6 +1916,11 @@
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/@types/json5/-/json5-0.0.29.tgz"
   "version" "0.0.29"
 
+"@types/lodash@^4.14.175":
+  "integrity" "sha1-CVEef3y6J1rNi0Gd2sjammp54vo="
+  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/@types/lodash/-/lodash-4.14.191.tgz"
+  "version" "4.14.191"
+
 "@types/mime@^1":
   "integrity" "sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw== sha1-k+Jb+e51/g/YC1lLxP6w6GIRG1o="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/@types/mime/-/mime-1.3.2.tgz"
@@ -6458,6 +6463,11 @@
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/mute-stream/-/mute-stream-0.0.8.tgz"
   "version" "0.0.8"
 
+"nanoclone@^0.2.1":
+  "integrity" "sha1-3UCQ+PGhENJrsyxJ7S9bkjUgntQ="
+  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/nanoclone/-/nanoclone-0.2.1.tgz"
+  "version" "0.2.1"
+
 "nanoid@^3.3.1":
   "integrity" "sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w== sha1-/Y6Leqdh/oB9ui0bmPtyQbtySiU="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/nanoid/-/nanoid-3.3.3.tgz"
@@ -7545,6 +7555,11 @@
     "loose-envify" "^1.4.0"
     "object-assign" "^4.1.1"
     "react-is" "^16.13.1"
+
+"property-expr@^2.0.4":
+  "integrity" "sha1-J4vbFTCK4Wrz47lkACRST03ALLQ="
+  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/property-expr/-/property-expr-2.0.5.tgz"
+  "version" "2.0.5"
 
 "proxy-addr@~2.0.7":
   "integrity" "sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg== sha1-8Z/mnOqzEe65S0LnDowgcPm6ECU="
@@ -8862,6 +8877,11 @@
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/toidentifier/-/toidentifier-1.0.1.tgz"
   "version" "1.0.1"
 
+"toposort@^2.0.2":
+  "integrity" "sha1-riF2gXXRVZ1IvvNUILL0li8JwzA="
+  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/toposort/-/toposort-2.0.2.tgz"
+  "version" "2.0.2"
+
 "tough-cookie@^4.0.0":
   "integrity" "sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg== sha1-2CIjTuyogvmR8PkIgkrSYi3b7OQ="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/tough-cookie/-/tough-cookie-4.0.0.tgz"
@@ -9636,3 +9656,16 @@
   "integrity" "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q== sha1-ApTrPe4FAo0x7hpfosVWpqrxChs="
   "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/yocto-queue/-/yocto-queue-0.1.0.tgz"
   "version" "0.1.0"
+
+"yup@^0.32.11":
+  "integrity" "sha1-1n+4Pu+kaYYHmC5j98pMXtPPGMU="
+  "resolved" "https://npm.iranrepo.ir/api/npm/npm-all/yup/-/yup-0.32.11.tgz"
+  "version" "0.32.11"
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "@types/lodash" "^4.14.175"
+    "lodash" "^4.17.21"
+    "lodash-es" "^4.17.21"
+    "nanoclone" "^0.2.1"
+    "property-expr" "^2.0.4"
+    "toposort" "^2.0.2"
