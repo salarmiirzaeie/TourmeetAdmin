@@ -182,7 +182,6 @@ const createpost = () => {
               >
                 <option value=""></option>
                 <option value="forest">طبیعت گردی</option>
-
                 <option value="mountain">کوهنوردی</option>
                 <option value="offroad">آفرود</option>
                 <option value="sea">دریا</option>
