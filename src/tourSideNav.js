@@ -25,7 +25,7 @@ import {
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
-const _nav = [
+const tourSideNav = [
   {
     component: CNavItem,
     name: 'داشبورد',
@@ -49,14 +49,14 @@ const _nav = [
       {
         component: CNavItem,
         name: 'برداشت وجه',
-        to: '/dashboard/createPost',
+        to: '/dashboard/',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
 
       },
       {
         component: CNavItem,
         name: 'تراکنش ها',
-        to: '/dashboard/createPost',
+        to: '/dashboard/transactions/',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
 
       },
@@ -105,4 +105,4 @@ const _nav = [
   },
 ]
 
-export default _nav
+export default tourSideNav

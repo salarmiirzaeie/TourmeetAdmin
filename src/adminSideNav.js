@@ -17,7 +17,7 @@ import {
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
-const _nav = [
+const adminSideNav = [
   {
     component: CNavItem,
     name: 'Dashboard',
@@ -73,4 +73,4 @@ const _nav = [
   // },
 ]
 
-export default _nav
+export default adminSideNav

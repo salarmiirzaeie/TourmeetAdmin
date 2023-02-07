@@ -3,8 +3,8 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 import { useSelector } from 'react-redux'
 // routes config
-import routes from '../routes/routes'
-import routes2 from 'src/routes/routes2'
+import routes from '../routes/tourRoutes'
+import routes2 from 'src/routes/adminRoutes'
 import routes3 from 'src/routes/routes3'
 
 import { isAuth } from 'src/utils/helpers'
@@ -16,7 +16,7 @@ const HomeAppContent = () => {
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>
-        
+
         <Routes>
           {HomeRoutes.map((route, idx) => {
             return (
