@@ -10,6 +10,7 @@ const security = React.lazy(() => import('../views/tourDashboard/security'))
 const permissionsPage = React.lazy(() => import('../views/tourDashboard/permissionsPage'))
 const transactions = React.lazy(() => import('../views/tourDashboard/transactions'))
 const createPost = React.lazy(() => import('../views/tourDashboard/createPost'))
+import withdraw from './../views/tourDashboard/withdraw';
 
 const tourRoutes = [
   { path: '/', exact: true, name: 'Home' },
@@ -23,6 +24,7 @@ const tourRoutes = [
   { path: '/dashboard/security', name: 'security', element: security },
   { path: '/dashboard/permissionsPage', name: 'permissionsPage', element: permissionsPage },
   { path: '/dashboard/transactions', name: 'transactions', element: transactions },
+  { path: '/dashboard/withdraw', name: 'withdraw', element: withdraw },
 ]
 
 export default tourRoutes

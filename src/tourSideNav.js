@@ -49,14 +49,14 @@ const tourSideNav = [
       {
         component: CNavItem,
         name: 'برداشت وجه',
-        to: '/dashboard/',
+        to: '/dashboard/withdraw',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
 
       },
       {
         component: CNavItem,
         name: 'تراکنش ها',
-        to: '/dashboard/transactions/',
+        to: '/dashboard/transactions',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
 
       },
