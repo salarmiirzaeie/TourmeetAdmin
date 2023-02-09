@@ -37,7 +37,7 @@ const createpost = () => {
       price: '',
       date: Date.now(),
       durationTime: '1day',
-      type: '',
+      type: 'forest',
       thumbnail: file.name
     },
 
@@ -160,6 +160,7 @@ const createpost = () => {
                 calendarPosition="bottom-center"
                 value={value}
                 onChange={setValue}
+                required
               />
               <br />
               <CFormLabel>طول تور</CFormLabel>
@@ -180,7 +181,6 @@ const createpost = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.type}
               >
-                <option value=""></option>
                 <option value="forest">طبیعت گردی</option>
                 <option value="mountain">کوهنوردی</option>
                 <option value="offroad">آفرود</option>
