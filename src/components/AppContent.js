@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 import { useSelector } from 'react-redux'
@@ -49,7 +49,7 @@ const AppContent = () => {
         </Suspense>
       </CContainer>
     )
-  } else if (type == "tour") {
+  } else {
     return (
       <CContainer lg>
         <Suspense fallback={<CSpinner color="primary" />}>

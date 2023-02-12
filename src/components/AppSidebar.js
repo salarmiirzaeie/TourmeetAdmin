@@ -39,7 +39,7 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={type == "admin" ? navigation2 : type == "tour" ? navigation : navigation3} />
+          <AppSidebarNav items={type == "admin" ? navigation2 : navigation} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
