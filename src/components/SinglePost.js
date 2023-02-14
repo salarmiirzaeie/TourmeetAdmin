@@ -55,7 +55,7 @@ const SinglePost = (data) => {
                   <CCarouselItem key={i}>
                     <img
                       className="d-block w-50 rounded mx-auto"
-                      src={`http://localhost:3333/uploads/thumbnails/${name}`}
+                      src={`http://api.tourino-panel.ir/uploads/thumbnails/${name}`}
                     />
                   </CCarouselItem>
                 ))}

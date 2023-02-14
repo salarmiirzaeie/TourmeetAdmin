@@ -170,7 +170,7 @@ const profileAdmin = () => {
                 <CCardImage
                   className="rounded-circle"
                   orientation="top"
-                  src={`http://localhost:3333/uploads/${profilee.profilePhoto}`}
+                  src={`http://api.tourino-panel.ir/uploads/${profilee.profilePhoto}`}
                 />
                 <CButton
                   hidden={editmode}

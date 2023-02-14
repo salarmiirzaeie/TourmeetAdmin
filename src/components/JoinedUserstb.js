@@ -60,7 +60,7 @@ export const JoinedUserstb = (users) => {
       {users.users.map((item, index) => (
         <CTableRow v-for="item in tableItems" key={index}>
           <CTableDataCell className="text-center">
-            <CAvatar size="md" src={`http://localhost:3333/uploads/${item.profilePhoto}`}  />
+            <CAvatar size="md" src={`http://api.tourino-panel.ir/uploads/${item.profilePhoto}`}  />
           </CTableDataCell>
           <CTableDataCell>
             <div>{item.name}</div>

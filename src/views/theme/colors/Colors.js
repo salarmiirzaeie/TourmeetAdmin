@@ -113,7 +113,7 @@ const Colors = () => {
                 // setTimeout(() => {
 
                 axios
-                  .post('http://localhost:3333/api/tour/list', JSON.stringify(values))
+                  .post('http://api.tourino-panel.ir/api/tour/list', JSON.stringify(values))
                   .then(function (response) {
                     console.log(response.data)
                   })

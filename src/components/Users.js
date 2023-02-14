@@ -24,7 +24,7 @@ export const Users = (res) => {
           <CCard onClick={() => navigate(`${res.adress}${post._id}`)}>
             <CCardImage
               orientation="top"
-              src={`http://localhost:3333/uploads/thumbnails/${post.profilePhoto}`}
+              src={`http://api.tourino-panel.ir/uploads/thumbnails/${post.profilePhoto}`}
             />
             <CCardBody>
               <CCardTitle>{post.name}</CCardTitle>
