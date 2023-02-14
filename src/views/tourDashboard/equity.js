@@ -4,7 +4,7 @@ import { CChart } from '@coreui/react-chartjs';
 
 const Equity = () => {
     return (
-        <CRow className="p-2">
+        <CRow>
             <CCol xs>
                 <CCard className="mb-4">
                     <CCardHeader>موجودی</CCardHeader>
@@ -16,7 +16,7 @@ const Equity = () => {
 
                                 textColor='white'
                                 className="mb-3"
-                                style={{ maxWidth: '18rem' }}
+                                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
                             // key={index}
                             >
                                 <CCardHeader>موجودی کل</CCardHeader>
@@ -33,7 +33,7 @@ const Equity = () => {
 
                                 textColor='white'
                                 className="mb-3"
-                                style={{ maxWidth: '18rem' }}
+                                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
                             // key={index}
                             >
                                 <CCardHeader>موجودی قابل برداشت</CCardHeader>
@@ -50,7 +50,7 @@ const Equity = () => {
                                 // xs={{ cols: 1 }}
                                 textColor='white'
                                 className="mb-3"
-                                style={{ maxWidth: '18rem' }}
+                                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
                             // key={index}
                             >
                                 <CCardHeader>موجودی غیر قابل برداشت</CCardHeader>

@@ -60,7 +60,7 @@ const Transactions = () => {
         {
             avatar: { src: avatar1, status: 'success' },
             user: {
-                name: 'Yiorgos Avraamu',
+                name: 'شراره قره باغی',
                 new: true,
                 registered: 'Jan 1, 2021',
             },
@@ -76,7 +76,7 @@ const Transactions = () => {
         {
             avatar: { src: avatar2, status: 'danger' },
             user: {
-                name: 'Avram Tarasios',
+                name: 'مناف قزلجه زاده',
                 new: false,
                 registered: 'Jan 1, 2021',
             },
@@ -91,7 +91,7 @@ const Transactions = () => {
         },
         {
             avatar: { src: avatar3, status: 'warning' },
-            user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021' },
+            user: { name: 'ناصیر پخله پز', new: true, registered: 'Jan 1, 2021' },
             country: { name: 'India', flag: cifIn },
             usage: {
                 value: 74,
@@ -103,7 +103,7 @@ const Transactions = () => {
         },
         {
             avatar: { src: avatar4, status: 'secondary' },
-            user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021' },
+            user: { name: 'نصرت گلهین', new: true, registered: 'Jan 1, 2021' },
             country: { name: 'France', flag: cifFr },
             usage: {
                 value: 98,
@@ -116,7 +116,7 @@ const Transactions = () => {
         {
             avatar: { src: avatar5, status: 'success' },
             user: {
-                name: 'Agapetus Tadeáš',
+                name: 'آناهیتا راد',
                 new: true,
                 registered: 'Jan 1, 2021',
             },
@@ -132,7 +132,7 @@ const Transactions = () => {
         {
             avatar: { src: avatar6, status: 'danger' },
             user: {
-                name: 'Friderik Dávid',
+                name: 'ایسماییل اصغر پور',
                 new: true,
                 registered: 'Jan 1, 2021',
             },
@@ -151,7 +151,7 @@ const Transactions = () => {
             <CRow>
                 <CCol xs>
                     <CCard className="mb-4">
-                        <CCardHeader>لیست تراکنش ها</CCardHeader>
+                        <CCardHeader>واریز ها</CCardHeader>
                         <CCardBody>
                             <br />
 
@@ -162,9 +162,9 @@ const Transactions = () => {
                                             <CIcon icon={cilPeople} />
                                         </CTableHeaderCell>
                                         <CTableHeaderCell>نام گردشگر</CTableHeaderCell>
-                                        <CTableHeaderCell className="text-center">شهر</CTableHeaderCell>
-                                        <CTableHeaderCell>Usage</CTableHeaderCell>
-                                        <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
+                                        <CTableHeaderCell className="text-center">نام تور</CTableHeaderCell>
+                                        {/* <CTableHeaderCell>Usage</CTableHeaderCell> */}
+                                        <CTableHeaderCell className="text-center">تاریخ واریز</CTableHeaderCell>
                                         <CTableHeaderCell>شماره تراکنش</CTableHeaderCell>
                                     </CTableRow>
                                 </CTableHead>
@@ -182,25 +182,29 @@ const Transactions = () => {
                                                 </div>
                                             </CTableDataCell>
                                             <CTableDataCell className="text-center">
-                                                <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
+                                                {/* <CIcon size="xl" icon={item.country.flag} title={item.country.name} /> */}
+                                                تور شمال
                                             </CTableDataCell>
-                                            <CTableDataCell>
-                                                <div className="clearfix">
-                                                    <div className="float-start">
-                                                        <strong>{item.usage.value}%</strong>
-                                                    </div>
-                                                    <div className="float-end">
-                                                        <small className="text-medium-emphasis">{item.usage.period}</small>
-                                                    </div>
-                                                </div>
-                                                <CProgress thin color={item.usage.color} value={item.usage.value} />
-                                            </CTableDataCell>
+                                            {/* <CTableDataCell>
+                        <div className="clearfix">
+                          <div className="float-start">
+                            <strong>{item.usage.value}%</strong>
+                          </div>
+                          <div className="float-end">
+                            <small className="text-medium-emphasis">{item.usage.period}</small>
+                          </div>
+                        </div>
+                        <CProgress thin color={item.usage.color} value={item.usage.value} />
+                      </CTableDataCell> */}
                                             <CTableDataCell className="text-center">
-                                                <CIcon size="xl" icon={item.payment.icon} />
+                                                {/* <CIcon size="xl" icon={item.payment.icon} /> */}
+                                                1401/10/12
+                                                <div className="small text-medium-emphasis">14:32</div>
+
                                             </CTableDataCell>
                                             <CTableDataCell>
-                                                <div className="small text-medium-emphasis">Last login</div>
-                                                <strong>{item.activity}</strong>
+                                                {/* <div className="small text-medium-emphasis">Last login</div> */}
+                                                <strong>777222111</strong>
                                             </CTableDataCell>
                                         </CTableRow>
                                     ))}
