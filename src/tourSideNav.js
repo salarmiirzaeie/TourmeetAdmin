@@ -1,10 +1,13 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
+  cilArrowThickTop,
   cilBell,
   cilBolt,
+  cilBusAlt,
   cilCalculator,
   cilCash,
+  cilChartLine,
   cilChartPie,
   cilCursor,
   cilDelete,
@@ -12,6 +15,8 @@ import {
   cilDrop,
   cilFilterPhoto,
   cilImage,
+  cilLineWeight,
+  cilList,
   cilMediaStop,
   cilNotes,
   cilPencil,
@@ -21,7 +26,10 @@ import {
   cilRunning,
   cilSpeedometer,
   cilStar,
+  cilThumbDown,
   cilToilet,
+  cilTransfer,
+  cilWalk,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -36,38 +44,10 @@ const tourSideNav = [
     //   text: 'NEW',
     // },
   },
-
-  // {
-  //   component: CNavTitle,
-  //   name: 'Extras',
-  // },
-  {
-    component: CNavGroup,
-    name: 'مالی',
-    icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'برداشت وجه',
-        to: '/dashboard/withdraw',
-        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
-
-      },
-      {
-        component: CNavItem,
-        name: 'تراکنش ها',
-        to: '/dashboard/transactions',
-        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
-
-      },
-
-
-    ],
-  },
   {
     component: CNavGroup,
     name: 'تور',
-    icon: <CIcon icon={cilStar} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilBusAlt} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
@@ -80,29 +60,76 @@ const tourSideNav = [
         component: CNavItem,
         name: 'تورهای من',
         to: '/dashboard/myTours',
-        icon: <CIcon icon={cilRunning} customClassName="nav-icon" />,
+        icon: <CIcon icon={cilWalk} customClassName="nav-icon" />,
 
       },
       {
         component: CNavItem,
         name: 'تورهای ردشده',
         to: '/dashboard/rejectedTours',
-        icon: <CIcon icon={cilDelete} customClassName="nav-icon" />,
+        icon: <CIcon icon={cilThumbDown} customClassName="nav-icon" />,
 
       }
 
     ],
   },
+  // {
+  //   component: CNavTitle,
+  //   name: 'مالی',
+  // },
   {
-    component: CNavItem,
-    name: 'گالری',
-    to: '/dashboard/galleryPage',
-    icon: <CIcon icon={cilImage} customClassName="nav-icon" />,
-    // badge: {
-    //   color: 'info',
-    //   text: 'NEW',
-    // },
+    component: CNavGroup,
+    name: 'مالی',
+    icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'موجودی',
+        to: '/dashboard/equity',
+        icon: <CIcon icon={cilChartLine} customClassName="nav-icon" />,
+
+      },
+      {
+        component: CNavGroup,
+        name: 'برداشت وجه',
+        icon: <CIcon icon={cilArrowThickTop} customClassName="nav-icon" />,
+        items: [
+          {
+            component: CNavItem,
+            name: 'درخواست جدید',
+            to: '/dashboard/withdraw',
+            icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+          },
+          {
+            component: CNavItem,
+            name: 'لیست درخواست ها',
+            to: '/dashboard/withdrawList',
+            icon: <CIcon icon={cilList} customClassName="nav-icon" />,
+          }
+        ]
+      },
+      {
+        component: CNavItem,
+        name: 'تراکنش ها',
+        to: '/dashboard/transactions',
+        icon: <CIcon icon={cilTransfer} customClassName="nav-icon" />,
+
+      },
+
+
+    ],
   },
+
+  // {
+  //   component: CNavItem,
+  //   name: 'گالری',
+  //   to: '/dashboard/galleryPage',
+  //   icon: <CIcon icon={cilImage} customClassName="nav-icon" />,
+  //   // badge: {
+  //   //   color: 'info',
+  //   //   text: 'NEW',
+  //   // },
+  // },
 ]
 
 export default tourSideNav

@@ -1,0 +1,99 @@
+import React from 'react'
+import { CCard, CCol, CRow, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react';
+
+const withdrawList = () => {
+    // return (
+    //     <CCard>
+    //         <CRow className="p-2">
+    //             <CCol xs={12} md={6} xl={6}>
+    //                 <CTable striped>
+    //                     <CTableHead>
+    //                         <CTableRow>
+    //                             <CTableHeaderCell scope="col">#</CTableHeaderCell>
+    //                             <CTableHeaderCell scope="col">Class</CTableHeaderCell>
+    //                             <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+    //                             <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+    //                         </CTableRow>
+    //                     </CTableHead>
+    //                     <CTableBody>
+    //                         <CTableRow>
+    //                             <CTableHeaderCell scope="row">1</CTableHeaderCell>
+    //                             <CTableDataCell>Mark</CTableDataCell>
+    //                             <CTableDataCell>Otto</CTableDataCell>
+    //                             <CTableDataCell>@mdo</CTableDataCell>
+    //                         </CTableRow>
+    //                         <CTableRow>
+    //                             <CTableHeaderCell scope="row">2</CTableHeaderCell>
+    //                             <CTableDataCell>Jacob</CTableDataCell>
+    //                             <CTableDataCell>Thornton</CTableDataCell>
+    //                             <CTableDataCell>@fat</CTableDataCell>
+    //                         </CTableRow>
+    //                         <CTableRow>
+    //                             <CTableHeaderCell scope="row">3</CTableHeaderCell>
+    //                             <CTableDataCell colSpan={2}>Larry the Bird</CTableDataCell>
+    //                             <CTableDataCell>@twitter</CTableDataCell>
+    //                         </CTableRow>
+    //                     </CTableBody>
+    //                 </CTable>
+    //             </CCol>
+    //         </CRow>
+    //     </CCard>
+    // )
+    const columns = [
+        {
+            key: 'trackingNum',
+            label: 'شماره پیگیری',
+            _props: { scope: 'col' },
+        },
+        {
+            key: 'price',
+            label: 'مبلغ برداشت',
+            _props: { scope: 'col' },
+        },
+        {
+            key: 'date',
+            label: 'تاریخ برداشت',
+            _props: { scope: 'col' },
+        },
+        {
+            key: 'status',
+            label: 'وضعیت',
+            _props: { scope: 'col' },
+        },
+    ]
+    const items = [
+        {
+            trackingNum: 784512,
+            price: '85000 تومان ',
+            date: '1401/8/5',
+            status: 'موفق',
+            _cellProps: { id: { scope: 'row' } },
+        },
+        {
+            trackingNum: 145898,
+            price: '75000 تومان ',
+            date: '1401/9/5',
+            status: 'موفق',
+            _cellProps: { id: { scope: 'row' } },
+        },
+        {
+            trackingNum: 986523,
+            price: '95000 تومان ',
+            date: '1401/11/5',
+            status: 'موفق',
+            _cellProps: { id: { scope: 'row' } },
+        },
+    ]
+    return (
+        <CCard>
+            <CRow className="p-2">
+                <CCol xs={12} md={12} xl={12}>
+                    <CTable align="middle" columns={columns} items={items} striped />
+                </CCol>
+            </CRow>
+        </CCard>
+    )
+
+}
+
+export default withdrawList
