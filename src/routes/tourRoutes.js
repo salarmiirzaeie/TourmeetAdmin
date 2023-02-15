@@ -13,6 +13,7 @@ const createPost = React.lazy(() => import('../views/tourDashboard/createPost'))
 const withdraw = React.lazy(() => import('../views/tourDashboard/withdraw'))
 const withdrawList = React.lazy(() => import('../views/tourDashboard/withdrawList'))
 const Equity = React.lazy(() => import('../views/tourDashboard/equity'))
+const tourLeaders = React.lazy(() => import('../views/tourDashboard/tourLeaders'))
 
 const tourRoutes = [
   { path: '/', exact: true, name: 'Home' },
@@ -29,6 +30,8 @@ const tourRoutes = [
   { path: '/dashboard/withdraw', name: 'withdraw', element: withdraw },
   { path: '/dashboard/withdrawList', name: 'withdrawList', element: withdrawList },
   { path: '/dashboard/equity', name: 'Equity', element: Equity },
+  { path: '/dashboard/tourLeaders', name: 'tourLeaders', element: tourLeaders },
+
 ]
 
 export default tourRoutes

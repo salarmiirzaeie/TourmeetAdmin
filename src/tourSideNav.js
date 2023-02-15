@@ -29,6 +29,7 @@ import {
   cilThumbDown,
   cilToilet,
   cilTransfer,
+  cilUser,
   cilWalk,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
@@ -60,7 +61,7 @@ const tourSideNav = [
         component: CNavItem,
         name: 'تورهای من',
         to: '/dashboard/myTours',
-        icon: <CIcon icon={cilWalk} customClassName="nav-icon" />,
+        icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
 
       },
       {
@@ -118,6 +119,16 @@ const tourSideNav = [
 
 
     ],
+  },
+  {
+    component: CNavItem,
+    name: 'تور لیدر ها',
+    to: '/dashboard/tourLeaders',
+    icon: <CIcon icon={cilWalk} customClassName="nav-icon" />,
+    // badge: {
+    //   color: 'info',
+    //   text: 'NEW',
+    // },
   },
 
   // {
