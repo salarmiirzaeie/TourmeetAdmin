@@ -16,6 +16,7 @@ import {
   CCol,
   CFormInput,
   CFormLabel,
+  CFormSelect,
   CFormTextarea,
   CInputGroup,
   CProgress,
@@ -29,6 +30,7 @@ import { Formik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import CIcon from '@coreui/icons-react'
 import { editProfile } from 'src/services/usersService'
+import { setCity } from 'src/services/postService'
 
 const profileAdmin = () => {
   const dispatch = useDispatch()
@@ -36,7 +38,7 @@ const profileAdmin = () => {
   const [file, setfile] = useState('')
   const [editmode, setEditmode] = useState(true)
   const profilee = useSelector((state) => state.profileState)
-
+  const select = useRef()
   return (
     <>
       <CRow>
@@ -186,6 +188,28 @@ const profileAdmin = () => {
           </CCard>
         </CCol>
       </CRow>
+      <CCard>
+        <CCardHeader>شهر</CCardHeader>
+        <CCardBody>
+          <CFormSelect ref={select} size="lg" className="mb-3" aria-label="Large select example">
+            <option>{profilee.city}</option>
+            <option value="Tabriz">Tabriz</option>
+            <option value="Tehran">Tehran</option>
+            <option value="Alborz">Alborz</option>
+          </CFormSelect>
+          <CButton
+            onClick={() => {
+
+              setCity({ city: select.current.value }).then((res) => {
+                console.log(res.data.message)
+              })
+
+            }}
+          >
+            ثبت
+          </CButton>
+        </CCardBody>
+      </CCard>
     </>
   )
 }
