@@ -10,9 +10,10 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
+  CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
+import { cilBell, cilEnvelopeOpen, cilList, cilLocationPin, cilMap, cilMenu } from '@coreui/icons'
 
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
@@ -22,7 +23,7 @@ import { increment } from 'src/state-management/action/sidebarAction'
 const AppHeader = () => {
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.counState.sidebarShow)
-  const money = useSelector((state) => state.profileState.money)
+  const state = useSelector((state) => state.profileState)
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -50,16 +51,16 @@ const AppHeader = () => {
           </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav>
-          {/* <CNavItem>
-            <CNavLink href="#">
-              <CIcon icon={cilBell} size="lg" />
-            </CNavLink>
-        </CNavItem>*/}
           <CNavItem>
-            <CNavLink>
-            {money}تومان
+
+            <CNavLink className="d-flex" href="#">
+              <p>{state.city}</p>
+              <CIcon icon={cilLocationPin} size="lg" />
             </CNavLink>
-           </CNavItem>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink>{state.money}تومان</CNavLink>
+          </CNavItem>
           <CNavItem>
             <CNavLink href="#">
               <CIcon icon={cilEnvelopeOpen} size="lg" />

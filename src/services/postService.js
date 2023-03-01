@@ -17,6 +17,21 @@ export const createPost = (data) => {
     })
   return res
 }
+export const setCity = (data) => {
+  const res = axios
+    .post(`${apiPort}/setcampCity`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
 
 export const myPosts = (data) => {
   const res = axios

@@ -17,6 +17,7 @@ import {
   CForm,
   CFormInput,
   CFormLabel,
+  CFormSelect,
   CFormTextarea,
   CInputGroup,
   CProgress,
@@ -32,6 +33,7 @@ import CIcon from '@coreui/icons-react'
 import { editProfile } from 'src/services/usersService'
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom'
+import { setCity } from 'src/services/postService'
 
 const profileAdmin = () => {
   const navigate = useNavigate()
@@ -89,6 +91,7 @@ const profileAdmin = () => {
     }
   })
 
+  const select = useRef()
   return (
     <>
       <CRow>
@@ -182,7 +185,7 @@ const profileAdmin = () => {
                 <CCardImage
                   className="rounded-circle"
                   orientation="top"
-                  src={`http://localhost:3333/uploads/${profilee.profilePhoto}`}
+                  src={`http://api.tourino-panel.ir/uploads/${profilee.profilePhoto}`}
                 />
                 {/* <CButton
                   hidden={editmode}
@@ -198,6 +201,28 @@ const profileAdmin = () => {
           </CCard>
         </CCol>
       </CRow>
+      <CCard>
+        <CCardHeader>شهر</CCardHeader>
+        <CCardBody>
+          <CFormSelect ref={select} size="lg" className="mb-3" aria-label="Large select example">
+            <option>{profilee.city}</option>
+            <option value="Tabriz">Tabriz</option>
+            <option value="Tehran">Tehran</option>
+            <option value="Alborz">Alborz</option>
+          </CFormSelect>
+          <CButton
+            onClick={() => {
+
+              setCity({ city: select.current.value }).then((res) => {
+                console.log(res.data.message)
+              })
+
+            }}
+          >
+            ثبت
+          </CButton>
+        </CCardBody>
+      </CCard>
     </>
   )
 }

@@ -18,8 +18,8 @@ import {
 import { Field, Formik, useFormik } from 'formik'
 import { createPost } from 'src/services/postService'
 import swal from 'sweetalert'
-import persian from "react-date-object/calendars/persian"
-import persian_fa from "react-date-object/locales/persian_fa"
+import persian from 'react-date-object/calendars/persian'
+import persian_fa from 'react-date-object/locales/persian_fa'
 import DatePicker, { DateObject } from 'react-multi-date-picker'
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom'
@@ -65,7 +65,7 @@ const createpost = () => {
         .max(10, 'Must be 10 characters or less')
         .required('لطفا نوع تور را انتخاب کنید !'),
     }),
-    onSubmit: values => {
+    onSubmit: (values) => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
       values.date = value?.toDate?.().toString()
@@ -85,7 +85,7 @@ const createpost = () => {
         }, 400)
       })
     },
-  });
+  })
 
   return (
     <>
@@ -104,7 +104,7 @@ const createpost = () => {
                 {...formik.getFieldProps('title')}
               />
               {formik.touched.title && formik.errors.title ? (
-                <div style={{ color: 'red', margin: 10 }} >{formik.errors.title}</div>
+                <div style={{ color: 'red', margin: 10 }}>{formik.errors.title}</div>
               ) : null}
               <CFormLabel style={{ paddingTop: 15 }}>توضیحات</CFormLabel>
               <CFormTextarea
@@ -115,7 +115,7 @@ const createpost = () => {
                 {...formik.getFieldProps('body')}
               />
               {formik.touched.body && formik.errors.body ? (
-                <div style={{ color: 'red', margin: 10 }} >{formik.errors.body}</div>
+                <div style={{ color: 'red', margin: 10 }}>{formik.errors.body}</div>
               ) : null}
               <CFormLabel style={{ paddingTop: 15 }}>ظرفیت</CFormLabel>
               <CFormInput
@@ -128,7 +128,7 @@ const createpost = () => {
                 {...formik.getFieldProps('capacity')}
               />
               {formik.touched.capacity && formik.errors.capacity ? (
-                <div style={{ color: 'red', margin: 10 }} >{formik.errors.capacity}</div>
+                <div style={{ color: 'red', margin: 10 }}>{formik.errors.capacity}</div>
               ) : null}
               <CFormLabel style={{ paddingTop: 15 }}>قیمت(تومان)</CFormLabel>
               <CFormInput
@@ -141,7 +141,7 @@ const createpost = () => {
                 {...formik.getFieldProps('price')}
               />
               {formik.touched.price && formik.errors.price ? (
-                <div style={{ color: 'red', margin: 10 }} >{formik.errors.price}</div>
+                <div style={{ color: 'red', margin: 10 }}>{formik.errors.price}</div>
               ) : null}
               {/* <CFormLabel style={{ paddingTop: 15 }}>طول تور</CFormLabel>
               <CFormSelect
@@ -179,18 +179,19 @@ const createpost = () => {
               </CFormSelect>
               <CFormLabel style={{ paddingTop: 15 }}>تاریخ برگذاری</CFormLabel>
               <br />
-              <DatePicker className='form-control input-group-lg'
+              <DatePicker
+                className="form-control input-group-lg"
                 style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  height: "35px",
-                  textAlign: "center",
+                  width: '100%',
+                  boxSizing: 'border-box',
+                  height: '35px',
+                  textAlign: 'center',
                   opacity: 0.5,
                 }}
                 containerStyle={{
-                  width: "100%"
+                  width: '100%',
                 }}
-                minDate={new DateObject({ calendar: persian }).set("day",)}
+                minDate={new DateObject({ calendar: persian }).set('day')}
                 weekDays={weekDays}
                 inputClass="custom-input"
                 calendar={persian}
@@ -214,10 +215,13 @@ const createpost = () => {
                   id="thumbnail"
                   required
                 />
-
               </CInputGroup>
 
-              <CButton onClick={() => formik.handleSubmit} type="submit" disabled={formik.isSubmitting}>
+              <CButton
+                onClick={() => formik.handleSubmit}
+                type="submit"
+                disabled={formik.isSubmitting}
+              >
                 <CSpinner
                   // hidden={formik.isSubmitting ? false : true}
                   hidden={!btnReset}
