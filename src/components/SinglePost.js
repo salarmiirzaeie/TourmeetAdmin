@@ -14,11 +14,6 @@ import {
   CBadge,
   CCardFooter,
   CButton,
-  CModal,
-  CModalHeader,
-  CModalBody,
-  CModalFooter,
-  CModalTitle,
   CSpinner,
   CFormInput,
   CFormLabel,
@@ -39,8 +34,10 @@ import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import DatePicker, { DateObject } from 'react-multi-date-picker'
 import * as Yup from 'yup';
+import EditPost from './EditPost';
 
 const SinglePost = (data) => {
+
   const type = useSelector((state) => state.profileState.type)
   const navigate = useNavigate()
   const [visible, setVisible] = useState(false)
@@ -50,7 +47,7 @@ const SinglePost = (data) => {
 
   const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
   const [value, setValue] = useState()
-
+  // console.log(data.data.title);
   const formik = useFormik({
     initialValues: {
       title: data.data.title,
@@ -91,13 +88,20 @@ const SinglePost = (data) => {
       let data = { id, values }
       console.log(values)
       setTimeout(() => {
+
         editPost(data).then((res) => {
-          console.log(res)
-          // navigate('/dashboard/myTours')
-          // window.location.reload()
-          swal('Good job!', res.data.message, 'success')
-          setSubmitting(false)
+          if (res.status == 200) {
+            console.log(res)
+            // navigate('/dashboard/myTours')
+            // window.location.reload()
+            swal('Good job!', res.data.message, 'success')
+            // setSubmitting(false)
+          } else {
+            swal('خطا', res.data.message, 'error')
+          }
+
         })
+
       }, 400)
     },
   });
@@ -137,11 +141,12 @@ const SinglePost = (data) => {
                 value={formik.values.title}
                 {...formik.getFieldProps('title')}
               />
+              {/* {console.log()} */}
               {formik.touched.title && formik.errors.title ? (
                 <div style={{ color: 'red', margin: 10 }} >{formik.errors.title}</div>
               ) : null}
 
-              <CFormLabel>توضیحات</CFormLabel>
+              <CFormLabel style={{ paddingTop: 10 }}>توضیحات</CFormLabel>
               <CFormTextarea
                 name="body"
                 onChange={formik.handleChange}
@@ -152,7 +157,7 @@ const SinglePost = (data) => {
               {formik.touched.body && formik.errors.body ? (
                 <div style={{ color: 'red', margin: 10 }} >{formik.errors.body}</div>
               ) : null}
-              <CFormLabel>ظرفیت</CFormLabel>
+              <CFormLabel style={{ paddingTop: 10 }}>ظرفیت</CFormLabel>
               <CFormInput
                 type="number"
                 name="capacity"
@@ -166,7 +171,22 @@ const SinglePost = (data) => {
                 <div style={{ color: 'red', margin: 10 }} >{formik.errors.capacity}</div>
               ) : null}
 
-              <CFormLabel>طول تور</CFormLabel>
+              <CFormLabel style={{ paddingTop: 15 }}>قیمت(تومان)</CFormLabel>
+              <CFormInput
+                type="number"
+                name="price"
+                min={10000}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.price}
+                required
+                {...formik.getFieldProps('price')}
+              />
+              {formik.touched.price && formik.errors.price ? (
+                <div style={{ color: 'red', margin: 10 }} >{formik.errors.price}</div>
+              ) : null}
+
+              <CFormLabel style={{ paddingTop: 10 }}>طول تور</CFormLabel>
               <CFormSelect
                 name="durationTime"
                 onChange={formik.handleChange}
@@ -177,7 +197,21 @@ const SinglePost = (data) => {
                 <option value="2 روزه">دو روز</option>
                 <option value="3 روزه">سه روز</option>
               </CFormSelect>
-              <CFormLabel>تاریخ برگذاری</CFormLabel>
+              <CFormLabel style={{ paddingTop: 10 }}>دسته بندی</CFormLabel>
+              <CFormSelect
+                name="type"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.type}
+              >
+                <option value="forest">طبیعت گردی</option>
+                <option value="mountain">کوهنوردی</option>
+                <option value="offroad">آفرود</option>
+                <option value="sea">دریا</option>
+                <option value="desert">کویر</option>
+                <option value="historical">اماکن تاریخی</option>
+              </CFormSelect>
+              <CFormLabel style={{ paddingTop: 10 }}>تاریخ برگذاری</CFormLabel>
               <br />
               <DatePicker className='form-control input-group-lg'
                 style={{
@@ -200,7 +234,7 @@ const SinglePost = (data) => {
                 onChange={setValue}
               />
               <br />
-              <CFormLabel>عکس</CFormLabel>
+              <CFormLabel style={{ paddingTop: 10 }}>عکس</CFormLabel>
               <CInputGroup className="mb-3">
                 <CFormInput
                   onChange={(event) => {
@@ -210,11 +244,14 @@ const SinglePost = (data) => {
                   type="file"
                   id="thumbnail"
                   multiple={true}
+                  required
                 />
               </CInputGroup>
               {/* {type == 'tour' ? ( */}
               <CCardFooter>
                 <CButton
+                  style={{ padding: 15, margin: 10 }}
+
                   color="success"
                   onClick={() => {
                     formik.handleSubmit()
@@ -224,15 +261,18 @@ const SinglePost = (data) => {
                   type="submit"
                   disabled={formik.isSubmitting}
                 >
-                  <CSpinner
+                  {/* <CSpinner
                     component="span"
                     size="sm"
                     hidden={formik.isSubmitting ? false : true}
                     aria-hidden="true"
-                  />
+                  /> */}
                   ثبت
                 </CButton>
-                <CButton color="danger" onClick={() => setEditMode(false)}>
+                <CButton
+                  style={{ padding: 15, margin: 10 }}
+                  color="danger"
+                  onClick={() => setEditMode(false)}>
                   انصراف
                 </CButton>
               </CCardFooter>
@@ -274,44 +314,47 @@ const SinglePost = (data) => {
               </CListGroupItem>
 
             </CListGroup>
-            {/* {type == 'tour' ? ( */}
-            <CCardFooter>
-              <CButton
-                style={{ padding: 15, margin: 10 }}
-                onClick={() => setEditMode(true)}
-                className="justify-content-end"
-                color="warning"
-              >
-                ویرایش
-              </CButton>
-              <CButton
-                style={{ padding: 15, margin: 10 }}
-                color="danger"
-                onClick={() => {
-                  swal({
-                    title: 'آیا مطمئن به حذف هستید؟',
-                    text: 'با حذف کردن دیگر به آن دسترسی نخواهید داشت!',
-                    icon: 'warning',
-                    buttons: true,
-                    dangerMode: true,
-                  }).then(() => {
-                    deletePost(data.data._id)
-                      .then((res) => {
-                        if (res.status == 200) {
-                          navigate('/dashboard/myTours')
-                        } else {
-                          swal(res.data.message, 'error')
-                        }
+            {type == 'tour' ? (
+              <CCardFooter>
+                <CButton
+                  style={{ padding: 15, margin: 10 }}
+                  onClick={() => setEditMode(true)}
+                  className="justify-content-end"
+                  color="warning"
+                >
+                  ویرایش
+                </CButton>
+                <CButton
+                  style={{ padding: 15, margin: 10 }}
+                  color="danger"
+                  onClick={() => {
+                    swal({
+                      title: 'آیا مطمئن به حذف هستید؟',
+                      text: 'با حذف کردن دیگر به آن دسترسی نخواهید داشت!',
+                      icon: 'warning',
+                      buttons: true,
+                      dangerMode: true,
+                    }).finally(() => {
+                      deletePost(data.data._id)
+                        .then((res) => {
+                          if (res.status == 200) {
+                            navigate('/dashboard/myTours')
+                          } else {
+                            swal(res.data.message, 'error')
+                          }
+                        })
+                        .catch(() => { })
+                    })
+                      .catch(() => {
+                        console.log('pox')
                       })
-                      .catch(() => { })
-                  })
-                }}
-              >
-                حذف
-              </CButton>
-              <CCardText>تاریخ ایجاد : {formDate(data.data.createdAt)}</CCardText>
-            </CCardFooter>
-            {/* ) : ('')} */}
+                  }}
+                >
+                  حذف
+                </CButton>
+                <CCardText>تاریخ ایجاد : {formDate(data.data.createdAt)}</CCardText>
+              </CCardFooter>
+            ) : ('')}
           </CCol>
         )}
       </CRow>
