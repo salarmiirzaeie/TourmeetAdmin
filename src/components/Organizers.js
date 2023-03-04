@@ -19,7 +19,7 @@ export const Organizers = (res) => {
   const navigate = useNavigate()
   return (
     <CCol xs={{ cols: 1, gutter: 4 }} md={{ cols: 5 }}>
-      {res.posts.map((user, i) => (
+      {res?.posts.map((user, i) => (
         <CCard key={i} onClick={() => navigate(`${res.adress}${user._id}`)}>
           <CRow>
             <CCol xs={12} md={3} xl={3}>

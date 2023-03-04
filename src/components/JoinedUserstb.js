@@ -57,7 +57,7 @@ import avatar6 from 'src/assets/images/avatars/6.jpg'
 export const JoinedUserstb = (users) => {
   return (
     <>
-      {users.users.map((item, index) => (
+      {users?.users.map((item, index) => (
         <CTableRow v-for="item in tableItems" key={index}>
           <CTableDataCell className="text-center">
             <CAvatar size="md" src={`http://api.tourino-panel.ir/uploads/${item.profilePhoto}`}  />

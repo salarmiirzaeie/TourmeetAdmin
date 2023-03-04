@@ -24,7 +24,7 @@ const navigate=useNavigate()
   return (
     <>
       <CRow xs={{ cols: 1, gutter: 1 }} md={{ cols: 4 }}>
-        {data.data.map((post, i) => (
+        {data?.data.map((post, i) => (
           <CCol key={i} xs>
             <CButton style={{ position: 'absolute' }} onClick={()=>{
               deletegallery(post._id).then((res)=>{

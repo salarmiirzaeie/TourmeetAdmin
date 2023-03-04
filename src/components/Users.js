@@ -19,7 +19,7 @@ export const Users = (res) => {
   const navigate = useNavigate()
   return (
     <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 5 }}>
-      {res.posts.map((post, i) => (
+      {res?.posts.map((post, i) => (
         <CCol key={i} xs>
           <CCard onClick={() => navigate(`${res.adress}${post._id}`)}>
             <CCardImage
