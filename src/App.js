@@ -2,7 +2,7 @@ import React, { Component, Suspense, useState, useEffect } from 'react'
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 import { isAuth } from './utils/helpers'
-import Index from './views/pages/Index'
+import Index from './views/commonPages/Index'
 
 const loading = (
   <div className="pt-3 text-center">
@@ -14,10 +14,10 @@ const loading = (
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 // Pages
-const Login = React.lazy(() => import('./views/pages/Login'))
-const Register = React.lazy(() => import('./views/pages/Register'))
-const Page404 = React.lazy(() => import('./views/pages/Page404'))
-const Page500 = React.lazy(() => import('./views/pages/Page500'))
+const Login = React.lazy(() => import('./views/commonPages/Login'))
+const Register = React.lazy(() => import('./views/commonPages/Register'))
+const Page404 = React.lazy(() => import('./views/commonPages/Page404'))
+const Page500 = React.lazy(() => import('./views/commonPages/Page500'))
 
 const App = () => {
   return (

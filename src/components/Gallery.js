@@ -36,7 +36,7 @@ const navigate=useNavigate()
             </CButton>
             <CCardImage
               orientation="top"
-              src={`http://api.tourino-panel.ir/uploads/thumbnails/${post.name}`}
+              src={`http://localhost:3333/uploads/thumbnails/${post.name}`}
             />
           </CCol>
         ))}

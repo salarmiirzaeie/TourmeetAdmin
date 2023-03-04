@@ -14,7 +14,6 @@ import 'simplebar/dist/simplebar.min.css'
 // sidebar nav config
 import navigation from '../tourSideNav'
 import navigation2 from '../adminSideNav'
-import navigation3 from '../touristSideNav'
 
 import { increment } from 'src/state-management/action/sidebarAction'
 
@@ -40,7 +39,7 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={type == "admin" ? navigation2 : type == "tour" ? navigation : navigation3} />
+          <AppSidebarNav items={type == "admin" ? navigation2 : navigation} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler

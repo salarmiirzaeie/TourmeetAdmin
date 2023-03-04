@@ -37,7 +37,7 @@ const Permissions = (data) => {
             </CButton> */}
               <CCardImage
                 orientation="top"
-                src={`http://api.tourino-panel.ir/uploads/permissions/${post}`}
+                src={`http://localhost:3333/uploads/permissions/${post}`}
               />
             </CCol>
           ))}

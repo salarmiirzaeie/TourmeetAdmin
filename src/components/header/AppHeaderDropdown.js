@@ -37,7 +37,7 @@ const AppHeaderDropdown = () => {
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
-        <CAvatar src={`http://api.tourino-panel.ir/uploads/${profile.profilePhoto}`} size="md" />
+        <CAvatar src={`http://localhost:3333/uploads/${profile.profilePhoto}`} size="md" />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">پروفایل</CDropdownHeader>

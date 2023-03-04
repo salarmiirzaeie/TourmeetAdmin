@@ -1,11 +1,10 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 import { useSelector } from 'react-redux'
 // routes config
-import routes from '../routes/routes'
-import routes2 from 'src/routes/routes2'
-import routes3 from 'src/routes/routes3'
+import tourRoutes from '../routes/tourRoutes'
+import adminRoutes from 'src/routes/adminRoutes'
 
 import { isAuth } from 'src/utils/helpers'
 const AppContent = () => {
@@ -20,13 +19,13 @@ const AppContent = () => {
   //     }
   //   })
   // }, [token])
-  if (type=="admin") {
+  if (type == "admin") {
     return (
       <CContainer lg>
         <Suspense fallback={<CSpinner color="primary" />}>
           {token ? (
             <Routes>
-              {routes2.map((route, idx) => {
+              {adminRoutes.map((route, idx) => {
                 return (
                   route.element && (
                     <Route
@@ -50,13 +49,13 @@ const AppContent = () => {
         </Suspense>
       </CContainer>
     )
-  } else if(type=="tour") {
+  } else {
     return (
       <CContainer lg>
         <Suspense fallback={<CSpinner color="primary" />}>
           {token ? (
             <Routes>
-              {routes.map((route, idx) => {
+              {tourRoutes.map((route, idx) => {
                 return (
                   route.element && (
                     <Route
@@ -71,36 +70,6 @@ const AppContent = () => {
               })}
 
               <Route path="*" element={<Navigate to={'dashboard'} replace />} />
-            </Routes>
-          ) : (
-            <Routes>
-              <Route path="*" element={<Navigate to={'login'} replace />} />
-            </Routes>
-          )}
-        </Suspense>
-      </CContainer>
-    )
-  }else {
-    return (
-      <CContainer lg>
-        <Suspense fallback={<CSpinner color="primary" />}>
-          {token ? (
-            <Routes>
-              {routes3.map((route, idx) => {
-                return (
-                  route.element && (
-                    <Route
-                      key={idx}
-                      path={route.path}
-                      exact={route.exact}
-                      name={route.name}
-                      element={<route.element />}
-                    />
-                  )
-                )
-              })}
-
-              <Route path="*" element={<Navigate to={'touristDashboard'} replace />} />
             </Routes>
           ) : (
             <Routes>
