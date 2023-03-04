@@ -19,7 +19,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { Formik, useFormik } from 'formik'
 import { profile } from 'src/state-management/action/profileAction'
 import swal from 'sweetalert'
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 
 const { login } = require('../../services/usersService')
 
@@ -30,39 +30,33 @@ const Login = () => {
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: ''
+      password: '',
     },
 
     validationSchema: Yup.object({
-      email: Yup.string().email()
-        .required('لطفا ایمیل خود را وارد کنید !'),
-      password: Yup.string()
-        .required('لطفا رمز خود را وارد کنید !'),
+      email: Yup.string().email().required('لطفا ایمیل خود را وارد کنید !'),
+      password: Yup.string().required('لطفا رمز خود را وارد کنید !'),
     }),
 
     onSubmit: (values, { setSubmitting }) => {
       login(values).then((res) => {
+        console.log(res)
         setTimeout(() => {
           if (res.status == 206) {
             localStorage.setItem('token', res.data.token)
-            dispatch(profile(res.data))
+
             navigate('adminDashboard')
           } else if (res.status == 200) {
             localStorage.setItem('token', res.data.token)
-            dispatch(profile(res.data))
             navigate('dashboard')
-          } else if (res.status == 207) {
-            localStorage.setItem('token', res.data.token)
-            dispatch(profile(res.data))
-            navigate('touristDashboard')
           } else {
             swal('خطا', res.data.message, 'error')
           }
           setSubmitting(false)
         }, 400)
       })
-    }
-  });
+    },
+  })
 
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
@@ -70,9 +64,8 @@ const Login = () => {
         <CRow className="justify-content-center rounded">
           <CCol md={9}>
             <CRow>
-              <CCol className='bg-white' xs={12} sm={6} lg={6}>
+              <CCol className="bg-white" xs={12} sm={6} lg={6}>
                 <CCardBody>
-
                   {/* validate={(formik.values) => {
                       const errors = {}
                       if (!formik.values.email) {
@@ -82,7 +75,7 @@ const Login = () => {
                       }
                       return errors
                     }} */}
-                  <CForm onSubmit={formik.handleSubmit} >
+                  <CForm onSubmit={formik.handleSubmit}>
                     <h1>ورود</h1>
                     <p className="text-medium-emphasis">لطفا وارد حساب خودشوید.</p>
 
@@ -101,7 +94,7 @@ const Login = () => {
                         {...formik.getFieldProps('email')}
                       />
                       {formik.touched.email && formik.errors.email ? (
-                        <div style={{ color: 'red', margin: 10 }} >{formik.errors.email}</div>
+                        <div style={{ color: 'red', margin: 10 }}>{formik.errors.email}</div>
                       ) : null}
                     </CInputGroup>
 
@@ -120,7 +113,7 @@ const Login = () => {
                         {...formik.getFieldProps('password')}
                       />
                       {formik.touched.password && formik.errors.password ? (
-                        <div style={{ color: 'red', margin: 10 }} >{formik.errors.password}</div>
+                        <div style={{ color: 'red', margin: 10 }}>{formik.errors.password}</div>
                       ) : null}
                     </CInputGroup>
                     <CRow>
@@ -144,14 +137,14 @@ const Login = () => {
                   </CForm>
                 </CCardBody>
               </CCol>
-              <CCol className='bg-primary' xs={12} sm={6} lg={6}>
-
+              <CCol className="bg-primary" xs={12} sm={6} lg={6}>
                 <CCardBody className="text-center text-white py-4">
                   <div>
                     <h2>ثبت نام</h2>
                     <br />
                     <p>
-                      کاربر عزیز، با ثبت نام به عنوان تور لیدر، میتوانید تور های خود را با میلیون ها کاربر به اشتراک بگذارید.
+                      کاربر عزیز، با ثبت نام به عنوان تور لیدر، میتوانید تور های خود را با میلیون ها
+                      کاربر به اشتراک بگذارید.
                     </p>
                     <br />
                     <br />
@@ -162,14 +155,12 @@ const Login = () => {
                     </Link>
                   </div>
                 </CCardBody>
-
               </CCol>
-
             </CRow>
           </CCol>
         </CRow>
-      </CContainer >
-    </div >
+      </CContainer>
+    </div>
   )
 }
 

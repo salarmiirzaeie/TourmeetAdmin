@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiPort = 'http://api.tourino-panel.ir/users'
+const apiPort = 'http://localhost:3333/users'
 const token = localStorage.getItem('token')
 
 export const login = (data) => {
@@ -71,3 +71,49 @@ export const editProfile = (data) => {
     })
   return res
 }
+export const userProfile = async () => {
+  const res = axios
+    .get(`${apiPort}/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
+export const uploadprofilephoto = async data => {
+  const res = await axios
+    .post(`${apiPort}/uploadphoto`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'content-type': 'multipart/form-data',
+      },
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
+export const deleteprofile = async data => {
+  const res = await axios
+    .delete(`${apiPort}/deleteProfile/${data}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};

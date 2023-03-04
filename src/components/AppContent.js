@@ -6,19 +6,10 @@ import { useSelector } from 'react-redux'
 import tourRoutes from '../routes/tourRoutes'
 import adminRoutes from 'src/routes/adminRoutes'
 
-import { isAuth } from 'src/utils/helpers'
 const AppContent = () => {
   const type = useSelector((state) => state.profileState.type)
   const token = localStorage.getItem('token')
-  // const [authenticated, setAuthenticated] = useState(false)
-  // useEffect(() => {
-  //   isAuth(token).then((res) => {
-  //     if (res.status == 200) {
-  //       console.log(res.status)
-  //       setAuthenticated(true)
-  //     }
-  //   })
-  // }, [token])
+  
   if (type == "admin") {
     return (
       <CContainer lg>

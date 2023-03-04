@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
   CButton,
   CCard,
@@ -26,7 +26,7 @@ import * as Yup from 'yup';
 const Register = () => {
   const navigate = useNavigate()
   // const [type, setType] = useState("tour")
-
+const select=useRef()
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -34,32 +34,29 @@ const Register = () => {
       email: '',
       password: '',
       confirmPassword: '',
-      // type: '',
+      type: '',
     },
 
-    // validationSchema: Yup.object({
-    //   name: Yup.string()
-    //     .required('لطفا نام باشگاه تفریحی خود را وارد کنید !')
-    //     .max(30, 'تعداد کاراکتر های وارد شده بیشتر از حد مجاز است !')
-    //     .min(5, 'تعداد کاراکتر های وارد شده کمتر از حد مجاز است !'),
-    //   city: Yup.string()
-    //     .required('لطفا شهر خود را انتخاب کنید !'),
-    //   email: Yup.string().email('لطفا ایمیل معتبر وارد نمایید !')
-    //     .required('لطفا ایمیل خود را وارد کنید !'),
-    //   password: Yup.string()
-    //     .required('لطفا رمز خود را وارد کنید !'),
-    //   confirmPassword: Yup.string()
-    //     .required('لطفا رمز خود را دوباره وارد کنید !'),
-    // }),
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .required('لطفا نام باشگاه تفریحی خود را وارد کنید !')
+        .max(30, 'تعداد کاراکتر های وارد شده بیشتر از حد مجاز است !')
+        .min(5, 'تعداد کاراکتر های وارد شده کمتر از حد مجاز است !'),
+     
+      email: Yup.string().email('لطفا ایمیل معتبر وارد نمایید !')
+        .required('لطفا ایمیل خود را وارد کنید !'),
+      password: Yup.string()
+        .required('لطفا رمز خود را وارد کنید !'),
+      confirmPassword: Yup.string()
+        .required('لطفا رمز خود را دوباره وارد کنید !'),
+    }),
 
     onSubmit: (values, { setSubmitting }) => {
-      console.log("object");
 
 
       setTimeout(() => {
-        console.log("res")
-
-        // values.type = 'tour'
+        values.type = 'tour'
+        values.city = select.current.value
         register(values).then((res) => {
           if (res.status == 201) {
             navigate('/login')
@@ -109,7 +106,7 @@ const Register = () => {
                       name="durationTime"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.city}
+                      ref={select}
                     >
                       <option value='Tabriz'>تبریز</option>
                       <option value='Tehran'>تهران</option>

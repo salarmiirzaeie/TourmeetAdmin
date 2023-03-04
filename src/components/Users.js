@@ -13,7 +13,6 @@ import {
   CButton,
 } from '@coreui/react'
 import { useNavigate } from 'react-router-dom'
-import { getposts } from 'src/state-management/action/postsAction'
 import { formDate, truncate } from '../utils/helpers'
 export const Users = (res) => {
   const navigate = useNavigate()
