@@ -12,9 +12,10 @@ import {
   CRow,
   CButtonGroup,
   CFormCheck,
+  CFormSelect,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
+import { cilLocationPin, cilLockLocked, cilUser } from '@coreui/icons'
 import { Formik, useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { register } from 'src/services/usersService'
@@ -24,32 +25,41 @@ import * as Yup from 'yup';
 
 const Register = () => {
   const navigate = useNavigate()
-  const [type, setType] = useState("tour")
+  // const [type, setType] = useState("tour")
 
   const formik = useFormik({
     initialValues: {
-      email: '', password: '', name: '', confirmPassword: '', type: ''
+      name: '',
+      city: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      // type: '',
     },
 
-    validationSchema: Yup.object({
-      name: Yup.string()
-        .required('لطفا نام خود را وارد کنید !'),
-      city: Yup.string()
-        .required('لطفا شهر خود را انتخاب کنید !'),
-      email: Yup.string().email()
-        .required('لطفا ایمیل خود را وارد کنید !'),
-      password: Yup.string()
-        .required('لطفا رمز خود را وارد کنید !'),
-      confirmPassword: Yup.string()
-        .required('لطفا رمز خود را دوباره وارد کنید !'),
-    }),
+    // validationSchema: Yup.object({
+    //   name: Yup.string()
+    //     .required('لطفا نام باشگاه تفریحی خود را وارد کنید !')
+    //     .max(30, 'تعداد کاراکتر های وارد شده بیشتر از حد مجاز است !')
+    //     .min(5, 'تعداد کاراکتر های وارد شده کمتر از حد مجاز است !'),
+    //   city: Yup.string()
+    //     .required('لطفا شهر خود را انتخاب کنید !'),
+    //   email: Yup.string().email('لطفا ایمیل معتبر وارد نمایید !')
+    //     .required('لطفا ایمیل خود را وارد کنید !'),
+    //   password: Yup.string()
+    //     .required('لطفا رمز خود را وارد کنید !'),
+    //   confirmPassword: Yup.string()
+    //     .required('لطفا رمز خود را دوباره وارد کنید !'),
+    // }),
 
     onSubmit: (values, { setSubmitting }) => {
       console.log("object");
 
 
       setTimeout(() => {
-        values.type = 'tour'
+        console.log("res")
+
+        // values.type = 'tour'
         register(values).then((res) => {
           if (res.status == 201) {
             navigate('/login')
@@ -78,7 +88,7 @@ const Register = () => {
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
                     <CFormInput
-                      placeholder="نام"
+                      placeholder="نام باشگاه تفریحی"
                       name="name"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -87,9 +97,24 @@ const Register = () => {
                       autoComplete="name"
                       {...formik.getFieldProps('name')}
                     />
-                    {formik.touched.name && formik.errors.name ? (
-                      <div style={{ color: 'red', margin: 10 }} >{formik.errors.name}</div>
-                    ) : null}
+                  </CInputGroup>
+                  {formik.touched.name && formik.errors.name ? (
+                    <div style={{ color: 'red', margin: 10 }} >{formik.errors.name}</div>
+                  ) : null}
+                  <CInputGroup className="mb-3">
+                    <CInputGroupText>
+                      <CIcon icon={cilLocationPin} />
+                    </CInputGroupText>
+                    <CFormSelect
+                      name="durationTime"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.city}
+                    >
+                      <option value='Tabriz'>تبریز</option>
+                      <option value='Tehran'>تهران</option>
+                      <option value='Alborz'>البرز</option>
+                    </CFormSelect>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>@</CInputGroupText>
@@ -104,10 +129,10 @@ const Register = () => {
                       autoComplete="mail"
                       {...formik.getFieldProps('email')}
                     />
-                    {formik.touched.email && formik.errors.email ? (
-                      <div style={{ color: 'red', margin: 10 }} >{formik.errors.email}</div>
-                    ) : null}
                   </CInputGroup>
+                  {formik.touched.email && formik.errors.email ? (
+                    <div style={{ color: 'red', margin: 10 }} >{formik.errors.email}</div>
+                  ) : null}
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
                       <CIcon icon={cilLockLocked} />
