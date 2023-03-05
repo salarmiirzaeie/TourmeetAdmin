@@ -44,6 +44,7 @@ const Login = () => {
         setTimeout(() => {
           if (res.status == 206) {
             localStorage.setItem('token', res.data.token)
+            dispatch(profile(res.data))
 
             navigate('adminDashboard')
           } else if (res.status == 200) {

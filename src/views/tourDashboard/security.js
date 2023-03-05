@@ -26,7 +26,8 @@ import { useRef } from 'react'
 import { Formik } from 'formik'
 import { useSelector } from 'react-redux'
 import CIcon from '@coreui/icons-react'
-import { resetPassword } from 'src/services/usersService'
+import { changePassword, resetPassword } from 'src/services/usersService'
+import swal from 'sweetalert'
 
 const security = () => {
   return (
@@ -44,17 +45,13 @@ const security = () => {
                       newPassword: '',
                       confirmPassword: '',
                     }}
-                    validate={(values) => {
-                      const errors = {}
-                      return errors
-                    }}
-                    onSubmit={(values, { setSubmitting }) => {
+                    onSubmit={(values) => {
                       setTimeout(() => {
-                        // values={...values,}
-                        resetPassword(values).then((res) => {
-                          alert(res.data.message)
+                        changePassword(values).then((res) => {
+                         swal(res.data.message)
+                        
                         })
-                      }, 400)
+                      }, 500)
                     }}
                   >
                     {({
@@ -100,7 +97,12 @@ const security = () => {
                           type="password"
                           onChange={handleChange}
                         />
-                        <CButton className='mt-3' onClick={() => handleSubmit} color="info" type="submit">
+                        <CButton
+                          className="mt-3"
+                          onClick={() => handleSubmit}
+                          color="info"
+                          type="submit"
+                        >
                           ثبت
                         </CButton>
                       </form>

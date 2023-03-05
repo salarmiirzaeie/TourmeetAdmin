@@ -4,10 +4,6 @@ import {
   CCardImage,
   CCol,
   CRow,
-  CCardFooter,
-  CListGroup,
-  CCardTitle,
-  CListGroupItem,
   CCard,
   CBadge,
   CButton,
@@ -16,22 +12,22 @@ import {
   CInputGroupText,
   CInputGroup,
 } from '@coreui/react'
-import Gallery from 'src/components/Gallery'
-import { addPermissions, addToGallery, getGalley, getPermissions } from 'src/services/postService'
-import { useSelector } from 'react-redux'
+import { addPermissions, getPermissions } from 'src/services/adminService'
 import { useNavigate } from 'react-router-dom'
+import swal from 'sweetalert'
 import Permissions from 'src/components/Pesrmissions'
 
 const permissionsPage = () => {
   const navigate = useNavigate()
-  const userId = useSelector((state) => state.profileState.userId)
   const [file, setfile] = useState([])
   const [photos, setPhotos] = useState([])
+  const [status, sestsus] = useState(0)
   useEffect(() => {
-    getPermissions(userId).then((res) => {
+    getPermissions().then((res) => {
       setPhotos(res.data)
+      console.log(res.data)
     })
-  }, [])
+  }, [status])
   return (
     <>
       <CRow>
@@ -43,10 +39,11 @@ const permissionsPage = () => {
                 <CButton
                   onClick={() => {
                     const files = Array.prototype.slice.call(file)
-                    const data = { files, userId }
-                    addPermissions(data).then((res) => {
-                      if (res.status == 200) {
-                        alert(res.data.message)
+                    console.log(files)
+                    addPermissions(files).then((res) => {
+                      if (res.status === 200) {
+                        swal(res.data.message)
+                        sestsus(Math.random(0))
                       }
                     })
                   }}

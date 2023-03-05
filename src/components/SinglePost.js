@@ -314,7 +314,6 @@ const SinglePost = (data) => {
               </CListGroupItem>
 
             </CListGroup>
-            {type == 'tour' ? (
               <CCardFooter>
                 <CButton
                   style={{ padding: 15, margin: 10 }}
@@ -354,7 +353,6 @@ const SinglePost = (data) => {
                 </CButton>
                 <CCardText>تاریخ ایجاد : {formDate(data.data.createdAt)}</CCardText>
               </CCardFooter>
-            ) : ('')}
           </CCol>
         )}
       </CRow>

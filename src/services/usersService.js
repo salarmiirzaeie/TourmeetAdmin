@@ -1,7 +1,9 @@
 import axios from 'axios'
 const apiPort = 'http://localhost:3333/users'
-const token = localStorage.getItem('token')
-
+const gettoken = async () => {
+  let token = await localStorage.getItem('token');
+  return token;
+};
 export const login = (data) => {
   const res = axios
     .post(`${apiPort}/login`, data)
@@ -23,12 +25,29 @@ export const register = (data) => {
       return err.response
     })
   return res
+
 }
-export const resetPassword = (data) => {
+export const changePassword = async data => {
   const res = axios
-    .post(`${apiPort}/reset-password/${token}`, data, {
+    .post(`${apiPort}/changepassword`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // 'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
+export const resetPassword =async (data) => {
+  const res = axios
+    .post(`${apiPort}/reset-password/${await gettoken()}`, data, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -44,7 +63,7 @@ export const acceptTour = async (data) => {
   const res = await axios
     .put(`${apiPort}/accept-tour`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -55,12 +74,12 @@ export const acceptTour = async (data) => {
     })
   return res
 }
-export const editProfile = (data) => {
+export const editProfile = async(data) => {
   const res = axios
     .post(`${apiPort}/edit-profile`, data, {
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -75,7 +94,7 @@ export const userProfile = async () => {
   const res = axios
     .get(`${apiPort}/profile`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then(response => {
@@ -90,7 +109,7 @@ export const uploadprofilephoto = async data => {
   const res = await axios
     .post(`${apiPort}/uploadphoto`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
         'content-type': 'multipart/form-data',
       },
     })
@@ -106,7 +125,7 @@ export const deleteprofile = async data => {
   const res = await axios
     .delete(`${apiPort}/deleteProfile/${data}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then(response => {
