@@ -78,6 +78,21 @@ export const deleteleader = (data) => {
     })
   return res
 }
+export const deletethumb = (data) => {
+  const res = axios
+    .put(`${apiPort}/delete-thumb`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
 export const getusersearch = (data) => {
   const res = axios
     .get(`${apiPort}/getusersearch/${data}`, {

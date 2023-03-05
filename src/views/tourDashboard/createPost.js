@@ -68,8 +68,7 @@ const createpost = () => {
     onSubmit: (values) => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
-      values.date = value?.toDate?.().toString()
-      console.log(values)
+      values.date = value?.toDate()
 
       createPost(values).then((res) => {
         setTimeout(() => {
@@ -143,7 +142,7 @@ const createpost = () => {
               {formik.touched.price && formik.errors.price ? (
                 <div style={{ color: 'red', margin: 10 }}>{formik.errors.price}</div>
               ) : null}
-              {/* <CFormLabel style={{ paddingTop: 15 }}>طول تور</CFormLabel>
+              <CFormLabel style={{ paddingTop: 15 }}>طول تور</CFormLabel>
               <CFormSelect
                 name="durationTime"
                 onChange={formik.handleChange}
@@ -162,7 +161,7 @@ const createpost = () => {
                 <option value={14}>2 هفته</option>
                 <option value={21}>3 هفته</option>
                 <option value={30}>1 ماه</option>
-              </CFormSelect> */}
+              </CFormSelect>
               <CFormLabel style={{ paddingTop: 15 }}>دسته بندی</CFormLabel>
               <CFormSelect
                 name="type"

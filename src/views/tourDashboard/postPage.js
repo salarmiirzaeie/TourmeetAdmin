@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 const postPage = () => {
   const params = useParams()
   const [post, setpost] = useState({})
+
   useEffect(() => {
     getSinglePost(params.id).then((res) => {
       setpost(res.data)
@@ -15,7 +16,10 @@ const postPage = () => {
   return (
     <CCard>
       {/* <singlePost id={params.id}/> */}
-      <SinglePost data={post} />
+      <SinglePost
+       
+        data={post}
+      />
     </CCard>
   )
 }

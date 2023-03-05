@@ -18,11 +18,11 @@ import { formDate, truncate } from '../utils/helpers'
 export const Posts = (res) => {
   const navigate = useNavigate()
   return (
-    <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 5 }}>
+    <CRow>
       {res && res !== undefined ? (
         res.posts &&
         res.posts.map((post, i) => (
-          <CCol key={i} xs>
+          <CCol key={i} xs={12} lg={3} md={6}>
             <CCard onClick={() => navigate(`${res.adress}${post._id}`)}>
               <CCardImage
                 orientation="top"

@@ -41,18 +41,14 @@ const AppHeader = () => {
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
 
-        <CHeaderNav style={{ justifyContent: 'space-between' }} className="w-75">
+        <CHeaderNav className="ms-3">
+           <CNavLink className='d-flex'>
+              <CNavLink>{profile.city}</CNavLink>
+              <CIcon  icon={cilLocationPin} size="lg" />
+            </CNavLink>
           <CNavItem>
             <CNavLink>{profile.money}تومان</CNavLink>
           </CNavItem>
-          <CNavItem>
-            <CNavLink className="d-flex" href="#">
-              <p>{profile.city}</p>
-              <CIcon icon={cilLocationPin} size="lg" />
-            </CNavLink>
-          </CNavItem>
-        </CHeaderNav>
-        <CHeaderNav className="ms-3">
           <AppHeaderDropdown
             profilePhoto={profile?.profilePhotos[0]}
             isAccept={profile?.isAccept}
