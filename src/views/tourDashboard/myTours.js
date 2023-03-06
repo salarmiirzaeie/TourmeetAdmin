@@ -10,15 +10,14 @@ import {
 } from '@coreui/react'
 
 import { myPosts } from 'src/services/postService'
-import { useSelector } from 'react-redux'
 import { Posts } from 'src/components/Posts'
 
 const myTours = () => {
-  const userId = useSelector((state) => state.profileState.userId)
   const [posts, setposts] = useState([])
   useEffect(() => {
-    myPosts(userId).then((res) => {
-      res.data = res.data.filter((p) => p.isAccept != 'reject')
+    myPosts().then((res) => {
+
+      res.data = res.data.filter((p) => p.isAccept !== 'reject')
       setposts(res.data)
 
     })

@@ -136,3 +136,41 @@ export const deleteprofile = async data => {
     });
   return res;
 };
+export const forgetPassword = data => {
+  const res = axios
+    .post(`${apiPort}/forget-password`, data)
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
+export const reserPassword = async data => {
+  const res = axios
+    .post(`${apiPort}/reset-password`, data, {
+      headers: {
+        // 'content-type': 'multipart/form-data',
+        Authorization: `Bearer ${await data.token}`,
+      },
+    })
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
+export const recievecode = async data => {
+  const res = axios
+    .post(`${apiPort}/recievecode`, data)
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};

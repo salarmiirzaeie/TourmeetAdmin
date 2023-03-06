@@ -23,7 +23,6 @@ const profileAdmin = () => {
     userProfile().then((res) => {
       if (res.status === 200) {
         setProfile(res.data)
-        console.log(res.data)
       }
     })
   }, [])

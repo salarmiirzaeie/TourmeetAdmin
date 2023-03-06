@@ -247,7 +247,7 @@ const SinglePost = ({ data }) => {
               calendar={persian}
               locale={persian_fa}
               calendarPosition="bottom-center"
-              value={formik.values.date}
+              value={value}
               editable
               onChange={setValue}
             />

@@ -33,9 +33,9 @@ export const setCity = (data) => {
   return res
 }
 
-export const myPosts = (data) => {
+export const myPosts = () => {
   const res = axios
-    .get(`${apiPort}/getMyPosts/${data}`, {
+    .get(`${apiPort}/getMyPosts`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

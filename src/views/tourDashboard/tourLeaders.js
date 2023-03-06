@@ -54,9 +54,8 @@ const tourLeaders = () => {
           <CInputGroup>
             <CFormInput
               ref={input}
-              onChange={()=>{
+              onChange={() => {
                 if (input.current.value !== '') {
-                 
                   setshow(true)
                 } else {
                   setshow(false)
@@ -79,6 +78,11 @@ const tourLeaders = () => {
                       console.log(res)
                       if (res.status === 200) {
                         setusers(res.data)
+                        console.log(res.data)
+                        setstatus(0)
+                      }
+                      if (res.status === 405) {
+                        swal(res.data.message)
                       } else {
                         setstatus(3)
                       }
@@ -94,41 +98,43 @@ const tourLeaders = () => {
                 {'جستجو'}
               </CButton>
               <CDropdownMenu className={`w-100 ${show ? 'show' : ''} mt-5`}>
-                {status === 0 ? (
+                {
+                  // status !== 0 ? (
                   users &&
-                  users.map((user, i) => (
-                    <CDropdownItem key={i}>
-                      <CRow>
-                        <CCol>
-                          <CAvatar
-                            src={`http://localhost:3333/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
-                          />
-                        </CCol>
-                        <CCol>
-                          <CCardText> {user.username}</CCardText>
-                        </CCol>
-                        <CCol>
-                          <CCardText> {user.email}</CCardText>
-                        </CCol>
-                        <CCol>
-                          <CButton
-                            onClick={() => {
-                              addleader({ id: user.id }).then((res) => {
-                                swal(res.data.message)
-                                setstatus2(Math.random(0))
-                              })
-                            }}
-                            className="btn btn-success"
-                          >
-                            <CIcon icon={cilPlus}></CIcon> اضافه کردن
-                          </CButton>
-                        </CCol>
-                      </CRow>
-                    </CDropdownItem>
-                  ))
-                ) : (
-                  <CDropdownItem>چنین یوزری نیست</CDropdownItem>
-                )}
+                    users.map((user, i) => (
+                      <CDropdownItem key={i}>
+                        <CRow>
+                          <CCol>
+                            <CAvatar
+                              src={`http://localhost:3333/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
+                            />
+                          </CCol>
+                          <CCol>
+                            <CCardText> {user.username}</CCardText>
+                          </CCol>
+                          <CCol>
+                            <CCardText> {user.email}</CCardText>
+                          </CCol>
+                          <CCol>
+                            <CButton
+                              onClick={() => {
+                                addleader({ id: user.id }).then((res) => {
+                                  swal(res.data.message)
+                                  setstatus2(Math.random(0))
+                                })
+                              }}
+                              className="btn btn-success"
+                            >
+                              <CIcon icon={cilPlus}></CIcon> اضافه کردن
+                            </CButton>
+                          </CCol>
+                        </CRow>
+                      </CDropdownItem>
+                    ))
+                  // ) : (
+                  //   <CDropdownItem>چنین یوزری نیست</CDropdownItem>
+                  // )
+                }
               </CDropdownMenu>
             </CDropdown>
           </CInputGroup>
@@ -150,25 +156,28 @@ const tourLeaders = () => {
                     {leaders &&
                       leaders.map((leader, i) => (
                         <CTableRow key={i}>
-                           <CTableHeaderCell scope="row">
+                          <CTableHeaderCell scope="row">
                             <CAvatar
                               src={`http://localhost:3333/uploads/profilePhotos/${leader?.profilephotoss[0]?.name}`}
                             />
                           </CTableHeaderCell>
                           <CTableHeaderCell scope="row">{leader.name}</CTableHeaderCell>
-                         
+
                           <CTableDataCell>{leader.username}</CTableDataCell>
                           <CTableDataCell>
-                            <CButton className='btn btn-danger' onClick={()=>{
-                              deleteleader({id:leader._id}).then((res)=>{
-                                if (res.status===200) {
-                                  setstatus2(Math.random(0))
-                                }
-                                swal(res.data.message)
-
-
-                              })
-                            }}>حذف</CButton>
+                            <CButton
+                              className="btn btn-danger"
+                              onClick={() => {
+                                deleteleader({ id: leader._id }).then((res) => {
+                                  if (res.status === 200) {
+                                    setstatus2(Math.random(0))
+                                  }
+                                  swal(res.data.message)
+                                })
+                              }}
+                            >
+                              حذف
+                            </CButton>
                           </CTableDataCell>
                         </CTableRow>
                       ))}

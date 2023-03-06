@@ -49,6 +49,8 @@ const Login = () => {
             navigate('adminDashboard')
           } else if (res.status == 200) {
             localStorage.setItem('token', res.data.token)
+            dispatch(profile(res.data))
+
             navigate('dashboard')
           } else {
             swal('خطا', res.data.message, 'error')
@@ -130,9 +132,9 @@ const Login = () => {
                         </CButton>
                       </CCol>
                       <CCol xs={6} className="text-right">
-                        <CButton color="link" className="px-0">
+                        <Link to="/forgetpassword" color="link" className="px-0">
                           فراموشی رمزعبور
-                        </CButton>
+                        </Link>
                       </CCol>
                     </CRow>
                   </CForm>

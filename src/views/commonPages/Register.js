@@ -17,16 +17,15 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilLocationPin, cilLockLocked, cilUser } from '@coreui/icons'
 import { Formik, useFormik } from 'formik'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { register } from 'src/services/usersService'
 import swal from 'sweetalert'
-import * as Yup from 'yup';
-
+import * as Yup from 'yup'
 
 const Register = () => {
   const navigate = useNavigate()
   // const [type, setType] = useState("tour")
-const select=useRef()
+  const select = useRef()
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -42,18 +41,15 @@ const select=useRef()
         .required('لطفا نام باشگاه تفریحی خود را وارد کنید !')
         .max(30, 'تعداد کاراکتر های وارد شده بیشتر از حد مجاز است !')
         .min(5, 'تعداد کاراکتر های وارد شده کمتر از حد مجاز است !'),
-     
-      email: Yup.string().email('لطفا ایمیل معتبر وارد نمایید !')
+
+      email: Yup.string()
+        .email('لطفا ایمیل معتبر وارد نمایید !')
         .required('لطفا ایمیل خود را وارد کنید !'),
-      password: Yup.string()
-        .required('لطفا رمز خود را وارد کنید !'),
-      confirmPassword: Yup.string()
-        .required('لطفا رمز خود را دوباره وارد کنید !'),
+      password: Yup.string().required('لطفا رمز خود را وارد کنید !'),
+      confirmPassword: Yup.string().required('لطفا رمز خود را دوباره وارد کنید !'),
     }),
 
     onSubmit: (values, { setSubmitting }) => {
-
-
       setTimeout(() => {
         values.type = 'tour'
         values.city = select.current.value
@@ -61,14 +57,13 @@ const select=useRef()
           if (res.status == 201) {
             navigate('/login')
           } else {
-            swal("خطا", res.data.message, "error")
+            swal('خطا', res.data.message, 'error')
           }
         })
         setSubmitting(false)
       }, 400)
-
-    }
-  });
+    },
+  })
 
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
@@ -96,7 +91,7 @@ const select=useRef()
                     />
                   </CInputGroup>
                   {formik.touched.name && formik.errors.name ? (
-                    <div style={{ color: 'red', margin: 10 }} >{formik.errors.name}</div>
+                    <div style={{ color: 'red', margin: 10 }}>{formik.errors.name}</div>
                   ) : null}
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
@@ -108,9 +103,9 @@ const select=useRef()
                       onBlur={formik.handleBlur}
                       ref={select}
                     >
-                      <option value='Tabriz'>تبریز</option>
-                      <option value='Tehran'>تهران</option>
-                      <option value='Alborz'>البرز</option>
+                      <option value="Tabriz">تبریز</option>
+                      <option value="Tehran">تهران</option>
+                      <option value="Alborz">البرز</option>
                     </CFormSelect>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
@@ -128,7 +123,7 @@ const select=useRef()
                     />
                   </CInputGroup>
                   {formik.touched.email && formik.errors.email ? (
-                    <div style={{ color: 'red', margin: 10 }} >{formik.errors.email}</div>
+                    <div style={{ color: 'red', margin: 10 }}>{formik.errors.email}</div>
                   ) : null}
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
@@ -146,7 +141,7 @@ const select=useRef()
                       {...formik.getFieldProps('password')}
                     />
                     {formik.touched.password && formik.errors.password ? (
-                      <div style={{ color: 'red', margin: 10 }} >{formik.errors.password}</div>
+                      <div style={{ color: 'red', margin: 10 }}>{formik.errors.password}</div>
                     ) : null}
                   </CInputGroup>
                   <CInputGroup className="mb-4">
@@ -164,7 +159,9 @@ const select=useRef()
                       {...formik.getFieldProps('confirmPassword')}
                     />
                     {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                      <div style={{ color: 'red', margin: 10 }} >{formik.errors.confirmPassword}</div>
+                      <div style={{ color: 'red', margin: 10 }}>
+                        {formik.errors.confirmPassword}
+                      </div>
                     ) : null}
                   </CInputGroup>
                   <div className="d-grid">
@@ -177,8 +174,17 @@ const select=useRef()
                       ایجادحساب
                     </CButton>
                   </div>
+                  <div className="d-grid">
+                    <Link to="/login">
+                      <CButton color="primary btn block" className="mt-3" active tabIndex={-1}>
+                        {'ورود'}
+                      </CButton>
+                    </Link>
+                    <Link to="/forgetpassword" color="link" className="px-0">
+                      فراموشی رمزعبور
+                    </Link>
+                  </div>
                 </CForm>
-
               </CCardBody>
             </CCard>
           </CCol>

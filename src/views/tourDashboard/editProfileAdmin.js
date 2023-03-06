@@ -23,7 +23,12 @@ import { useRef } from 'react'
 import { Formik, useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import CIcon from '@coreui/icons-react'
-import { deleteprofile, editProfile, uploadprofilephoto, userProfile } from 'src/services/usersService'
+import {
+  deleteprofile,
+  editProfile,
+  uploadprofilephoto,
+  userProfile,
+} from 'src/services/usersService'
 import * as Yup from 'yup'
 import { useNavigate, useParams } from 'react-router-dom'
 import swal from 'sweetalert'
@@ -76,7 +81,7 @@ const editProfileAdmin = () => {
         setTimeout(() => {
           if (res.status == 200) {
             swal('Good job!', res.data.message, 'success')
-            console.log(res.data)
+            navigate('/dashboard/profileAdmin')
             dispatch(profile(res.data))
             // navigate(`/dashboard`)
           } else {
@@ -113,15 +118,16 @@ const editProfileAdmin = () => {
                           orientation="top"
                           src={`http://localhost:3333/uploads/profilePhotos/${item.name}`}
                         />
-                        <CButton onClick={()=>{
-                          deleteprofile(item.name).then((res)=>{
-                            if (res.status===200) {
-                              setstaus(Math.random(1))
-
-                            } 
-
-                          })
-                        }} className="btn btn-danger h-25 w-100">
+                        <CButton
+                          onClick={() => {
+                            deleteprofile(item.name).then((res) => {
+                              if (res.status === 200) {
+                                setstaus(Math.random(1))
+                              }
+                            })
+                          }}
+                          className="btn btn-danger h-25 w-100"
+                        >
                           <CIcon icon={cilTrash} />
                         </CButton>
                       </CCol>
