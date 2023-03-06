@@ -11,6 +11,7 @@ import {
   CNavLink,
   CNavItem,
   CRow,
+  CNavbarText,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilBell, cilEnvelopeOpen, cilList, cilLocationPin, cilMap, cilMenu } from '@coreui/icons'
@@ -40,15 +41,23 @@ const AppHeader = () => {
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
+        <CHeaderNav className="d-none d-md-flex me-auto">
+          {/* <CNavItem>
+            <CNavbarText component={NavLink}>
+              موجودی کل
+            </CNavbarText>
+            <CNavbarText>{profile.money}</CNavbarText>
 
-        <CHeaderNav className="ms-3">
-           <CNavLink className='d-flex'>
-              <CNavLink>{profile.city}</CNavLink>
-              <CIcon  icon={cilLocationPin} size="lg" />
-            </CNavLink>
-          <CNavItem>
-            <CNavLink>{profile.money}تومان</CNavLink>
           </CNavItem>
+          <CNavItem className='mx-5'>
+            <CNavbarText>موجودی بلوکه شده</CNavbarText>
+            <CNavbarText>{profile.money}</CNavbarText>
+          </CNavItem> */}
+          
+        </CHeaderNav>
+        <CHeaderNav className="ms-3">
+        <CNavbarText className='mx-4'> <CIcon icon={cilLocationPin}/> {profile.city}</CNavbarText>
+
           <AppHeaderDropdown
             profilePhoto={profile?.profilePhotos[0]}
             isAccept={profile?.isAccept}

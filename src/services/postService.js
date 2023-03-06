@@ -1,12 +1,15 @@
 import axios from 'axios'
 const apiPort = 'http://localhost:3333/dashboard'
-const token = localStorage.getItem('token')
-export const createPost = (data) => {
+const gettoken = async () => {
+  let token = await localStorage.getItem('token')
+  return token
+}
+export const createPost = async (data) => {
   const res = axios
     .post(`${apiPort}/add-post`, data, {
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -17,11 +20,11 @@ export const createPost = (data) => {
     })
   return res
 }
-export const setCity = (data) => {
+export const setCity = async (data) => {
   const res = axios
     .post(`${apiPort}/setcampCity`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -33,11 +36,11 @@ export const setCity = (data) => {
   return res
 }
 
-export const myPosts = () => {
+export const myPosts = async () => {
   const res = axios
     .get(`${apiPort}/getMyPosts`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -48,12 +51,12 @@ export const myPosts = () => {
     })
   return res
 }
-export const getSinglePost = (data) => {
+export const getSinglePost = async (data) => {
   // console.log(data)
   const res = axios
     .get(`${apiPort}/getsinglePost/${data}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -66,11 +69,11 @@ export const getSinglePost = (data) => {
     })
   return res
 }
-export const deletePost = (data) => {
+export const deletePost = async (data) => {
   const res = axios
     .delete(`${apiPort}/delete-post/${data}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -81,12 +84,12 @@ export const deletePost = (data) => {
     })
   return res
 }
-export const editPost = (data) => {
+export const editPost = async (data) => {
   const res = axios
     .put(`${apiPort}/edit-post/${data.id}`, data.values, {
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -98,11 +101,11 @@ export const editPost = (data) => {
   return res
 }
 
-export const acceptPost = (data) => {
+export const acceptPost = async (data) => {
   const res = axios
     .put(`${apiPort}/accept-post`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -113,11 +116,11 @@ export const acceptPost = (data) => {
     })
   return res
 }
-export const addleader = (data) => {
+export const addleader = async (data) => {
   const res = axios
     .put(`${apiPort}/add-leader`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -128,12 +131,12 @@ export const addleader = (data) => {
     })
   return res
 }
-export const addToGallery = (data) => {
+export const addToGallery = async (data) => {
   const res = axios
     .post(`${apiPort}/add-gallery`, data, {
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -145,12 +148,12 @@ export const addToGallery = (data) => {
   return res
 }
 
-export const joinTour = (data) => {
+export const joinTour = async (data) => {
   const res = axios
     .put(`${apiPort}/join-tour`, data, {
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -161,11 +164,11 @@ export const joinTour = (data) => {
     })
   return res
 }
-export const getGalley = (data) => {
+export const getGalley = async (data) => {
   const res = axios
     .get(`${apiPort}/get-gallery/${data}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -177,12 +180,11 @@ export const getGalley = (data) => {
   return res
 }
 
-
-export const deletegallery= (data) => {
+export const deletegallery = async (data) => {
   const res = axios
     .delete(`${apiPort}/delete-gallery/${data}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {

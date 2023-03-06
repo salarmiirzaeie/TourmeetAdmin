@@ -55,23 +55,19 @@ const tourSideNav = [
         name: 'ایجادتور',
         to: '/dashboard/createPost',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
-
       },
       {
         component: CNavItem,
         name: 'تورهای من',
         to: '/dashboard/myTours',
         icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
-
       },
       {
         component: CNavItem,
         name: 'تورهای ردشده',
         to: '/dashboard/rejectedTours',
         icon: <CIcon icon={cilThumbDown} customClassName="nav-icon" />,
-
-      }
-
+      },
     ],
   },
   // {
@@ -85,39 +81,16 @@ const tourSideNav = [
     items: [
       {
         component: CNavItem,
-        name: 'موجودی',
-        to: '/dashboard/equity',
-        icon: <CIcon icon={cilChartLine} customClassName="nav-icon" />,
-
-      },
-      {
-        component: CNavGroup,
-        name: 'برداشت وجه',
-        icon: <CIcon icon={cilArrowThickTop} customClassName="nav-icon" />,
-        items: [
-          {
-            component: CNavItem,
-            name: 'درخواست جدید',
-            to: '/dashboard/withdraw',
-            icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
-          },
-          {
-            component: CNavItem,
-            name: 'لیست درخواست ها',
-            to: '/dashboard/withdrawList',
-            icon: <CIcon icon={cilList} customClassName="nav-icon" />,
-          }
-        ]
+        name: 'درخواست جدید',
+        to: '/dashboard/withdraw',
+        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
-        name: 'تراکنش ها',
-        to: '/dashboard/transactions',
-        icon: <CIcon icon={cilTransfer} customClassName="nav-icon" />,
-
+        name: 'لیست درخواست ها',
+        to: '/dashboard/withdrawList',
+        icon: <CIcon icon={cilList} customClassName="nav-icon" />,
       },
-
-
     ],
   },
   {

@@ -1,12 +1,14 @@
 import axios from 'axios'
 const apiPort = 'http://localhost:3333/dashboard'
-const token = localStorage.getItem('token')
-
-export const getRequestedPosts = () => {
+const gettoken = async () => {
+  let token = await localStorage.getItem('token');
+  return token;
+};
+export const getRequestedPosts =async () => {
   const res = axios
     .get(`${apiPort}/requestedPosts`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -17,11 +19,11 @@ export const getRequestedPosts = () => {
     })
   return res
 }
-export const getRequestedTours = () => {
+export const getRequestedTours =async () => {
   const res = axios
     .get(`${apiPort}/requestedTours`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -32,11 +34,11 @@ export const getRequestedTours = () => {
     })
   return res
 }
-export const getPermissions = () => {
+export const getPermissions =async () => {
   const res = axios
     .get(`${apiPort}/get-permissions`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -47,12 +49,12 @@ export const getPermissions = () => {
     })
   return res
 }
-export const addPermissions = (data) => {
+export const addPermissions = async(data) => {
   const res = axios
     .put(`${apiPort}/add-permissions`, data, {
       headers: {
         'content-type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -63,11 +65,11 @@ export const addPermissions = (data) => {
     })
   return res
 }
-export const deleteleader = (data) => {
+export const deleteleader = async(data) => {
   const res = axios
     .put(`${apiPort}/delete-leader`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -78,11 +80,11 @@ export const deleteleader = (data) => {
     })
   return res
 }
-export const deletethumb = (data) => {
+export const deletethumb = async(data) => {
   const res = axios
     .put(`${apiPort}/delete-thumb`, data, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -93,11 +95,11 @@ export const deletethumb = (data) => {
     })
   return res
 }
-export const getusersearch = (data) => {
+export const getusersearch = async(data) => {
   const res = axios
     .get(`${apiPort}/getusersearch/${data}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {
@@ -108,11 +110,26 @@ export const getusersearch = (data) => {
     })
   return res
 }
-export const getleaders = () => {
+export const getleaders =async () => {
   const res = axios
     .get(`${apiPort}/getleaders`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const getincome =async () => {
+  const res = axios
+    .get(`${apiPort}/get-income`, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
       },
     })
     .then((response) => {

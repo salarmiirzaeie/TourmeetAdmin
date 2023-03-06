@@ -32,7 +32,7 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <p className="sidebar-brand-full bglogo">Tourino</p>
+        <p className="sidebar-brand-full bglogo">Tourmeet</p>
         {/* لوگوی سایدبار */}
         <p className="sidebar-brand-narrow bglogo">T</p>
         {/* لوگوی کوچک سایدبار */}

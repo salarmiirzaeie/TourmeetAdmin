@@ -366,6 +366,13 @@ const SinglePost = ({ data }) => {
             >
               حذف
             </CButton>
+            <CButton
+              style={{ padding: 15, margin: 10 }}
+              onClick={() => navigate('/dashboard/statistics')}
+              className="btn btn-btn-outline-primary"
+            >
+              آمار
+            </CButton>
             <CCardText>تاریخ ایجاد : {formDate(data.createdAt)}</CCardText>
           </CCardFooter>
         </CCol>
