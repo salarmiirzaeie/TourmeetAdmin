@@ -39,7 +39,13 @@ const adminSideNav = [
     name: 'شرکت های درانتظار',
     to: '/adminDashboard/requestedTours',
     icon: <CIcon icon={cilHotTub} customClassName="nav-icon" />,
-  }
+  },
+  {
+    component: CNavItem,
+    name: 'تراکنش های درانتظار',
+    to: '/adminDashboard/requestedTrans',
+    icon: <CIcon icon={cilHotTub} customClassName="nav-icon" />,
+  },
   // {
   //   component: CNavTitle,
   //   name: 'Extras',

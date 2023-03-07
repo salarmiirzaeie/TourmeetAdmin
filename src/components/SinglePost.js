@@ -339,7 +339,7 @@ const SinglePost = ({ data }) => {
             <CButton
               style={{ padding: 15, margin: 10 }}
               color="danger"
-              disabled={data.joinedUsers.length > 0 ? true : false}
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               onClick={() => {
                 swal({
                   title: 'آیا مطمئن به حذف هستید؟',

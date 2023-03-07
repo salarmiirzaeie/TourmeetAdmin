@@ -34,6 +34,21 @@ export const getRequestedPosts = async () => {
     })
   return res
 }
+export const getalltrans = async () => {
+  const res = axios
+    .get(`${apiPort}/get-alltrans`, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
 export const getRequestedTours = async () => {
   const res = axios
     .get(`${apiPort}/requestedTours`, {
@@ -98,6 +113,21 @@ export const deleteleader = async (data) => {
 export const deletethumb = async (data) => {
   const res = axios
     .put(`${apiPort}/delete-thumb`, data, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const setpair = async (data) => {
+  const res = axios
+    .put(`${apiPort}/pair-trans`, data, {
       headers: {
         Authorization: `Bearer ${await gettoken()}`,
       },
