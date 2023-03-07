@@ -1,10 +1,25 @@
 import axios from 'axios'
 const apiPort = 'http://localhost:3333/dashboard'
 const gettoken = async () => {
-  let token = await localStorage.getItem('token');
-  return token;
-};
-export const getRequestedPosts =async () => {
+  let token = await localStorage.getItem('token')
+  return token
+}
+export const createTransactions = async (data) => {
+  const res = axios
+    .post(`${apiPort}/add-transactions`, data, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const getRequestedPosts = async () => {
   const res = axios
     .get(`${apiPort}/requestedPosts`, {
       headers: {
@@ -19,7 +34,7 @@ export const getRequestedPosts =async () => {
     })
   return res
 }
-export const getRequestedTours =async () => {
+export const getRequestedTours = async () => {
   const res = axios
     .get(`${apiPort}/requestedTours`, {
       headers: {
@@ -34,7 +49,7 @@ export const getRequestedTours =async () => {
     })
   return res
 }
-export const getPermissions =async () => {
+export const getPermissions = async () => {
   const res = axios
     .get(`${apiPort}/get-permissions`, {
       headers: {
@@ -49,7 +64,7 @@ export const getPermissions =async () => {
     })
   return res
 }
-export const addPermissions = async(data) => {
+export const addPermissions = async (data) => {
   const res = axios
     .put(`${apiPort}/add-permissions`, data, {
       headers: {
@@ -65,7 +80,7 @@ export const addPermissions = async(data) => {
     })
   return res
 }
-export const deleteleader = async(data) => {
+export const deleteleader = async (data) => {
   const res = axios
     .put(`${apiPort}/delete-leader`, data, {
       headers: {
@@ -80,7 +95,7 @@ export const deleteleader = async(data) => {
     })
   return res
 }
-export const deletethumb = async(data) => {
+export const deletethumb = async (data) => {
   const res = axios
     .put(`${apiPort}/delete-thumb`, data, {
       headers: {
@@ -95,7 +110,7 @@ export const deletethumb = async(data) => {
     })
   return res
 }
-export const getusersearch = async(data) => {
+export const getusersearch = async (data) => {
   const res = axios
     .get(`${apiPort}/getusersearch/${data}`, {
       headers: {
@@ -110,7 +125,7 @@ export const getusersearch = async(data) => {
     })
   return res
 }
-export const getleaders =async () => {
+export const getleaders = async () => {
   const res = axios
     .get(`${apiPort}/getleaders`, {
       headers: {
@@ -125,7 +140,7 @@ export const getleaders =async () => {
     })
   return res
 }
-export const getincome =async () => {
+export const getincome = async () => {
   const res = axios
     .get(`${apiPort}/get-income`, {
       headers: {

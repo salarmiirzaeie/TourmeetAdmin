@@ -34,7 +34,7 @@ const tourRoutes = [
   { path: '/dashboard/equity', name: 'Equity', element: Equity },
   { path: '/dashboard/tourLeaders', name: 'tourLeaders', element: tourLeaders },
   { path: '/dashboard/editProfileAdmin', name: 'editProfileAdmin', element: editProfileAdmin },
-  { path: '/dashboard/statistics', name: 'Statistics', element: Statistics },
+  { path: '/dashboard/statistics/:id', name: 'Statistics', element: Statistics },
 
 ]
 

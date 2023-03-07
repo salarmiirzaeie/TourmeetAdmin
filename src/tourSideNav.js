@@ -85,12 +85,7 @@ const tourSideNav = [
         to: '/dashboard/withdraw',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
       },
-      {
-        component: CNavItem,
-        name: 'لیست درخواست ها',
-        to: '/dashboard/withdrawList',
-        icon: <CIcon icon={cilList} customClassName="nav-icon" />,
-      },
+      
     ],
   },
   {

@@ -12,25 +12,29 @@ import {
   CFormInput,
   CButton,
   CSpinner,
+  CTable,
+  CTableDataCell,
+  CTableBody,
+  CTableRow,
+  CTableHeaderCell,
+  CTableHead,
 } from '@coreui/react'
-import { CChart } from '@coreui/react-chartjs';
+import { CChart } from '@coreui/react-chartjs'
 import { Field, Formik, useFormik } from 'formik'
 import * as Yup from 'yup'
 import swal from 'sweetalert'
-import { getincome } from 'src/services/adminService';
+import { createTransactions, getincome } from 'src/services/adminService'
 
 const withdraw = () => {
-  const[money,setmoney]=useState({})
-  useEffect(()=>{
-    getincome().then((res)=>{
-      if (res.status===200) {
+  const [money, setmoney] = useState({})
+  useEffect(() => {
+    getincome().then((res) => {
+      if (res.status === 200) {
         setmoney(res.data)
-        
+        console.log(res.data)
       }
-      
     })
-
-  },[])
+  }, [])
   const formik = useFormik({
     initialValues: {
       price: '',
@@ -45,7 +49,13 @@ const withdraw = () => {
       // console.log("object");
       // console.log(values)
       setTimeout(() => {
-        swal('Good job!', 'koskesh')
+        createTransactions(values).then((res) => {
+          swal('Good job!', res.data.message)
+          if (res.status===200) {
+            window.location.reload()
+
+          }
+        })
         formik.resetForm()
       }, 400)
     },
@@ -56,79 +66,58 @@ const withdraw = () => {
       <CCard className="mb-4">
         <CCardHeader>حسابداری</CCardHeader>
         <CCardBody>
-        <CRow>
+          <CRow>
             <CCol xs>
-             
-                <div className="row">
-                  <div className="col-sm">
-                    <CCard
-                      color="primary"
-                      // xs={{ cols: 1 }}
+              <CCard
+                color="primary"
+                // xs={{ cols: 1 }}
 
-                      textColor="white"
-                      className="mb-3"
-                      style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                      // key={index}
-                    >
-                      <CCardHeader>موجودی کل</CCardHeader>
-                      <CCardBody>
-                        {/* <CCardTitle>card title</CCardTitle> */}
-                        <CCardText>{money.blokedmony+money.money}تومان</CCardText>
-                      </CCardBody>
-                    </CCard>
-                    <CCard
-                      color="success"
-                      // xs={{ cols: 1 }}
+                textColor="white"
+                className="mb-3"
+                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                // key={index}
+              >
+                <CCardHeader>موجودی کل</CCardHeader>
+                <CCardBody>
+                  {/* <CCardTitle>card title</CCardTitle> */}
+                  <CCardText>{money.blokedmony + money.money}تومان</CCardText>
+                </CCardBody>
+              </CCard>
+            </CCol>
 
-                      textColor="white"
-                      className="mb-3"
-                      style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                      // key={index}
-                    >
-                      <CCardHeader>موجودی قابل برداشت</CCardHeader>
-                      <CCardBody>
-                        {/* <CCardTitle>card title</CCardTitle> */}
-                        <CCardText>{money.money}تومان</CCardText>
-                      </CCardBody>
-                    </CCard>
+            <CCol xs>
+              <CCard
+                color="success"
+                // xs={{ cols: 1 }}
 
-                    <CCard
-                      color="info"
-                      // xs={{ cols: 1 }}
-                      textColor="white"
-                      className="mb-3"
-                      style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                      // key={index}
-                    >
-                      <CCardHeader>موجودی غیر قابل برداشت</CCardHeader>
-                      <CCardBody>
-                        {/* <CCardTitle>card title</CCardTitle> */}
-                        <CCardText>{money.blokedmony}تومان</CCardText>
-                      </CCardBody>
-                    </CCard>
-                  </div>
-                  <div className="col-sm">
-                    <CChart
-                      style={{
-                        width: 330,
-                        alignItems: 'center',
-                        textAlign: 'center',
-                      }}
-                      type="pie"
-                      data={{
-                        labels: ['غیر قابل برداشت', 'قابل برداشت'],
-                        data: [300, 50, 100],
-                        datasets: [
-                          {
-                            backgroundColor: ['#39f', '#2eb85c'],
-                            data: [30, 80],
-                          },
-                        ],
-                      }}
-                    />
-                  </div>
-                </div>
-             
+                textColor="white"
+                className="mb-3"
+                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                // key={index}
+              >
+                <CCardHeader>موجودی قابل برداشت</CCardHeader>
+                <CCardBody>
+                  {/* <CCardTitle>card title</CCardTitle> */}
+                  <CCardText>{money.money}تومان</CCardText>
+                </CCardBody>
+              </CCard>
+            </CCol>
+
+            <CCol xs>
+              <CCard
+                color="info"
+                // xs={{ cols: 1 }}
+                textColor="white"
+                className="mb-3"
+                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                // key={index}
+              >
+                <CCardHeader>موجودی غیر قابل برداشت</CCardHeader>
+                <CCardBody>
+                  {/* <CCardTitle>card title</CCardTitle> */}
+                  <CCardText>{money.blokedmony}تومان</CCardText>
+                </CCardBody>
+              </CCard>
             </CCol>
           </CRow>
           <CRow>
@@ -137,7 +126,6 @@ const withdraw = () => {
                 className={`mb-3 border-top-dark border-top-3`}
                 // color='dark'
                 // textColor='white'
-                className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
               >
                 <CCardHeader>شماره حساب مقصد</CCardHeader>
@@ -154,7 +142,6 @@ const withdraw = () => {
                 type="number"
                 name="price"
                 min={10000}
-                onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.price}
                 {...formik.getFieldProps('price')}
@@ -176,7 +163,33 @@ const withdraw = () => {
               </CButton>
             </CForm>
           </CRow>
-        
+        </CCardBody>
+      </CCard>
+      <CCard className="mb-4">
+        <CCardHeader>تراکنش ها</CCardHeader>
+        <CCardBody>
+        <CTable>
+                  <CTableHead>
+                    <CTableRow>
+                      <CTableHeaderCell scope="col">مبلغ </CTableHeaderCell>
+                      <CTableHeaderCell scope="col">تاریخ درخواست</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
+                    </CTableRow>
+                  </CTableHead>
+                  <CTableBody>
+                    {money &&
+                      money.transactions?.map((item, i) => (
+                        <CTableRow key={i}>
+                          
+                          <CTableHeaderCell scope="row">{item.amount}</CTableHeaderCell>
+
+                          <CTableDataCell>{item.createdAt}</CTableDataCell>
+                          <CTableDataCell>{!item.paired?"درحال بررسی":"پرداخت شده"}</CTableDataCell>
+                         
+                        </CTableRow>
+                      ))}
+                  </CTableBody>
+                </CTable>
         </CCardBody>
       </CCard>
     </>

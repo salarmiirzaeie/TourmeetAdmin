@@ -58,7 +58,7 @@ import {
   cilUser,
   cilUserFemale,
 } from '@coreui/icons'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import avatar1 from 'src/assets/images/avatars/1.jpg'
 import avatar2 from 'src/assets/images/avatars/2.jpg'
 import avatar3 from 'src/assets/images/avatars/3.jpg'
@@ -66,98 +66,20 @@ import avatar4 from 'src/assets/images/avatars/4.jpg'
 import avatar5 from 'src/assets/images/avatars/5.jpg'
 import avatar6 from 'src/assets/images/avatars/6.jpg'
 import { CChart } from '@coreui/react-chartjs'
+import { getSinglePost } from 'src/services/postService'
 const Statistics = () => {
   const navigate = useNavigate()
-  const tableExample = [
-    {
-      avatar: { src: avatar1, status: 'success' },
-      user: {
-        name: 'شراره قره باغی',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'USA', flag: cifUs },
-      usage: {
-        value: 50,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: '10 sec ago',
-    },
-    {
-      avatar: { src: avatar2, status: 'danger' },
-      user: {
-        name: 'مناف قزلجه زاده',
-        new: false,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Brazil', flag: cifBr },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'info',
-      },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: '5 minutes ago',
-    },
-    {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'ناصیر پخله پز', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'India', flag: cifIn },
-      usage: {
-        value: 74,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'warning',
-      },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: '1 hour ago',
-    },
-    {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'نصرت گلهین', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'France', flag: cifFr },
-      usage: {
-        value: 98,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'danger',
-      },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Last month',
-    },
-    {
-      avatar: { src: avatar5, status: 'success' },
-      user: {
-        name: 'آناهیتا راد',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Spain', flag: cifEs },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'primary',
-      },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'Last week',
-    },
-    {
-      avatar: { src: avatar6, status: 'danger' },
-      user: {
-        name: 'ایسماییل اصغر پور',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Poland', flag: cifPl },
-      usage: {
-        value: 43,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      payment: { name: 'Amex', icon: cibCcAmex },
-      activity: 'Last week',
-    },
-  ]
+  const route = useParams()
+  const [post, setpost] = useState({})
+  useEffect(() => {
+    getSinglePost(route.id).then((res) => {
+      if (res.status === 200) {
+        setpost(res.data)
+        console.log(res.data)
+      }
+    })
+  }, [])
+  
 
   return (
     <CCard>
@@ -171,36 +93,47 @@ const Statistics = () => {
             }}
             type="pie"
             data={{
-              labels: ['غیر قابل برداشت', 'قابل برداشت'],
-              data: [300, 50, 100],
+              labels: ['تعدادافردباقی مانده', 'تعدادافردعضوشده'],
               datasets: [
                 {
                   backgroundColor: ['#39f', '#2eb85c'],
-                  data: [30, 80],
+                  data: [ post.capacity - post.joinedUsers?.length ,post.joinedUsers?.length],
                 },
               ],
             }}
           />
         </CCol>
         <CCol lg={5} xs={12} md={6}>
-          <CChart
-            style={{
-              width: 330,
-              alignItems: 'center',
-              textAlign: 'center',
-            }}
-            type="pie"
-            data={{
-              labels: ['غیر قابل برداشت', 'قابل برداشت'],
-              data: [300, 50, 100],
-              datasets: [
-                {
-                  backgroundColor: ['#39f', '#2eb85c'],
-                  data: [30, 80],
-                },
-              ],
-            }}
-          />
+          <CCard
+            color="primary"
+            // xs={{ cols: 1 }}
+
+            textColor="white"
+            className="mb-3"
+            style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+            // key={index}
+          >
+            <CCardHeader>درآمدپیش بینی شده ازاین تور</CCardHeader>
+            <CCardBody>
+              {/* <CCardTitle>card title</CCardTitle> */}
+              <CCardText>{post.capacity*post.price}تومان</CCardText>
+            </CCardBody>
+          </CCard>
+          <CCard
+            color="success"
+            // xs={{ cols: 1 }}
+
+            textColor="white"
+            className="mb-3"
+            style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+            // key={index}
+          >
+            <CCardHeader>درآمدتااین لحظه</CCardHeader>
+            <CCardBody>
+              {/* <CCardTitle>card title</CCardTitle> */}
+              <CCardText>{post.joinedUsers?.length*post.price}تومان</CCardText>
+            </CCardBody>
+          </CCard>
         </CCol>
       </CRow>
       <CCol xs={12} className={'p-3'} md={12} xl={12}>
@@ -217,47 +150,26 @@ const Statistics = () => {
                     <CTableHeaderCell>نام گردشگر</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">نام تور</CTableHeaderCell>
                     {/* <CTableHeaderCell>Usage</CTableHeaderCell> */}
-                    <CTableHeaderCell className="text-center">تاریخ واریز</CTableHeaderCell>
-                    <CTableHeaderCell>شماره تراکنش</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                  {tableExample.map((item, index) => (
+                  {post.joinedUsers?.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
-                        <CAvatar size="md" src={item.avatar.src} status={item.avatar.status} />
+                        <CAvatar
+                          src={`http://localhost:3333/uploads/profilePhotos/${
+                            item.profilephotoss ? item.profilephotoss[0].name : 'defaultProfile.jpg'
+                          }`}
+                        />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{item.user.name}</div>
+                        <div>{item.name}</div>
                         <div className="small text-medium-emphasis">
-                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
-                          {item.user.registered}
+                          {/* <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '} */}
+                          {/* {item.user.registered} */}
                         </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        {/* <CIcon size="xl" icon={item.country.flag} title={item.country.name} /> */}
-                        تور شمال
-                      </CTableDataCell>
-                      {/* <CTableDataCell>
-                        <div className="clearfix">
-                          <div className="float-start">
-                            <strong>{item.usage.value}%</strong>
-                          </div>
-                          <div className="float-end">
-                            <small className="text-medium-emphasis">{item.usage.period}</small>
-                          </div>
-                        </div>
-                        <CProgress thin color={item.usage.color} value={item.usage.value} />
-                      </CTableDataCell> */}
-                      <CTableDataCell className="text-center">
-                        {/* <CIcon size="xl" icon={item.payment.icon} /> */}
-                        1401/10/12
-                        <div className="small text-medium-emphasis">14:32</div>
-                      </CTableDataCell>
-                      <CTableDataCell>
-                        {/* <div className="small text-medium-emphasis">Last login</div> */}
-                        <strong>777222111</strong>
-                      </CTableDataCell>
+                      <CTableDataCell className="text-center">تور شمال</CTableDataCell>
                     </CTableRow>
                   ))}
                 </CTableBody>

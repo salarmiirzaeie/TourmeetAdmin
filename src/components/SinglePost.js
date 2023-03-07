@@ -94,7 +94,7 @@ const SinglePost = ({ data }) => {
             console.log(res)
             // navigate('/dashboard/myTours')
             swal('Good job!', res.data.message, 'success')
-                        window.location.reload()
+            window.location.reload()
 
             // setSubmitting(false)
           } else {
@@ -195,24 +195,24 @@ const SinglePost = ({ data }) => {
 
             <CFormLabel style={{ paddingTop: 10 }}>طول تور</CFormLabel>
             <CFormSelect
-                name="durationTime"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.durationTime}
-              >
-                <option value={1}>1 روز</option>
-                <option value={2}>2 روز</option>
-                <option value={3}>3 روز</option>
-                <option value={4}>4 روز</option>
-                <option value={5}>5 روز</option>
-                <option value={6}>6 روز</option>
-                <option value={10}>10 روز</option>
-                <option value={12}>12 روز</option>
-                <option value={7}>1 هفته</option>
-                <option value={14}>2 هفته</option>
-                <option value={21}>3 هفته</option>
-                <option value={30}>1 ماه</option>
-              </CFormSelect>
+              name="durationTime"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.durationTime}
+            >
+              <option value={1}>1 روز</option>
+              <option value={2}>2 روز</option>
+              <option value={3}>3 روز</option>
+              <option value={4}>4 روز</option>
+              <option value={5}>5 روز</option>
+              <option value={6}>6 روز</option>
+              <option value={10}>10 روز</option>
+              <option value={12}>12 روز</option>
+              <option value={7}>1 هفته</option>
+              <option value={14}>2 هفته</option>
+              <option value={21}>3 هفته</option>
+              <option value={30}>1 ماه</option>
+            </CFormSelect>
             <CFormLabel style={{ paddingTop: 10 }}>دسته بندی</CFormLabel>
             <CFormSelect
               name="type"
@@ -339,6 +339,7 @@ const SinglePost = ({ data }) => {
             <CButton
               style={{ padding: 15, margin: 10 }}
               color="danger"
+              disabled={data.joinedUsers.length > 0 ? true : false}
               onClick={() => {
                 swal({
                   title: 'آیا مطمئن به حذف هستید؟',
@@ -368,7 +369,7 @@ const SinglePost = ({ data }) => {
             </CButton>
             <CButton
               style={{ padding: 15, margin: 10 }}
-              onClick={() => navigate('/dashboard/statistics')}
+              onClick={() => navigate(`/dashboard/statistics/${data._id}`)}
               className="btn btn-btn-outline-primary"
             >
               آمار
