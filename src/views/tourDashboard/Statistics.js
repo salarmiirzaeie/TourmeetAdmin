@@ -59,12 +59,7 @@ import {
   cilUserFemale,
 } from '@coreui/icons'
 import { useNavigate, useParams } from 'react-router-dom'
-import avatar1 from 'src/assets/images/avatars/1.jpg'
-import avatar2 from 'src/assets/images/avatars/2.jpg'
-import avatar3 from 'src/assets/images/avatars/3.jpg'
-import avatar4 from 'src/assets/images/avatars/4.jpg'
-import avatar5 from 'src/assets/images/avatars/5.jpg'
-import avatar6 from 'src/assets/images/avatars/6.jpg'
+
 import { CChart } from '@coreui/react-chartjs'
 import { getSinglePost } from 'src/services/postService'
 const Statistics = () => {
@@ -158,7 +153,7 @@ const Statistics = () => {
                       <CTableDataCell className="text-center">
                         <CAvatar
                           src={`http://localhost:3333/uploads/profilePhotos/${
-                            item.profilephotoss ? item.profilephotoss[0].name : 'defaultProfile.jpg'
+                            item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
                           }`}
                         />
                       </CTableDataCell>

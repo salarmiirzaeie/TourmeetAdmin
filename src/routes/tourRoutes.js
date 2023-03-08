@@ -16,6 +16,7 @@ const Equity = React.lazy(() => import('../views/tourDashboard/equity'))
 const tourLeaders = React.lazy(() => import('../views/tourDashboard/tourLeaders'))
 const editProfileAdmin = React.lazy(() => import('../views/tourDashboard/editProfileAdmin'))
 const Statistics = React.lazy(() => import('../views/tourDashboard/Statistics'))
+const Cards = React.lazy(() => import('../views/tourDashboard/Cards'))
 
 const tourRoutes = [
   { path: '/', exact: true, name: 'Home' },
@@ -35,6 +36,7 @@ const tourRoutes = [
   { path: '/dashboard/tourLeaders', name: 'tourLeaders', element: tourLeaders },
   { path: '/dashboard/editProfileAdmin', name: 'editProfileAdmin', element: editProfileAdmin },
   { path: '/dashboard/statistics/:id', name: 'Statistics', element: Statistics },
+  { path: '/dashboard/cards', name: 'Cards', element: Cards },
 
 ]
 

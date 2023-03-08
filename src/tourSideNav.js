@@ -9,6 +9,7 @@ import {
   cilCash,
   cilChartLine,
   cilChartPie,
+  cilCreditCard,
   cilCursor,
   cilDelete,
   cilDollar,
@@ -84,6 +85,12 @@ const tourSideNav = [
         name: 'درخواست جدید',
         to: '/dashboard/withdraw',
         icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'کارت ها',
+        to: '/dashboard/cards',
+        icon: <CIcon icon={cilCreditCard} customClassName="nav-icon" />,
       },
       
     ],

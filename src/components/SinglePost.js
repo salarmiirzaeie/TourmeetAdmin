@@ -47,7 +47,7 @@ const SinglePost = ({ data }) => {
   let id = data._id
   const weekDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
   const [value, setValue] = useState()
-  // console.log(data.title);
+  console.log(data);
   const formik = useFormik({
     initialValues: {
       title: data.title,
