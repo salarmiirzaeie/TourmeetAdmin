@@ -32,6 +32,7 @@ import { profile } from 'src/state-management/action/profileAction'
 import { Link, useNavigate } from 'react-router-dom'
 const AppHeaderDropdown = ({ isAccept,profilePhoto }) => {
   const navigate = useNavigate()
+  const dispatch=useDispatch()
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -68,6 +69,8 @@ const AppHeaderDropdown = ({ isAccept,profilePhoto }) => {
           onClick={() => {
             localStorage.removeItem('token')
             localStorage.clear()
+            dispatch(profile({}))
+            
 
             navigate('login')
           }}
