@@ -158,7 +158,11 @@ const tourLeaders = () => {
                         <CTableRow key={i}>
                           <CTableHeaderCell scope="row">
                             <CAvatar
-                              src={`http://localhost:3333/uploads/profilePhotos/${leader?.profilephotoss[0]?.name}`}
+                              src={`http://192.168.43.153:3333/uploads/profilePhotos/${
+                                leader.profilephotoss[0]
+                                  ? leader.profilephotoss[0].name
+                                  : 'defaultProfile.jpg'
+                              }`} 
                             />
                           </CTableHeaderCell>
                           <CTableHeaderCell scope="row">{leader.name}</CTableHeaderCell>

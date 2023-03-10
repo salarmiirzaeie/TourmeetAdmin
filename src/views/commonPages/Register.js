@@ -34,6 +34,7 @@ const Register = () => {
       password: '',
       confirmPassword: '',
       type: '',
+      username: '',
     },
 
     validationSchema: Yup.object({
@@ -52,6 +53,7 @@ const Register = () => {
     onSubmit: (values, { setSubmitting }) => {
       setTimeout(() => {
         values.type = 'tour'
+        values.email =  values.email.toLowerCase()
         values.city = select.current.value
         register(values).then((res) => {
           if (res.status == 201) {
@@ -103,9 +105,8 @@ const Register = () => {
                       onBlur={formik.handleBlur}
                       ref={select}
                     >
-                      <option value="Tabriz">تبریز</option>
-                      <option value="Tehran">تهران</option>
-                      <option value="Alborz">البرز</option>
+                      <option value={12}>تبریز</option>
+                      <option value={301}>تهران</option>
                     </CFormSelect>
                   </CInputGroup>
                   <CInputGroup className="mb-3">

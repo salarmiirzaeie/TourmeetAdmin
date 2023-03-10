@@ -19,34 +19,35 @@ export const Organizers = (res) => {
   const navigate = useNavigate()
   return (
     <CCol xs={{ cols: 1, gutter: 4 }} md={{ cols: 5 }}>
-      {res?.posts.map((user, i) => (
-        <CCard key={i} onClick={() => navigate(`${res.adress}${user._id}`)}>
-          <CRow>
-            <CCol xs={12} md={3} xl={3}>
-              <CCardImage
-                orientation="top"
-                src={`http://localhost:3333/uploads/${user.profilePhoto}`}
-              />
-            </CCol>
-            <CCol xs={12} md={9} xl={9}>
-              <CCardBody>
-                <CCardTitle>{user.name}</CCardTitle>
-              </CCardBody>
-              <CListGroup flush>
-                <CListGroupItem>
-                  <CBadge color={user.isAccept === 'accept' ? 'success' : 'danger'}>
-                    {user.isAccept}
-                  </CBadge>
-                </CListGroupItem>
-                {/* <CListGroupItem>{truncate(user.description, 15)}</CListGroupItem> */}
-              </CListGroup>
-              <CCardFooter className='flex-end'>
-                <small className="text-medium-emphasis">{formDate(user.createdAt)}</small>
-              </CCardFooter>
-            </CCol>
-          </CRow>
-        </CCard>
-      ))}
+      {res.posts &&
+        res.posts.map((user, i) => (
+          <CCard key={i} onClick={() => navigate(`${res.adress}${user._id}`)}>
+            <CRow>
+              <CCol xs={12} md={3} xl={3}>
+                <CCardImage
+                  orientation="top"
+                  src={`http://localhost:3333/uploads/${user?.profilePhoto}`}
+                />
+              </CCol>
+              <CCol xs={12} md={9} xl={9}>
+                <CCardBody>
+                  <CCardTitle>{user?.name}</CCardTitle>
+                </CCardBody>
+                <CListGroup flush>
+                  <CListGroupItem>
+                    <CBadge color={user?.isAccept === 'accept' ? 'success' : 'danger'}>
+                      {user?.isAccept}
+                    </CBadge>
+                  </CListGroupItem>
+                  {/* <CListGroupItem>{truncate(user.description, 15)}</CListGroupItem> */}
+                </CListGroup>
+                <CCardFooter className="flex-end">
+                  <small className="text-medium-emphasis">{formDate(user?.createdAt)}</small>
+                </CCardFooter>
+              </CCol>
+            </CRow>
+          </CCard>
+        ))}
     </CCol>
   )
 }

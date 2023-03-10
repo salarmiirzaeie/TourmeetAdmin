@@ -39,6 +39,7 @@ const Login = () => {
     }),
 
     onSubmit: (values, { setSubmitting }) => {
+      values.email= values.email.toLowerCase()
       login(values).then((res) => {
         console.log(res)
         setTimeout(() => {

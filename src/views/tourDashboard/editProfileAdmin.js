@@ -77,6 +77,8 @@ const editProfileAdmin = () => {
     //     .required('لطفا نوع تور را انتخاب کنید !'),
     // }),
     onSubmit: (values, { setSubmitting }) => {
+      values.email =  values.email.toLowerCase()
+
       editProfile(values).then((res) => {
         setTimeout(() => {
           if (res.status == 200) {
