@@ -53,10 +53,10 @@ const AppHeader = () => {
             <CNavbarText>موجودی بلوکه شده</CNavbarText>
             <CNavbarText>{profile.money}</CNavbarText>
           </CNavItem> */}
-          
+
         </CHeaderNav>
         <CHeaderNav className="ms-3">
-        <CNavbarText className='mx-4'> <CIcon icon={cilLocationPin}/> {profile.city}</CNavbarText>
+          <CNavbarText className='mx-4'> <CIcon icon={cilLocationPin} /> {profile.city}</CNavbarText>
 
           <AppHeaderDropdown
             profilePhoto={profile?.profilePhotos[0]}

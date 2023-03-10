@@ -180,9 +180,6 @@ const Register = () => {
                         {'ورود'}
                       </CButton>
                     </Link>
-                    <Link to="/forgetpassword" color="link" className="px-0">
-                      فراموشی رمزعبور
-                    </Link>
                   </div>
                 </CForm>
               </CCardBody>

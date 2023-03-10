@@ -19,6 +19,7 @@ import {
   cilLineWeight,
   cilList,
   cilMediaStop,
+  cilMoney,
   cilNotes,
   cilPencil,
   cilPlus,
@@ -82,9 +83,9 @@ const tourSideNav = [
     items: [
       {
         component: CNavItem,
-        name: 'درخواست جدید',
+        name: 'برداشت وجه',
         to: '/dashboard/withdraw',
-        icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+        icon: <CIcon icon={cilMoney} customClassName="nav-icon" />,
       },
       {
         component: CNavItem,
@@ -92,7 +93,7 @@ const tourSideNav = [
         to: '/dashboard/cards',
         icon: <CIcon icon={cilCreditCard} customClassName="nav-icon" />,
       },
-      
+
     ],
   },
   {

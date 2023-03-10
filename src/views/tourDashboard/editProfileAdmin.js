@@ -83,6 +83,7 @@ const editProfileAdmin = () => {
             swal('Good job!', res.data.message, 'success')
             navigate('/dashboard/profileAdmin')
             dispatch(profile(res.data))
+            window.location.reload()
             // navigate(`/dashboard`)
           } else {
             swal('خطا', res.data.message, 'error')
@@ -99,41 +100,43 @@ const editProfileAdmin = () => {
         <CCol xs>
           <CCard className="mb-4">
             <CCardHeader>پروفایل عکس</CCardHeader>
+            <CCardBody xs={2} md={4} xl={4}>
+              <CRow>
+                {profile.profilePhotos == null || profile.profilePhotos.length === 0 ? (
+                  <CCol xs={3} md={3} xl={4}>
+                    <CCardImage
+                      className="  w-50"
+                      orientation="top"
+                      src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+                    />
+                  </CCol>
+                ) : (
+                  profile.profilePhotos &&
+                  profile.profilePhotos.map((item, i) => (
+                    <CCol key={i} xs={6} md={4} xl={3}>
+                      <CCardImage
+                        orientation="top"
+                        src={`http://localhost:3333/uploads/profilePhotos/${item.name}`}
+                      />
+                      <CButton
+                        onClick={() => {
+                          deleteprofile(item.name).then((res) => {
+                            if (res.status === 200) {
+                              setstaus(Math.random(1))
+                            }
+                          })
+                        }}
+                        className="btn btn-danger h-auto w-100 mb-2"
+                      >
+                        <CIcon icon={cilTrash} />
+                      </CButton>
+                    </CCol>
+                  ))
+                )}
+              </CRow>
+            </CCardBody>
             <CCol className="text-center" xs={12} md={12} xl={12}>
               <CCardBody>
-                <CRow>
-                  {profile.profilePhotos == null || profile.profilePhotos.length === 0 ? (
-                    <CCol xs={3} md={3} xl={4}>
-                      <CCardImage
-                        className="  w-50"
-                        orientation="top"
-                        src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
-                      />
-                    </CCol>
-                  ) : (
-                    profile.profilePhotos &&
-                    profile.profilePhotos.map((item, i) => (
-                      <CCol key={i} className={'mt-2'} xs={3} md={3} xl={4}>
-                        <CCardImage
-                          orientation="top"
-                          src={`http://localhost:3333/uploads/profilePhotos/${item.name}`}
-                        />
-                        <CButton
-                          onClick={() => {
-                            deleteprofile(item.name).then((res) => {
-                              if (res.status === 200) {
-                                setstaus(Math.random(1))
-                              }
-                            })
-                          }}
-                          className="btn btn-danger h-25 w-100"
-                        >
-                          <CIcon icon={cilTrash} />
-                        </CButton>
-                      </CCol>
-                    ))
-                  )}
-                </CRow>
                 <Formik
                   initialValues={{
                     image1: '',
@@ -169,9 +172,9 @@ const editProfileAdmin = () => {
                     isSubmitting,
                     setFieldValue,
                   }) => (
-                    <CInputGroup className="mt-3">
+                    <CInputGroup >
                       <CButton onClick={handleSubmit} component="label" htmlFor="inputGroupFile01">
-                        Upload
+                        بارگذاری
                       </CButton>
                       <CFormInput
                         value={formik.values.thumbnail}
@@ -203,7 +206,7 @@ const editProfileAdmin = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.name}
-                    // disabled={editmode}
+                  // disabled={editmode}
                   />
                   <CFormLabel>ایمیل</CFormLabel>
                   <CFormInput
@@ -212,7 +215,7 @@ const editProfileAdmin = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.email}
-                    // disabled={editmode}
+                  // disabled={editmode}
                   />
                   <CFormLabel>تلفن</CFormLabel>
                   <CFormInput
@@ -221,7 +224,7 @@ const editProfileAdmin = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.phoneNumber}
-                    // disabled={editmode}
+                  // disabled={editmode}
                   />
                   <CFormLabel>درباره</CFormLabel>
                   <CFormTextarea
@@ -229,7 +232,7 @@ const editProfileAdmin = () => {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.description}
-                    // disabled={editmode}
+                  // disabled={editmode}
                   />
                   <CFormInput
                     value={formik.values.profilePhoto}

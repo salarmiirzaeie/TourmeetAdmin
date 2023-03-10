@@ -61,7 +61,7 @@ const tourLeaders = () => {
                   setshow(false)
                 }
               }}
-              placeholder="نام کاربری یاایمیل"
+              placeholder="نام کاربری مورد نظر را وارد نمایید"
               aria-label="Text input with segmented dropdown button"
             />
             <CDropdown
@@ -101,36 +101,36 @@ const tourLeaders = () => {
                 {
                   // status !== 0 ? (
                   users &&
-                    users.map((user, i) => (
-                      <CDropdownItem key={i}>
-                        <CRow>
-                          <CCol>
-                            <CAvatar
-                              src={`http://localhost:3333/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
-                            />
-                          </CCol>
-                          <CCol>
-                            <CCardText> {user.username}</CCardText>
-                          </CCol>
-                          <CCol>
-                            <CCardText> {user.email}</CCardText>
-                          </CCol>
-                          <CCol>
-                            <CButton
-                              onClick={() => {
-                                addleader({ id: user.id }).then((res) => {
-                                  swal(res.data.message)
-                                  setstatus2(Math.random(0))
-                                })
-                              }}
-                              className="btn btn-success"
-                            >
-                              <CIcon icon={cilPlus}></CIcon> اضافه کردن
-                            </CButton>
-                          </CCol>
-                        </CRow>
-                      </CDropdownItem>
-                    ))
+                  users.map((user, i) => (
+                    <CDropdownItem key={i}>
+                      <CRow>
+                        <CCol>
+                          <CAvatar
+                            src={`http://localhost:3333/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
+                          />
+                        </CCol>
+                        <CCol>
+                          <CCardText> {user.username}</CCardText>
+                        </CCol>
+                        <CCol>
+                          <CCardText> {user.email}</CCardText>
+                        </CCol>
+                        <CCol>
+                          <CButton
+                            onClick={() => {
+                              addleader({ id: user.id }).then((res) => {
+                                swal(res.data.message)
+                                setstatus2(Math.random(0))
+                              })
+                            }}
+                            className="btn btn-success"
+                          >
+                            <CIcon icon={cilPlus}></CIcon> اضافه کردن
+                          </CButton>
+                        </CCol>
+                      </CRow>
+                    </CDropdownItem>
+                  ))
                   // ) : (
                   //   <CDropdownItem>چنین یوزری نیست</CDropdownItem>
                   // )

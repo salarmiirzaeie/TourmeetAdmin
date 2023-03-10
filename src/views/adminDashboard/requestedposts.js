@@ -30,13 +30,13 @@ const requestedposts = () => {
               <Posts adress={'/adminDashboard/requestedPostPage/'} posts={posts} />
 
               <br />
-              <CPagination className="justify-content-center" aria-label="Page navigation example">
+              {/* <CPagination className="justify-content-center" aria-label="Page navigation example">
                 <CPaginationItem disabled>Previous</CPaginationItem>
                 <CPaginationItem>1</CPaginationItem>
                 <CPaginationItem>2</CPaginationItem>
                 <CPaginationItem>3</CPaginationItem>
                 <CPaginationItem>Next</CPaginationItem>
-              </CPagination>
+              </CPagination> */}
             </CCardBody>
           </CCard>
         </CCol>

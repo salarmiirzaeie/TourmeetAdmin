@@ -111,7 +111,7 @@ const SinglePost = ({ data }) => {
         <CRow>
           {data.thumbnail &&
             data.thumbnail.map((item, i) => (
-              <CCol key={i} xs={3} md={3} xl={3}>
+              <CCol key={i} xs={6} md={4} xl={3}>
                 <CCardImage
                   orientation="top"
                   src={`http://localhost:3333/uploads/thumbnails/${item}`}
@@ -125,7 +125,7 @@ const SinglePost = ({ data }) => {
                         }
                       })
                     }}
-                    className="btn btn-danger h-25 w-100"
+                    className="btn btn-danger h-auto w-100 mb-2"
                   >
                     <CIcon icon={cilTrash} />
                   </CButton>
@@ -141,6 +141,7 @@ const SinglePost = ({ data }) => {
           <CForm onSubmit={formik.handleSubmit}>
             <CFormLabel>عنوان</CFormLabel>
             <CFormInput
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               type="text"
               name="title"
               onChange={formik.handleChange}
@@ -166,6 +167,7 @@ const SinglePost = ({ data }) => {
             ) : null}
             <CFormLabel style={{ paddingTop: 10 }}>ظرفیت</CFormLabel>
             <CFormInput
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               type="number"
               name="capacity"
               min={10}
@@ -180,6 +182,7 @@ const SinglePost = ({ data }) => {
 
             <CFormLabel style={{ paddingTop: 15 }}>قیمت(تومان)</CFormLabel>
             <CFormInput
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               type="number"
               name="price"
               min={10000}
@@ -195,6 +198,7 @@ const SinglePost = ({ data }) => {
 
             <CFormLabel style={{ paddingTop: 10 }}>طول تور</CFormLabel>
             <CFormSelect
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               name="durationTime"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -215,6 +219,7 @@ const SinglePost = ({ data }) => {
             </CFormSelect>
             <CFormLabel style={{ paddingTop: 10 }}>دسته بندی</CFormLabel>
             <CFormSelect
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               name="type"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -230,6 +235,7 @@ const SinglePost = ({ data }) => {
             <CFormLabel style={{ paddingTop: 10 }}>تاریخ برگذاری</CFormLabel>
             <br />
             <DatePicker
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
               className="form-control input-group-lg"
               style={{
                 width: '100%',
@@ -248,7 +254,7 @@ const SinglePost = ({ data }) => {
               locale={persian_fa}
               calendarPosition="bottom-center"
               value={value}
-              editable
+              // editable
               onChange={setValue}
             />
             <br />
@@ -322,8 +328,9 @@ const SinglePost = ({ data }) => {
               <p className="m-0"> {data.price}</p>
             </CListGroupItem>
 
-            <CListGroupItem style={{ height: '150px' }}>
+            <CListGroupItem style={{ height: 'auto' }}>
               <CCardText className="text-dark m-0">درباره</CCardText>
+              <br />
               <p className="m-0"> {data.body}</p>
             </CListGroupItem>
           </CListGroup>
@@ -333,6 +340,7 @@ const SinglePost = ({ data }) => {
               onClick={() => setEditMode(true)}
               className="justify-content-end"
               color="warning"
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
             >
               ویرایش
             </CButton>
@@ -358,10 +366,10 @@ const SinglePost = ({ data }) => {
                           swal(res.data.message, 'error')
                         }
                       })
-                      .catch(() => {})
+                      .catch(() => { })
                   })
                   .catch(() => {
-                    console.log('pox')
+                    // console.log('hey')
                   })
               }}
             >

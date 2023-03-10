@@ -51,7 +51,7 @@ const withdraw = () => {
       setTimeout(() => {
         createTransactions(values).then((res) => {
           swal('Good job!', res.data.message)
-          if (res.status===200) {
+          if (res.status === 200) {
             window.location.reload()
 
           }
@@ -75,7 +75,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                // key={index}
+              // key={index}
               >
                 <CCardHeader>موجودی کل</CCardHeader>
                 <CCardBody>
@@ -93,7 +93,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                // key={index}
+              // key={index}
               >
                 <CCardHeader>موجودی قابل برداشت</CCardHeader>
                 <CCardBody>
@@ -110,7 +110,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                // key={index}
+              // key={index}
               >
                 <CCardHeader>موجودی غیر قابل برداشت</CCardHeader>
                 <CCardBody>
@@ -146,21 +146,38 @@ const withdraw = () => {
                 value={formik.values.price}
                 {...formik.getFieldProps('price')}
               />
+              {formik.values.price > money.money ? (<p style={{ color: 'red', margin: 10 }} >موجودی کافی نمیباشد !</p>) : null}
               {formik.touched.price && formik.errors.price ? (
                 <div style={{ color: 'red', margin: 10 }}>{formik.errors.price}</div>
               ) : null}
-              <CButton
-                // onClick={() => formik.handleSubmit}
-                onClick={() => {
-                  formik.handleSubmit
-                  // console.log('pox')
-                }}
-                type="submit"
-                disabled={formik.isSubmitting}
-                style={{ margin: 10 }}
-              >
-                ثبت درخواست
-              </CButton>
+              {formik.values.price > money.money ? (
+                <CButton
+                  // onClick={() => formik.handleSubmit}
+                  onClick={() => {
+                    formik.handleSubmit
+                    // console.log('pox')
+                  }}
+                  type="submit"
+                  disabled
+                  style={{ margin: 10 }}
+                >
+                  ثبت درخواست
+                </CButton>
+              )
+                :
+                (<CButton
+                  // onClick={() => formik.handleSubmit}
+                  onClick={() => {
+                    formik.handleSubmit
+                    // console.log('pox')
+                  }}
+                  type="submit"
+                  disabled={formik.isSubmitting}
+                  style={{ margin: 10 }}
+                >
+                  ثبت درخواست
+                </CButton>)}
+
             </CForm>
           </CRow>
         </CCardBody>
@@ -168,28 +185,28 @@ const withdraw = () => {
       <CCard className="mb-4">
         <CCardHeader>تراکنش ها</CCardHeader>
         <CCardBody>
-        <CTable>
-                  <CTableHead>
-                    <CTableRow>
-                      <CTableHeaderCell scope="col">مبلغ </CTableHeaderCell>
-                      <CTableHeaderCell scope="col">تاریخ درخواست</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
-                    </CTableRow>
-                  </CTableHead>
-                  <CTableBody>
-                    {money &&
-                      money.transactions?.map((item, i) => (
-                        <CTableRow key={i}>
-                          
-                          <CTableHeaderCell scope="row">{item.amount}</CTableHeaderCell>
+          <CTable>
+            <CTableHead>
+              <CTableRow>
+                <CTableHeaderCell scope="col">مبلغ </CTableHeaderCell>
+                <CTableHeaderCell scope="col">تاریخ درخواست</CTableHeaderCell>
+                <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
+              </CTableRow>
+            </CTableHead>
+            <CTableBody>
+              {money &&
+                money.transactions?.map((item, i) => (
+                  <CTableRow key={i}>
 
-                          <CTableDataCell>{item.createdAt}</CTableDataCell>
-                          <CTableDataCell>{!item.paired?"درحال بررسی":"پرداخت شده"}</CTableDataCell>
-                         
-                        </CTableRow>
-                      ))}
-                  </CTableBody>
-                </CTable>
+                    <CTableHeaderCell scope="row">{item.amount}</CTableHeaderCell>
+
+                    <CTableDataCell>{item.createdAt}</CTableDataCell>
+                    <CTableDataCell>{!item.paired ? "درحال بررسی" : "پرداخت شده"}</CTableDataCell>
+
+                  </CTableRow>
+                ))}
+            </CTableBody>
+          </CTable>
         </CCardBody>
       </CCard>
     </>

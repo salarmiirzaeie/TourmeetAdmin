@@ -16,6 +16,7 @@ import navigation from '../tourSideNav'
 import navigation2 from '../adminSideNav'
 
 import { increment } from 'src/state-management/action/sidebarAction'
+import { cilTerrain } from '@coreui/icons'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
@@ -32,9 +33,10 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <p className="sidebar-brand-full bglogo">Tourmeet</p>
+        <p className="sidebar-brand-full bglogo tourmeet-font" >تورمیت</p>
         {/* لوگوی سایدبار */}
-        <p className="sidebar-brand-narrow bglogo">T</p>
+        <CIcon className="sidebar-brand-narrow bglogo" icon={cilTerrain} />
+        {/* <img className="sidebar-brand-narrow bglogo" src='../assets/images/ic_launcher (1).png' /> */}
         {/* لوگوی کوچک سایدبار */}
       </CSidebarBrand>
       <CSidebarNav>

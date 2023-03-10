@@ -34,61 +34,61 @@ const profileAdmin = () => {
           <CCard className="mb-4">
             <CCardHeader>پروفایل</CCardHeader>
             <CCol className='text-center' xs={12} md={12} xl={12}>
-                {profile.profilePhotos == null || profile.profilePhotos.length === 0 ? (
-                  <CCardImage
-                    className="rounded-circle w-50"
-                    orientation="top"
-                    src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
-                  />
-                ) : (
-                  <CCardImage
-                    className="rounded-circle w-50"
-                    orientation="top"
-                    src={`http://localhost:3333/uploads/profilePhotos/${profile.profilePhotos[0].name}`}
-                  />
-                )}
-              </CCol>
-              <CCol xs={12} md={12} xl={12}>
-                <CCardBody>
-                  <CCardText>
-                    {' '}
-                    <strong>نام</strong>
-                  </CCardText>
-                  <CCardText>{profile.name}</CCardText>
-                  <hr />
+              {profile.profilePhotos == null || profile.profilePhotos.length === 0 ? (
+                <CCardImage
+                  className="rounded-circle w-50 mt-3"
+                  orientation="top"
+                  src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+                />
+              ) : (
+                <CCardImage
+                  className="rounded-circle w-50 mt-3"
+                  orientation="top"
+                  src={`http://localhost:3333/uploads/profilePhotos/${profile.profilePhotos[0].name}`}
+                />
+              )}
+            </CCol>
+            <CCol xs={12} md={12} xl={12}>
+              <CCardBody>
+                <CCardText>
+                  {' '}
+                  <strong>نام</strong>
+                </CCardText>
+                <CCardText>{profile.name}</CCardText>
+                <hr />
 
-                  <CCardText>
-                    {' '}
-                    <strong>ایمیل</strong>
-                  </CCardText>
-                  <CCardText>{profile.email}</CCardText>
-                  <hr />
+                <CCardText>
+                  {' '}
+                  <strong>ایمیل</strong>
+                </CCardText>
+                <CCardText>{profile.email}</CCardText>
+                <hr />
 
-                  <CCardText>
-                    {' '}
-                    <strong>تلفن</strong>
-                  </CCardText>
-                  <CCardText>{profile.phoneNumber}</CCardText>
-                  <hr />
+                <CCardText>
+                  {' '}
+                  <strong>تلفن</strong>
+                </CCardText>
+                <CCardText>{profile.phoneNumber}</CCardText>
+                <hr />
 
-                  <CCardText>
-                    {' '}
-                    <strong>درباره</strong>
-                  </CCardText>
-                  <CCardText>{profile.description}</CCardText>
-                </CCardBody>
-                <CCardFooter className="mt-4">
-                  <CButton
-                    onClick={() => {
-                      navigate('/dashboard/editProfileAdmin')
-                    }}
-                    color="success"
-                  >
-                    ویرایش
-                  </CButton>
-                </CCardFooter>
-              </CCol>
-             
+                <CCardText>
+                  {' '}
+                  <strong>درباره</strong>
+                </CCardText>
+                <CCardText>{profile.description}</CCardText>
+              </CCardBody>
+              <CCardFooter className="mt-4">
+                <CButton
+                  onClick={() => {
+                    navigate('/dashboard/editProfileAdmin')
+                  }}
+                  color="success"
+                >
+                  ویرایش
+                </CButton>
+              </CCardFooter>
+            </CCol>
+
           </CCard>
         </CCol>
       </CRow>
