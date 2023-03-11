@@ -18,15 +18,17 @@ import {
   CTableRow,
   CTableHeaderCell,
   CTableHead,
+  CFormSelect,
 } from '@coreui/react'
 import { CChart } from '@coreui/react-chartjs'
 import { Field, Formik, useFormik } from 'formik'
 import * as Yup from 'yup'
 import swal from 'sweetalert'
-import { createTransactions, getincome } from 'src/services/adminService'
+import { createTransactions, getincome, usercards } from 'src/services/adminService'
 
 const withdraw = () => {
   const [money, setmoney] = useState({})
+  const [cards, setcards] = useState([])
   useEffect(() => {
     getincome().then((res) => {
       if (res.status === 200) {
@@ -34,10 +36,16 @@ const withdraw = () => {
         console.log(res.data)
       }
     })
+    usercards().then((res) => {
+      if (res.status === 200) {
+        setcards(res.data)
+      }
+    })
   }, [])
   const formik = useFormik({
     initialValues: {
       price: '',
+      card: 0,
     },
 
     validationSchema: Yup.object({
@@ -47,13 +55,11 @@ const withdraw = () => {
     }),
     onSubmit: (values) => {
       // console.log("object");
-      // console.log(values)
       setTimeout(() => {
         createTransactions(values).then((res) => {
           swal('Good job!', res.data.message)
           if (res.status === 200) {
             window.location.reload()
-
           }
         })
         formik.resetForm()
@@ -75,7 +81,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-              // key={index}
+                // key={index}
               >
                 <CCardHeader>موجودی کل</CCardHeader>
                 <CCardBody>
@@ -93,7 +99,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-              // key={index}
+                // key={index}
               >
                 <CCardHeader>موجودی قابل برداشت</CCardHeader>
                 <CCardBody>
@@ -110,7 +116,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-              // key={index}
+                // key={index}
               >
                 <CCardHeader>موجودی غیر قابل برداشت</CCardHeader>
                 <CCardBody>
@@ -122,20 +128,24 @@ const withdraw = () => {
           </CRow>
           <CRow>
             <CForm onSubmit={formik.handleSubmit}>
-              <CCard
-                className={`mb-3 border-top-dark border-top-3`}
-                // color='dark'
-                // textColor='white'
-                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+              <CFormLabel>کارت</CFormLabel>
+              <CFormSelect
+                name="card"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                
+                value={formik.values.card}
+                {...formik.getFieldProps('card')}
               >
-                <CCardHeader>شماره حساب مقصد</CCardHeader>
-                <CCardBody>
-                  {/* <CCardTitle>card title</CCardTitle> */}
-                  <CCardText>بانک مسکن</CCardText>
-                  <CCardText>شماره حساب: 111333888777</CCardText>
-                  <CCardText>شبا:IR114993300008811188</CCardText>
-                </CCardBody>
-              </CCard>
+
+               
+                {cards.map((item, i) => (
+                  <option key={i} value={item.id}>
+                    {item.bankname}
+                    {'IR' + item.shaba}
+                  </option>
+                ))}
+              </CFormSelect>
               <CFormLabel>مبلغ</CFormLabel>
               <CFormInput
                 placeholder="لطفا مبلغ مورد نظر را به تومان وارد نمایید"
@@ -146,7 +156,9 @@ const withdraw = () => {
                 value={formik.values.price}
                 {...formik.getFieldProps('price')}
               />
-              {formik.values.price > money.money ? (<p style={{ color: 'red', margin: 10 }} >موجودی کافی نمیباشد !</p>) : null}
+              {formik.values.price > money.money ? (
+                <p style={{ color: 'red', margin: 10 }}>موجودی کافی نمیباشد !</p>
+              ) : null}
               {formik.touched.price && formik.errors.price ? (
                 <div style={{ color: 'red', margin: 10 }}>{formik.errors.price}</div>
               ) : null}
@@ -163,9 +175,8 @@ const withdraw = () => {
                 >
                   ثبت درخواست
                 </CButton>
-              )
-                :
-                (<CButton
+              ) : (
+                <CButton
                   // onClick={() => formik.handleSubmit}
                   onClick={() => {
                     formik.handleSubmit
@@ -176,8 +187,8 @@ const withdraw = () => {
                   style={{ margin: 10 }}
                 >
                   ثبت درخواست
-                </CButton>)}
-
+                </CButton>
+              )}
             </CForm>
           </CRow>
         </CCardBody>
@@ -197,12 +208,10 @@ const withdraw = () => {
               {money &&
                 money.transactions?.map((item, i) => (
                   <CTableRow key={i}>
-
                     <CTableHeaderCell scope="row">{item.amount}</CTableHeaderCell>
 
                     <CTableDataCell>{item.createdAt}</CTableDataCell>
-                    <CTableDataCell>{!item.paired ? "درحال بررسی" : "پرداخت شده"}</CTableDataCell>
-
+                    <CTableDataCell>{!item.paired ? 'درحال بررسی' : 'پرداخت شده'}</CTableDataCell>
                   </CTableRow>
                 ))}
             </CTableBody>

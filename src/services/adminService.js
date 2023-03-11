@@ -110,6 +110,21 @@ export const deleteleader = async (data) => {
     })
   return res
 }
+export const deletecard = async (data) => {
+  const res = axios
+    .put(`${apiPort}/delete-card`, data, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
 export const deletethumb = async (data) => {
   const res = axios
     .put(`${apiPort}/delete-thumb`, data, {
@@ -140,9 +155,39 @@ export const setpair = async (data) => {
     })
   return res
 }
+export const addcard = async (data) => {
+  const res = axios
+    .put(`${apiPort}/addcard`, data, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
 export const getusersearch = async (data) => {
   const res = axios
     .get(`${apiPort}/getusersearch/${data}`, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const usercards = async (data) => {
+  const res = axios
+    .get(`${apiPort}/usercards`, {
       headers: {
         Authorization: `Bearer ${await gettoken()}`,
       },
