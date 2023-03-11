@@ -18,8 +18,9 @@ const requestedTours = () => {
   const [posts, setposts] = useState([])
   useEffect(() => {
     getRequestedTours().then((res) => {
-      if (res.status===200) {
+      if (res.status === 200) {
         setposts(res?.data)
+        console.log(res.data);
 
       }
     })

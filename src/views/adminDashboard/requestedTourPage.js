@@ -23,7 +23,7 @@ export default function requestedTourPage() {
       if (res.status == 200) {
         navigate('/adminDashboard/requestedTours')
       }
-      else{
+      else {
         swal(res.data.message)
       }
     })
@@ -31,7 +31,7 @@ export default function requestedTourPage() {
   return (
     <CCard>
       <AcceptControl accept={changeAccept} />
-      {/* <SinglePost data={post} /> */}
+
     </CCard>
   )
 }

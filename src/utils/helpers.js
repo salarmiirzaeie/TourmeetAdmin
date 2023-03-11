@@ -1,6 +1,78 @@
 const { default: axios } = require('axios')
 const apiPort = 'http://localhost:3333/users'
-const moment =require("jalali-moment")
+const moment = require("jalali-moment")
+
+exports.persianType = date => {
+  switch (date) {
+    case 'forest':
+      return 'طبیعت گردی';
+
+    case 'sea':
+      return 'دریا';
+
+    case 'offroad':
+      return 'آفرود';
+
+    case 'desert':
+      return 'کویرگردی';
+
+    case 'historical':
+      return 'تاریخی';
+
+    case 'mountain':
+      return 'کوهنوردی';
+
+    default:
+      return 'طبیعت گردی';
+  }
+};
+exports.persianDuration = date => {
+  switch (date) {
+    case 0:
+      return 'یک روز';
+    case 1:
+      return 'یک روز';
+
+    case 2:
+      return 'دو روز';
+
+    case 3:
+      return 'سه روز';
+
+    case 4:
+      return 'چهار روز';
+
+    case 5:
+      return 'پنج روز';
+
+    case 6:
+      return 'شش روز';
+
+    case 7:
+      return 'یک هفته';
+
+    case 10:
+      return 'ده روز';
+
+    case 12:
+      return 'دوازده روز';
+
+    case 14:
+      return 'دو هفته';
+
+    case 21:
+      return 'سه هفته';
+
+    case 1:
+      return 'یک روز';
+
+    case 30:
+      return 'یک ماه';
+
+    default:
+      return 'یک روز';
+  }
+};
 
 exports.truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
@@ -12,8 +84,8 @@ exports.truncate = (str, len) => {
   }
   return str
 }
-exports.formDate=date=>{
-    return moment(date).locale("fa").format("D MMM YYYY")
+exports.formDate = date => {
+  return moment(date).locale("fa").format("D MMM YYYY")
 }
 exports.isAuth = (token) => {
   const res = axios

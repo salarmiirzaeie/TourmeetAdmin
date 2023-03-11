@@ -37,7 +37,7 @@ const createpost = () => {
       capacity: '',
       price: '',
       date: Date.now(),
-      // durationTime: 3,
+      durationTime: 1,
       type: 'forest',
       thumbnail: file.name
     },
@@ -69,7 +69,7 @@ const createpost = () => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
       values.date = value?.toDate()
-
+      console.log(values);
       createPost(values).then((res) => {
         setTimeout(() => {
           if (res.status == 200) {

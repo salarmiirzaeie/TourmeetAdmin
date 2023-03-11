@@ -30,16 +30,25 @@ import avatar8 from './../../assets/images/avatars/8.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import { profile } from 'src/state-management/action/profileAction'
 import { Link, useNavigate } from 'react-router-dom'
-const AppHeaderDropdown = ({ isAccept,profilePhoto }) => {
+const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
   const navigate = useNavigate()
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   return (
     <CDropdown variant="nav-item">
+      {/* {console.log()} */}
+
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
-        <CAvatar
-          src={`http://localhost:3333/uploads/profilePhotos/${profilePhoto?.name}`}
-          size="md"
-        />
+        {profilePhoto === 0 ? (
+          <CAvatar
+            src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+            size="md"
+          />
+        ) : (
+          <CAvatar
+            src={`http://localhost:3333/uploads/profilePhotos/${profilePhoto?.name}`}
+            size="md"
+          />
+        )}
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">پروفایل</CDropdownHeader>
@@ -64,13 +73,13 @@ const AppHeaderDropdown = ({ isAccept,profilePhoto }) => {
           <CIcon icon={cilLockLocked} className="me-2" />
           امنیت
         </CDropdownItem>
-        
+
         <CDropdownItem
           onClick={() => {
             localStorage.removeItem('token')
             localStorage.clear()
             dispatch(profile({}))
-            
+
 
             navigate('login')
           }}

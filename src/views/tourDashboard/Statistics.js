@@ -74,7 +74,7 @@ const Statistics = () => {
       }
     })
   }, [])
-  
+
 
   return (
     <CCard>
@@ -92,7 +92,7 @@ const Statistics = () => {
               datasets: [
                 {
                   backgroundColor: ['#39f', '#2eb85c'],
-                  data: [ post.capacity - post.joinedUsers?.length ,post.joinedUsers?.length],
+                  data: [post.capacity - post.joinedUsers?.length, post.joinedUsers?.length],
                 },
               ],
             }}
@@ -106,12 +106,12 @@ const Statistics = () => {
             textColor="white"
             className="mb-3"
             style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-            // key={index}
+          // key={index}
           >
             <CCardHeader>درآمدپیش بینی شده ازاین تور</CCardHeader>
             <CCardBody>
               {/* <CCardTitle>card title</CCardTitle> */}
-              <CCardText>{post.capacity*post.price}تومان</CCardText>
+              <CCardText>{post.capacity * post.price}تومان</CCardText>
             </CCardBody>
           </CCard>
           <CCard
@@ -121,12 +121,12 @@ const Statistics = () => {
             textColor="white"
             className="mb-3"
             style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-            // key={index}
+          // key={index}
           >
             <CCardHeader>درآمدتااین لحظه</CCardHeader>
             <CCardBody>
               {/* <CCardTitle>card title</CCardTitle> */}
-              <CCardText>{post.joinedUsers?.length*post.price}تومان</CCardText>
+              <CCardText>{post.joinedUsers?.length * post.price}تومان</CCardText>
             </CCardBody>
           </CCard>
         </CCol>
@@ -143,7 +143,7 @@ const Statistics = () => {
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
                     <CTableHeaderCell>نام گردشگر</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">نام تور</CTableHeaderCell>
+                    <CTableHeaderCell>نام کاربری</CTableHeaderCell>
                     {/* <CTableHeaderCell>Usage</CTableHeaderCell> */}
                   </CTableRow>
                 </CTableHead>
@@ -152,19 +152,16 @@ const Statistics = () => {
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar
-                          src={`http://localhost:3333/uploads/profilePhotos/${
-                            item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
-                          }`}
+                          src={`http://localhost:3333/uploads/profilePhotos/${item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
+                            }`}
                         />
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{item.name}</div>
-                        <div className="small text-medium-emphasis">
-                          {/* <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '} */}
-                          {/* {item.user.registered} */}
-                        </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">تور شمال</CTableDataCell>
+                      <CTableDataCell>
+                        <div>{item.username}</div>
+                      </CTableDataCell>
                     </CTableRow>
                   ))}
                 </CTableBody>

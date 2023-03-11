@@ -28,7 +28,7 @@ import { Formik, useFormik } from 'formik'
 
 import { deletePost, editPost } from 'src/services/postService'
 import { useNavigate } from 'react-router-dom'
-import { formDate } from 'src/utils/helpers'
+import { formDate, persianDuration, persianType } from 'src/utils/helpers'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert'
 import persian from 'react-date-object/calendars/persian'
@@ -86,6 +86,8 @@ const SinglePost = ({ data }) => {
     onSubmit: (values, { setSubmitting }) => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
+      values.date = value?.toDate()
+
       let data = { id, values }
       console.log(values)
       setTimeout(() => {
@@ -305,7 +307,7 @@ const SinglePost = ({ data }) => {
             </CListGroupItem>
             <CListGroupItem className="justify-content-between d-flex">
               <CCardText className="text-dark m-0">دسته بندی</CCardText>
-              <p className="m-0"> {data.type}</p>
+              <p className="m-0"> {persianType(data.type)}</p>
             </CListGroupItem>
 
             <CListGroupItem className="justify-content-between d-flex">
@@ -320,7 +322,7 @@ const SinglePost = ({ data }) => {
 
             <CListGroupItem className="justify-content-between d-flex">
               <CCardText className="text-dark m-0">مدت زمان</CCardText>
-              <p className="m-0"> {data.durationTime}</p>
+              <p className="m-0"> {persianDuration(data.durationTime)}</p>
             </CListGroupItem>
 
             <CListGroupItem className="justify-content-between d-flex">

@@ -39,7 +39,7 @@ import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 const tourSideNav = [
   {
     component: CNavItem,
-    name: 'داشبورد',
+    name: 'پنل من',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     // badge: {

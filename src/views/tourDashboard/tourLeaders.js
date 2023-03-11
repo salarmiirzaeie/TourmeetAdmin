@@ -120,7 +120,8 @@ const tourLeaders = () => {
                             onClick={() => {
                               addleader({ id: user.id }).then((res) => {
                                 swal(res.data.message)
-                                setstatus2(Math.random(0))
+                                // setstatus2(Math.random(0))
+                                window.location.reload()
                               })
                             }}
                             className="btn btn-success"
@@ -158,11 +159,10 @@ const tourLeaders = () => {
                         <CTableRow key={i}>
                           <CTableHeaderCell scope="row">
                             <CAvatar
-                              src={`http://192.168.43.153:3333/uploads/profilePhotos/${
-                                leader.profilephotoss[0]
-                                  ? leader.profilephotoss[0].name
-                                  : 'defaultProfile.jpg'
-                              }`} 
+                              src={`http://192.168.43.153:3333/uploads/profilePhotos/${leader.profilephotoss[0]
+                                ? leader.profilephotoss[0].name
+                                : 'defaultProfile.jpg'
+                                }`}
                             />
                           </CTableHeaderCell>
                           <CTableHeaderCell scope="row">{leader.name}</CTableHeaderCell>
