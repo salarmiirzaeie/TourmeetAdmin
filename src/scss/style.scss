@@ -31,18 +31,21 @@ $enable-rtl: true;
 }
 
 body {
-    font-family: "BYekan" !important;
+    font-family: "BYekan"!important;
+}
+@font-face {
+    font-family: "DastNevis";
+    src: url("../assets/fonts/DastNevis.otf");
+       
+    font-weight: normal;
+    font-style: normal;
+    
+}
+
+.sidelogo {
+    font-family: "DastNevis" !important;
 }
 .card-img, .card-img-top{
 height: 220px;
 }
 
-@font-face{
-    
-        font-family: "danstevis" !important;
-        src: url("../assets/fonts/danstevis.otf") format("otf");
-      
-}
-.tourmeet-font{
-    font-family: "danstevis" !important;
-}

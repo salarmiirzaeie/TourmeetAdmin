@@ -10,7 +10,7 @@ import { AppSidebarNav } from './AppSidebarNav'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
-
+import  dast from'../assets/fonts/DastNevis.otf'
 // sidebar nav config
 import navigation from '../tourSideNav'
 import navigation2 from '../adminSideNav'
@@ -33,7 +33,7 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <p className="sidebar-brand-full bglogo tourmeet-font" >تورمیت</p>
+        <p  className="sidebar-brand-full sidelogo bglogo" >تورمیت</p>
         {/* لوگوی سایدبار */}
         <CIcon className="sidebar-brand-narrow bglogo" icon={cilTerrain} />
         {/* <img className="sidebar-brand-narrow bglogo" src='../assets/images/ic_launcher (1).png' /> */}

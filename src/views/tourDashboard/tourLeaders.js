@@ -43,6 +43,7 @@ const tourLeaders = () => {
     getleaders().then((res) => {
       if (res.status === 200) {
         setleaders(res.data)
+        console.log(res.data)
       }
     })
   }, [status2])
@@ -159,7 +160,7 @@ const tourLeaders = () => {
                         <CTableRow key={i}>
                           <CTableHeaderCell scope="row">
                             <CAvatar
-                              src={`http://192.168.43.153:3333/uploads/profilePhotos/${leader.profilephotoss[0]
+                              src={`http://localhost:3333/uploads/profilePhotos/${leader.profilephotoss[0]
                                 ? leader.profilephotoss[0].name
                                 : 'defaultProfile.jpg'
                                 }`}

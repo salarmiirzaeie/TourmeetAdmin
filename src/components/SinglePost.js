@@ -58,7 +58,7 @@ const SinglePost = ({ data }) => {
       price: data.price,
       type: data.type,
       thumbnail: data.thumbnail,
-      isAccept: 'waiting',
+      isAccept: data.isAccept,
     },
     enableReinitialize: true,
 
@@ -344,7 +344,6 @@ const SinglePost = ({ data }) => {
               onClick={() => setEditMode(true)}
               className="justify-content-end"
               color="warning"
-              disabled={data?.joinedUsers?.length > 0 ? true : false}
             >
               ویرایش
             </CButton>
