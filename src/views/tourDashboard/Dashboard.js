@@ -23,7 +23,7 @@ import {
   CAlertHeading
 
 } from '@coreui/react'
-import { cilPlus } from '@coreui/icons';
+import { cilBusAlt, cilDollar, cilPlus, cilUser } from '@coreui/icons';
 import { userProfile } from './../../services/usersService';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,57 +48,47 @@ const Dashboard = () => {
         <CCardHeader>دسترسی سریع</CCardHeader>
         <CCardBody>
           <CRow>
-            <CCol xs>
-              <CCard
+            <CCol lg={4} md={4} onClick={() => navigate('/dashboard/createPost')} >
+              <CButton
+                style={{ justifyContent: "center" }}
                 color="primary"
                 // xs={{ cols: 1 }}
-
                 textColor="white"
-                className="mb-3"
-                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                className="w-100 h-100"
+
               // key={index}
               >
-                <CCardHeader>ایجاد تور<CIcon style={{ alignItems: 'flex-start' }} icon={cilPlus} /> </CCardHeader>
-                <CCardBody>
-                  {/* <CCardTitle>card title</CCardTitle> */}
-                  <CCardText>با ایجاد تور ...</CCardText>
-                </CCardBody>
-              </CCard>
+                <p className='mt-3'>ایجاد تور<CIcon icon={cilPlus} /> </p>
+
+              </CButton>
             </CCol>
 
-            <CCol xs>
-              <CCard
-                color="success"
+            <CCol onClick={() => navigate('/dashboard/myTours')} xs>
+              <CButton
+                color="light"
                 // xs={{ cols: 1 }}
-
                 textColor="white"
-                className="mb-3"
-                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                className=" w-100 h-100"
+
               // key={index}
               >
-                <CCardHeader>تور های من</CCardHeader>
-                <CCardBody>
-                  {/* <CCardTitle>card title</CCardTitle> */}
-                  <CCardText>دکمه</CCardText>
-                </CCardBody>
-              </CCard>
+                <p className='mt-3'>تور های من<CIcon style={{ alignItems: 'flex-start' }} icon={cilUser} /> </p>
+
+              </CButton>
             </CCol>
 
-            <CCol xs>
-              <CCard
+            <CCol onClick={() => navigate('/dashboard/withdraw')} xs>
+              <CButton
                 color="info"
                 // xs={{ cols: 1 }}
                 textColor="white"
-                className="mb-3"
-                style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                className=" w-100 h-100"
+
               // key={index}
               >
-                <CCardHeader>برداشت وجه</CCardHeader>
-                <CCardBody>
-                  {/* <CCardTitle>card title</CCardTitle> */}
-                  <CCardText></CCardText>
-                </CCardBody>
-              </CCard>
+                <p className='mt-3'>برداشت وجه<CIcon icon={cilDollar} /> </p>
+
+              </CButton>
             </CCol>
           </CRow>
         </CCardBody>
@@ -122,7 +112,7 @@ const Dashboard = () => {
             <p>
               کابر گرامی، اپلیکیشن مدیران تور بزودی راه اندازی خواهد شد.
             </p>
-            <CButton onClick={() => navigate('/dashboard/permissionsPage')} >ثبت مجوز</CButton>
+
           </CAlert>
         </CCardBody>
       </CCard>

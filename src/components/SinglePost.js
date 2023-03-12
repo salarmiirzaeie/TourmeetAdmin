@@ -102,6 +102,8 @@ const SinglePost = ({ data }) => {
           } else {
             swal('خطا', res.data.message, 'error')
           }
+        }).catch(() => {
+          swal.close()
         })
       }, 400)
     },
@@ -357,19 +359,36 @@ const SinglePost = ({ data }) => {
                   icon: 'warning',
                   buttons: true,
                   dangerMode: true,
+                  closeOnCancel: true
                 })
-                  .finally(() => {
-                    deletePost(data._id)
-                      .then((res) => {
-                        console.log(res.status)
-                        if (res.status == 200) {
-                          navigate('/dashboard/myTours')
-                        } else {
-                          swal(res.data.message, 'error')
-                        }
-                      })
-                      .catch(() => { })
+                  .then((result) => {
+
+                    if (result) {
+                      deletePost(data._id)
+                        .then((res) => {
+
+                          if (res.status == 200) {
+                            navigate('/dashboard/myTours')
+                          } else {
+                            swal(res.data.message, 'error')
+                          }
+                        })
+                    } else {
+                      swal.fire('Changes are not saved', '', 'info')
+                    }
                   })
+                  // .finally(() => {
+                  //   deletePost(data._id)
+                  //     .then((res) => {
+                  //       console.log(res.status)
+                  //       if (res.status == 200) {
+                  //         navigate('/dashboard/myTours')
+                  //       } else {
+                  //         swal(res.data.message, 'error')
+                  //       }
+                  //     })
+                  //     .catch(() => { })
+                  // })
                   .catch(() => {
                     // console.log('hey')
                   })

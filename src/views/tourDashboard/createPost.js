@@ -73,7 +73,12 @@ const createpost = () => {
       createPost(values).then((res) => {
         setTimeout(() => {
           if (res.status == 200) {
-            swal('Good job!', res.data.message, 'success')
+            // swal('Good job!', res.data.message, 'success')
+            swal({
+              icon: 'success',
+              title: 'تور شما با موفقیت ایجاد شد',
+              // text: 'تور شما با موفقیت ایجاد شد'
+            })
             console.log(res.data.post);
             formik.resetForm()
             navigate(`/dashboard/postPage/${res.data.post._id}`)
