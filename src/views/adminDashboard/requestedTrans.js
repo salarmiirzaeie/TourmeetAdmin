@@ -11,6 +11,7 @@ import {
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
 import { getalltrans, setpair } from 'src/services/adminService'
+import { formDate } from 'src/utils/helpers'
 
 const requestedTrans = () => {
   const [transs, settrsnz] = useState([])
@@ -34,6 +35,7 @@ const requestedTrans = () => {
                 <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
                 <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
                 <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
+                <CTableHeaderCell scope="col">کارت</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
             <CTableBody>
@@ -42,9 +44,14 @@ const requestedTrans = () => {
                   <CTableRow key={i}>
                     <CTableHeaderCell scope="row">{item.amount}</CTableHeaderCell>
 
-                    <CTableDataCell>{item.createdAt}</CTableDataCell>
-                    <CTableDataCell>{"item.user"}</CTableDataCell>
-                      <CTableDataCell>
+                    <CTableDataCell>{formDate(item.createdAt) }</CTableDataCell>
+                    <CTableDataCell>
+                    <CButton onClick={()=>{Navigate('login')}}>کاربر</CButton>
+                    </CTableDataCell>
+                     
+                    <CTableDataCell>{!item.paired ? 'درحال بررسی' : 'پرداخت شده'}</CTableDataCell>
+                    <CTableDataCell>{item?.card}</CTableDataCell>
+                    <CTableDataCell>
                         <CButton
                           className="btn btn-success"
                           onClick={() => {
@@ -58,7 +65,6 @@ const requestedTrans = () => {
                           تایید
                         </CButton>
                     </CTableDataCell>
-                    <CTableDataCell>{!item.paired ? 'درحال بررسی' : 'پرداخت شده'}</CTableDataCell>
                   </CTableRow>
                 ))}
             </CTableBody>
