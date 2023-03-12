@@ -73,7 +73,17 @@ exports.persianDuration = date => {
       return 'یک روز';
   }
 };
+exports.acceptOrNot = date => {
+  switch (date) {
+    case date.isAccept = 'accept':
+      return 'تایید شده';
+    case date.isAccept = 'waiting':
+      return 'در حال انتظار...';
+    default:
+      return 'در حال انتظار...';
 
+  }
+};
 exports.truncate = (str, len) => {
   if (str.length > len && str.length > 0) {
     let new_str = str + ' '

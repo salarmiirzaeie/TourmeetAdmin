@@ -350,6 +350,18 @@ const Cards = () => {
       }
     })
   }, [])
+  const validationSchema = Yup.object({
+
+    card: Yup.number().min(5).max(10).required(),
+    shaba: Yup.number().min(5).max(10).required(),
+  });
+  const initialValues = {
+    card: '',
+    shaba: ''
+  };
+  const onSubmit = (values) => {
+    alert(JSON.stringify(values, null, 2));
+  };
   return (
     <CRow>
       <CCol xs>
@@ -386,7 +398,7 @@ const Cards = () => {
                   <CButton
                     // onClick={() => formik.handleSubmit}
                     type="submit"
-                    // disabled={formik.isSubmitting}
+                  // disabled={formik.isSubmitting}
                   >
                     ثبت
                   </CButton>
@@ -400,19 +412,16 @@ const Cards = () => {
           <CCardBody>
             <CRow>
               {cards.map((item, i) => (
-                <CCol key={i}>
-                  <CCard
-                    className={`mb-3 border-top-dark border-top-3`}
-                    // color='dark'
-                    // textColor='white'
-                    style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
+                <CCol key={i} xs={12} md={6} xl={4} className='mb-2'>
+                  <CCard xs
+                    className={`mb-1 border-top-dark border-top-3`}
+                    style={{ marginTop: 10 }}
                   >
-                    <CCardHeader>شماره حساب مقصد</CCardHeader>
+                    <CCardHeader>اطلاعات حساب</CCardHeader>
                     <CCardBody>
-                      {/* <CCardTitle>card title</CCardTitle> */}
                       <CCardText>{item.bankname} </CCardText>
-                      <CCardText> {item.card}</CCardText>
-                      <CCardText>{item.shaba}</CCardText>
+                      <CCardText>شماره کارت : {item.card}</CCardText>
+                      <CCardText>شماره شبا : {item.shaba}</CCardText>
                     </CCardBody>
                   </CCard>
                   <CButton

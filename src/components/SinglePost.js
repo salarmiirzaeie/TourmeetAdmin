@@ -115,7 +115,7 @@ const SinglePost = ({ data }) => {
         <CRow>
           {data.thumbnail &&
             data.thumbnail.map((item, i) => (
-              <CCol key={i} xs={6} md={4} xl={3}>
+              <CCol key={i} xs={12} md={4} xl={3} className='mb-2'>
                 <CCardImage
                   orientation="top"
                   src={`http://localhost:3333/uploads/thumbnails/${item}`}
@@ -314,7 +314,7 @@ const SinglePost = ({ data }) => {
 
             <CListGroupItem className="justify-content-between d-flex">
               <CCardText className="text-dark m-0">ظرفیت</CCardText>
-              <p className="m-0"> {data.capacity}</p>
+              <p className="m-0"> {data.capacity} نفر</p>
             </CListGroupItem>
 
             <CListGroupItem className="justify-content-between d-flex">

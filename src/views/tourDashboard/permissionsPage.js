@@ -60,6 +60,7 @@ const permissionsPage = () => {
                   id="inputGroupFile01"
                 />
               </CInputGroup>
+              <h2>مجوز های بارگذاری شده : </h2>
               <Permissions data={photos} />
             </CCardBody>
           </CCard>

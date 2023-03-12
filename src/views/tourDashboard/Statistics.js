@@ -79,25 +79,7 @@ const Statistics = () => {
   return (
     <CCard>
       <CRow>
-        <CCol lg={5} xs={12} md={6}>
-          <CChart
-            style={{
-              width: 330,
-              alignItems: 'center',
-              textAlign: 'center',
-            }}
-            type="pie"
-            data={{
-              labels: ['تعدادافردباقی مانده', 'تعدادافردعضوشده'],
-              datasets: [
-                {
-                  backgroundColor: ['#39f', '#2eb85c'],
-                  data: [post.capacity - post.joinedUsers?.length, post.joinedUsers?.length],
-                },
-              ],
-            }}
-          />
-        </CCol>
+
         <CCol lg={5} xs={12} md={6}>
           <CCard
             color="primary"
@@ -129,6 +111,25 @@ const Statistics = () => {
               <CCardText>{post.joinedUsers?.length * post.price}تومان</CCardText>
             </CCardBody>
           </CCard>
+        </CCol>
+        <CCol lg={5} xs={12} md={6}>
+          <CChart
+            style={{
+              width: 330,
+              alignItems: 'center',
+              textAlign: 'center',
+            }}
+            type="pie"
+            data={{
+              labels: ['تعدادافردباقی مانده', 'تعدادافردعضوشده'],
+              datasets: [
+                {
+                  backgroundColor: ['#39f', '#2eb85c'],
+                  data: [post.capacity - post.joinedUsers?.length, post.joinedUsers?.length],
+                },
+              ],
+            }}
+          />
         </CCol>
       </CRow>
       <CCol xs={12} className={'p-3'} md={12} xl={12}>

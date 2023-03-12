@@ -73,7 +73,7 @@ const withdraw = () => {
         <CCardHeader>حسابداری</CCardHeader>
         <CCardBody>
           <CRow>
-            <CCol xs>
+            <CCol xs={12} md={6} xl={4}>
               <CCard
                 color="primary"
                 // xs={{ cols: 1 }}
@@ -81,7 +81,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                // key={index}
+              // key={index}
               >
                 <CCardHeader>موجودی کل</CCardHeader>
                 <CCardBody>
@@ -91,7 +91,7 @@ const withdraw = () => {
               </CCard>
             </CCol>
 
-            <CCol xs>
+            <CCol xs={12} md={6} xl={4}>
               <CCard
                 color="success"
                 // xs={{ cols: 1 }}
@@ -99,7 +99,7 @@ const withdraw = () => {
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                // key={index}
+              // key={index}
               >
                 <CCardHeader>موجودی قابل برداشت</CCardHeader>
                 <CCardBody>
@@ -109,14 +109,14 @@ const withdraw = () => {
               </CCard>
             </CCol>
 
-            <CCol xs>
+            <CCol xs={12} md={6} xl={4}>
               <CCard
                 color="info"
                 // xs={{ cols: 1 }}
                 textColor="white"
                 className="mb-3"
                 style={{ maxWidth: '18rem', marginRight: 10, marginTop: 10 }}
-                // key={index}
+              // key={index}
               >
                 <CCardHeader>موجودی غیر قابل برداشت</CCardHeader>
                 <CCardBody>
@@ -133,16 +133,16 @@ const withdraw = () => {
                 name="card"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                
+
                 value={formik.values.card}
                 {...formik.getFieldProps('card')}
               >
 
-               
+
                 {cards.map((item, i) => (
                   <option key={i} value={item.id}>
                     {item.bankname}
-                    {'IR' + item.shaba}
+                    {' - ' + 'IR' + item.shaba}
                   </option>
                 ))}
               </CFormSelect>

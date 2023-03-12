@@ -19,6 +19,7 @@ import { cilBell, cilEnvelopeOpen, cilList, cilLocationPin, cilMap, cilMenu } fr
 import { AppHeaderDropdown } from './header/index'
 import { increment } from 'src/state-management/action/sidebarAction'
 import { userProfile } from 'src/services/usersService'
+import { acceptOrNot } from 'src/utils/helpers'
 
 const AppHeader = () => {
   const dispatch = useDispatch()
@@ -61,7 +62,7 @@ const AppHeader = () => {
 
           <AppHeaderDropdown
             profilePhoto={profile?.profilePhotos[0]}
-            isAccept={profile?.isAccept}
+            isAccept={acceptOrNot(profile?.isAccept)}
           />
         </CHeaderNav>
       </CContainer>

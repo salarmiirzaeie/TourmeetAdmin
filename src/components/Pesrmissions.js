@@ -22,7 +22,7 @@ import { useNavigate } from 'react-router-dom'
 const Permissions = ({ data }) => {
   return (
     <>
-      <CRow xs={{ cols: 1, gutter: 1 }} md={{ cols: 4 }}>
+      <CRow xs={{ cols: 1, gutter: 1 }} md={{ cols: 3 }} xl={{ cols: 4 }}>
         {data &&
           data.map((post, i) => (
             <CCol key={i} xs>
