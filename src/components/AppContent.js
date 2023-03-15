@@ -10,7 +10,7 @@ const AppContent = () => {
   const type = useSelector((state) => state.profileState.type)
   const token = localStorage.getItem('token')
   
-  if (type == "admin") {
+  if (type === "admin") {
     return (
       <CContainer lg>
         <Suspense fallback={<CSpinner color="primary" />}>
@@ -30,11 +30,11 @@ const AppContent = () => {
                 )
               })}
 
-              <Route path="*" element={<Navigate to={'adminDashboard'} replace />} />
+              <Route path="*" element={<Navigate to={'/adminDashboard'} replace />} />
             </Routes>
           ) : (
             <Routes>
-              <Route path="*" element={<Navigate to={'login'} replace />} />
+              <Route path="*" element={<Navigate to={'/login'} replace />} />
             </Routes>
           )}
         </Suspense>
@@ -60,11 +60,11 @@ const AppContent = () => {
                 )
               })}
 
-              <Route path="*" element={<Navigate to={'dashboard'} replace />} />
+              <Route path="*" element={<Navigate to={'/dashboard'} replace />} />
             </Routes>
           ) : (
             <Routes>
-              <Route path="*" element={<Navigate to={'login'} replace />} />
+              <Route path="*" element={<Navigate to={'/login'} replace />} />
             </Routes>
           )}
         </Suspense>

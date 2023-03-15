@@ -81,7 +81,7 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
             dispatch(profile({}))
 
 
-            navigate('login')
+            navigate('/')
           }}
         >
           <CIcon icon={cilAccountLogout} className="me-2" />

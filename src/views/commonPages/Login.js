@@ -47,12 +47,12 @@ const Login = () => {
             localStorage.setItem('token', res.data.token)
             dispatch(profile(res.data))
 
-            navigate('adminDashboard')
+            navigate('/dashboard')
           } else if (res.status == 200) {
             localStorage.setItem('token', res.data.token)
             dispatch(profile(res.data))
 
-            navigate('dashboard')
+            navigate('/dashboard')
           } else {
             swal('خطا', res.data.message, 'error')
           }
