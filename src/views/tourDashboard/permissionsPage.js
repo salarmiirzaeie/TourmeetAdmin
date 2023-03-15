@@ -42,8 +42,7 @@ const permissionsPage = () => {
                     console.log(files)
                     addPermissions(files).then((res) => {
                       if (res.status === 200) {
-                        swal(res.data.message)
-                        sestsus(Math.random(0))
+                        window.location.reload()
                       }
                     })
                   }}

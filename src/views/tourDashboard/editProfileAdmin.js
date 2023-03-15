@@ -149,8 +149,7 @@ const editProfileAdmin = () => {
                     setTimeout(async () => {
                       await uploadprofilephoto(files).then(async (res) => {
                         if (res.status === 200) {
-                          swal('Good job!', res.data.message, 'success')
-                          setstaus(Math.random(1))
+                         window.location.reload()
                         } else {
                           swal('ops!', res.data.message, 'failure')
                         }

@@ -40,7 +40,7 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         {profilePhoto === 0 ? (
           <CAvatar
-            src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+            src={`http://localhost:3333/uploads/defaultProfile.jpg`}
             size="md"
           />
         ) : (
@@ -59,7 +59,7 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
           <CBadge
             shape="rounded-pill"
             // className='p-2'
-            color={isAccept == 'accept' ? 'success' : isAccept == 'waiting' ? 'info' : 'danger'}
+            color={isAccept == 'تایید شده' ? 'success' : isAccept == 'در حال انتظار...' ? 'info' : 'danger'}
           >
             {isAccept}
           </CBadge>

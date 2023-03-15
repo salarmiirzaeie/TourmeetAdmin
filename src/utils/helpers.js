@@ -73,6 +73,20 @@ exports.persianDuration = date => {
       return 'یک روز';
   }
 };
+exports.persianStatus = date => {
+  switch (date) {
+    case 'closed':
+      return 'منقضی شده';
+
+    
+    case 'Recruiting':
+      return 'فعال';
+
+    
+    default:
+      return 'منقضی شده ';
+  }
+};
 exports.acceptOrNot = date => {
   switch (date) {
     case date.isAccept = 'accept':

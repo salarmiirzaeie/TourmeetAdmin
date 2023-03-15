@@ -35,6 +35,7 @@ import * as Yup from 'yup'
 import { addcard, deletecard, usercards } from 'src/services/adminService'
 
 const Cards = () => {
+  const [disabel,setdisable]=useState(true)
   function iso13616Prepare(iban) {
     iban = iban
     iban = iban.toUpperCase()
@@ -315,15 +316,53 @@ const Cards = () => {
           if (shaba.length === 0) {
             input.parent().removeClass('has-error')
             input.parent().removeClass('has-error')
+            setdisable(true)
+
             return
           }
           if (shaba.length !== 24 || iso7064Mod97_10(iso13616Prepare('IR' + shaba)) !== 1) {
             input.parent().addClass('has-error')
             input.focus()
             input.css('border-color', 'red')
+            setdisable(true)
+
+
           } else {
             input.css('border-color', 'lime')
             input.parent().removeClass('has-error')
+            setdisable(false)
+
+          }
+        }, 100)
+      })
+    $('.creditcart-input')
+      .on('paste', limit_number)
+      .on('blur', limit_number)
+      .on('keypress', limit_number)
+      .on('input', function () {
+        let input = $(this)
+        setTimeout(function () {
+          let shaba = input.val()
+          console.log(shaba)
+          if (shaba.length === 0) {
+            input.parent().removeClass('has-error')
+            input.parent().removeClass('has-error')
+            setdisable(true)
+
+            return
+          }
+          if (shaba.length !== 16 ) {
+            input.parent().addClass('has-error')
+            input.focus()
+            input.css('border-color', 'red')
+            setdisable(true)
+
+
+          } else {
+            input.css('border-color', 'lime')
+            input.parent().removeClass('has-error')
+            setdisable(false)
+
           }
         }, 100)
       })
@@ -350,18 +389,12 @@ const Cards = () => {
       }
     })
   }, [])
-  const validationSchema = Yup.object({
+  const validationSchema =()=> Yup.object({
 
     card: Yup.number().min(5).max(10).required(),
     shaba: Yup.number().min(5).max(10).required(),
   });
-  const initialValues = {
-    card: '',
-    shaba: ''
-  };
-  const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-  };
+  
   return (
     <CRow>
       <CCol xs>
@@ -398,6 +431,7 @@ const Cards = () => {
                   <CButton
                     // onClick={() => formik.handleSubmit}
                     type="submit"
+                    disabled={disabel}
                   // disabled={formik.isSubmitting}
                   >
                     ثبت

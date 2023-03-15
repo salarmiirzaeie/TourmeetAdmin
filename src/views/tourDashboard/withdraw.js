@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   CCard,
   CCardBody,
@@ -27,6 +27,7 @@ import swal from 'sweetalert'
 import { createTransactions, getincome, usercards } from 'src/services/adminService'
 
 const withdraw = () => {
+  const input=useRef()
   const [money, setmoney] = useState({})
   const [cards, setcards] = useState([])
   useEffect(() => {
@@ -55,6 +56,7 @@ const withdraw = () => {
     }),
     onSubmit: (values) => {
       // console.log("object");
+      values.card=input.current.value
       setTimeout(() => {
         createTransactions(values).then((res) => {
           swal('Good job!', res.data.message)
@@ -130,6 +132,7 @@ const withdraw = () => {
             <CForm onSubmit={formik.handleSubmit}>
               <CFormLabel>کارت</CFormLabel>
               <CFormSelect
+              ref={input}
                 name="card"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}

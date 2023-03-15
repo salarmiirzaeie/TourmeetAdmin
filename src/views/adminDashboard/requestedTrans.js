@@ -50,7 +50,7 @@ const requestedTrans = () => {
                     </CTableDataCell>
                      
                     <CTableDataCell>{!item.paired ? 'درحال بررسی' : 'پرداخت شده'}</CTableDataCell>
-                    <CTableDataCell>{item?.card}</CTableDataCell>
+                    <CTableDataCell>{item.card?.shaba},{item?.card?.card},{item?.card?.bankname}</CTableDataCell>
                     <CTableDataCell>
                         <CButton
                           className="btn btn-success"

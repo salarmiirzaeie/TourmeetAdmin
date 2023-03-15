@@ -30,7 +30,6 @@ const AppHeader = () => {
     userProfile().then((res) => {
       if (res.status === 200) {
         setProfile(res.data)
-        console.log(res.data)
       }
     })
   }, [])
@@ -44,17 +43,7 @@ const AppHeader = () => {
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
         <CHeaderNav className="d-none d-md-flex me-auto">
-          {/* <CNavItem>
-            <CNavbarText component={NavLink}>
-              موجودی کل
-            </CNavbarText>
-            <CNavbarText>{profile.money}</CNavbarText>
-
-          </CNavItem>
-          <CNavItem className='mx-5'>
-            <CNavbarText>موجودی بلوکه شده</CNavbarText>
-            <CNavbarText>{profile.money}</CNavbarText>
-          </CNavItem> */}
+          
 
         </CHeaderNav>
         <CHeaderNav className="ms-3">

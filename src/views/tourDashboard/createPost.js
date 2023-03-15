@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef } from 'react'
+import React, { useEffect, useState, createRef, useRef } from 'react'
 import {
   CRow,
   CCard,
@@ -14,6 +14,7 @@ import {
   CForm,
   CListGroup,
 } from '@coreui/react'
+import { Editor } from '@tinymce/tinymce-react'
 
 import { Field, Formik, useFormik } from 'formik'
 import { createPost } from 'src/services/postService'
@@ -21,14 +22,20 @@ import swal from 'sweetalert'
 import persian from 'react-date-object/calendars/persian'
 import persian_fa from 'react-date-object/locales/persian_fa'
 import DatePicker, { DateObject } from 'react-multi-date-picker'
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
 const createpost = () => {
+  const editorRef = useRef(null)
+  const log = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent())
+    }
+  }
   const [btnReset, setBtnReset] = useState(false)
   const [file, setfile] = useState([])
-  const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
-  const [value, setValue] = useState();
+  const weekDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
+  const [value, setValue] = useState()
   const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
@@ -39,7 +46,7 @@ const createpost = () => {
       date: Date.now(),
       durationTime: 1,
       type: 'forest',
-      thumbnail: file.name
+      thumbnail: file.name,
     },
 
     validationSchema: Yup.object({
@@ -48,7 +55,7 @@ const createpost = () => {
         .min(5, 'تعداد کاراکتر های وارد شده کمتر از حد مجاز است !')
         .required('لطفا عنوان تور را وارد کنید !'),
       body: Yup.string()
-        .max(500, 'تعداد کاراکتر های وارد شده بیشتر از حد مجاز است !')
+        .max(5000, 'تعداد کاراکتر های وارد شده بیشتر از حد مجاز است !')
         .min(10, 'تعداد کاراکتر های وارد شده کمتر از حد مجاز است !')
         .required('لطفا توضیحات را وارد کنید  !'),
       capacity: Yup.number()
@@ -57,8 +64,7 @@ const createpost = () => {
       price: Yup.number()
         .max(10000000, 'قیمت بیشتر از حد مجاز است !')
         .required('لطفا قیمت را وارد کنید !'),
-      date: Yup.number()
-        .required('لطفا تاریخ تور را انتخاب کنید !'),
+      date: Yup.number().required('لطفا تاریخ تور را انتخاب کنید !'),
       // durationTime: Yup.string()
       //   .required('لطفا بازه تور را انتخاب کنید !'),
       type: Yup.string()
@@ -69,7 +75,7 @@ const createpost = () => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
       values.date = value?.toDate()
-      console.log(values);
+      console.log(values)
       createPost(values).then((res) => {
         setTimeout(() => {
           if (res.status == 200) {
@@ -79,10 +85,9 @@ const createpost = () => {
               title: 'تور شما با موفقیت ایجاد شد',
               // text: 'تور شما با موفقیت ایجاد شد'
             })
-            console.log(res.data.post);
+            console.log(res.data.post)
             formik.resetForm()
             navigate(`/dashboard/postPage/${res.data.post._id}`)
-
           } else {
             swal('خطا', res.data.message, 'error')
           }
@@ -121,6 +126,43 @@ const createpost = () => {
               {formik.touched.body && formik.errors.body ? (
                 <div style={{ color: 'red', margin: 10 }}>{formik.errors.body}</div>
               ) : null}
+              {/* <Editor
+                apiKey="your-api-key"
+                onInit={(evt, editor) => (editorRef.current = editor)}
+                initialValue="<p>This is the initial content of the editor.</p>"
+                init={{
+                  height: 500,
+                  menubar: false,
+                  plugins: [
+                    'advlist',
+                    'autolink',
+                    'lists',
+                    'link',
+                    'image',
+                    'charmap',
+                    'preview',
+                    'anchor',
+                    'searchreplace',
+                    'visualblocks',
+                    'code',
+                    'fullscreen',
+                    'insertdatetime',
+                    'media',
+                    'table',
+                    'code',
+                    'help',
+                    'wordcount',
+                  ],
+                  toolbar:
+                    'undo redo | blocks | ' +
+                    'bold italic forecolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help',
+                  content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                }}
+              />
+              <button onClick={log}>Log editor content</button> */}
+
               <CFormLabel style={{ paddingTop: 15 }}>ظرفیت</CFormLabel>
               <CFormInput
                 type="number"
