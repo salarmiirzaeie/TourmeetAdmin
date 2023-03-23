@@ -14,7 +14,7 @@ import {
   CForm,
   CListGroup,
 } from '@coreui/react'
-import { Editor } from '@tinymce/tinymce-react'
+// import { Editor } from '@tinymce/tinymce-react'
 
 import { Field, Formik, useFormik } from 'formik'
 import { createPost } from 'src/services/postService'

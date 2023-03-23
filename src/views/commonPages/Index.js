@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-// import '../../assets/vendor/bootstrap/css/bootstrap.min.css'
-// import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css'
+import '../../assets/vendor/bootstrap/css/bootstrap.min.css'
+import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css'
 import 'aos/dist/aos.css'
 import Aos from 'aos'
 import { useNavigate } from 'react-router-dom'
@@ -43,50 +43,41 @@ const Index = () => {
       </Helmet> */}
       <div>
         {/* <!-- ======= Header ======= --> */}
-        <div
-          id="header"
-          className={`fixed-top d-flex flex-start justify-content-center align-items-center ${
-            visible ? null : 'header-transparent'
-          } `}
-        >
+        <div id="header" className={`fixed-top d-flex flex-start justify-content-center align-items-center ${visible ? null : 'header-transparent'} `}>
           <div className="container d-flex  align-items-center">
             <div>
-              <button
-                onClick={() => {
-                  navigate('/dashboard')
-                }}
-                className="btn-get-started scrollto"
-              >
-                {token ? 'حساب کاربری' : 'ورودثبت نام'}
-              </button>
+              <button className="btn-get-started scrollto">ورود و ثبت نام</button>
             </div>
 
-            <nav id="navbar" className={`navbar ${topnav ? 'navbar-mobile' : ''}`}>
+            <section class="top-nav" >
+              <input id="menu-toggle" type="checkbox" />
+              <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+              </label>
+              <ul class="menu">
+
+                <li><a className="nav-link scrollto active" href="#hero">صفحه اصلی</a></li>
+                <li><a className="nav-link scrollto" href="#about">درباره ما</a></li>
+                <li><a className="nav-link scrollto" href="#contact">ارتباط با ما</a></li>
+                <li><a className="nav-link scrollto" href="#features">دانلود اپلیکیشن</a></li>
+                <li className='d-xl-none'><a className="nav-link scrollto " href="#features">ورود و ثبت نام</a></li>
+
+              </ul>
+            </section>
+
+            {/* 
+            <nav id="navbar" className='navbar top-nav'>
+
+
               <ul>
-                <li>
-                  <a className="nav-link scrollto active" href="#hero">
-                    صفحه اصلی
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link scrollto" href="#about">
-                    درباره ما
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link scrollto" href="#contact">
-                    ارتباط با ما
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link scrollto" href="#features">
-                    دانلود اپلیکیشن
-                  </a>
-                </li>
-                {/* <li><a className="nav-link scrollto" href="#pricing">Pricing</a></li>
+                <li><a className="nav-link scrollto active" href="#hero">صفحه اصلی</a></li>
+                <li><a className="nav-link scrollto" href="#about">درباره ما</a></li>
+                <li><a className="nav-link scrollto" href="#contact">ارتباط با ما</a></li>
+                <li><a className="nav-link scrollto" href="#features">دانلود اپلیکیشن</a></li>
+                <li><a className="nav-link scrollto" href="#pricing">Pricing</a></li>
                 <li><a className="nav-link scrollto" href="#team">Team</a></li>
-                <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li> */}
-                {/* <li className="dropdown"><a href="/"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
+                <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li>
+                <li className="dropdown"><a href="/"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
                   <ul>
                     <li><a href="/">Drop Down 1</a></li>
                     <li className="dropdown"><a href="/"><span>Deep Drop Down</span> <i className="bi bi-chevron-right"></i></a>
@@ -102,26 +93,23 @@ const Index = () => {
                     <li><a href="/">Drop Down 3</a></li>
                     <li><a href="/">Drop Down 4</a></li>
                   </ul>
-                </li> */}
+                </li>
               </ul>
-              <i
-                className={`bi mobile-nav-toggle ${topnav ? 'bi-x' : 'bi-list'}`}
+              <i className={`bi mobile-nav-toggle ${topnav ? 'bi-x' : 'bi-list'}`}
                 onClick={() => {
                   if (topnav) {
                     setTopnav(false)
-                  } else {
-                    setTopnav(true)
-                  }
-                }}
-              ></i>
-            </nav>
+                  } else { setTopnav(true) }
+                }}></i>
+            </nav> */}
             {/* <!-- .navbar --> */}
             <div id="logo">
-              <h1 className="DastNevis-font">تورمیت</h1>
-              {/* <a href="index.html"><img src={require("../../assets/img/logo.png")} alt="" /></a> */}
+              <h1 className='DastNevis-font'>تورمیت</h1>
+              {/* <a href="index.html"><img src={require("./assets/img/logo.png")} alt="" /></a> */}
             </div>
           </div>
         </div>
+
         {/* <!-- End Header -->
                <!-- ======= Hero Section ======= --> */}
         <div id="hero">
@@ -137,14 +125,14 @@ const Index = () => {
 
           <div className="product-screens">
             <div className="product-screen-1" data-aos="fade-up" data-aos-delay="400">
-              <img src={require('../../assets/img/product-screen-1.jpg')} alt="" />
+              <img src={require('../../assets/img/product-screen-1.jpg')} alt="" style={{ borderRadius: 8 }} />
             </div>
             <div className="product-screen-2" data-aos="fade-up" data-aos-delay="200">
-              <img src={require('../../assets/img/product-screen-2.jpg')} alt="" />
+              <img src={require('../../assets/img/product-screen-2.jpg')} alt="" style={{ borderRadius: 8 }} />
             </div>
 
             <div className="product-screen-3" data-aos="fade-up">
-              <img src={require('../../assets/img/product-screen-3.jpg')} alt="" />
+              <img src={require('../../assets/img/product-screen-3.jpg')} alt="" style={{ borderRadius: 8 }} />
             </div>
           </div>
         </div>
@@ -743,7 +731,7 @@ const Index = () => {
             Licensing information: https://bootstrapmade.com/license/
             Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Avilon
           --> */}
-                <a href="/">🧡</a> طراحی شده با
+                <a href="/"></a> طراحی شده با   🧡
               </div>
             </div>
             {/* <div className="col-lg-6">
