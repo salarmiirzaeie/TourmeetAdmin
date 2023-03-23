@@ -35,12 +35,12 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
   const dispatch = useDispatch()
   return (
     <CDropdown variant="nav-item">
-      {/* {console.log()} */}
+      {console.log(profilePhoto)}
 
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
-        {profilePhoto === 0 ? (
+        {profilePhoto === undefined ? (
           <CAvatar
-            src={`http://localhost:3333/uploads/defaultProfile.jpg`}
+            src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
             size="md"
           />
         ) : (
@@ -50,7 +50,7 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
           />
         )}
       </CDropdownToggle>
-      <CDropdownMenu className="pt-0" placement="bottom-end">
+      <CDropdownMenu className="pt-0" placement="bottom-end" >
         <CDropdownHeader className="bg-light fw-semibold py-2">پروفایل</CDropdownHeader>
 
         <CDropdownItem href="/#/dashboard/permissionsPage" className="p-3">

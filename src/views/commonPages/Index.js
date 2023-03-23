@@ -46,7 +46,13 @@ const Index = () => {
         <div id="header" className={`fixed-top d-flex flex-start justify-content-center align-items-center ${visible ? null : 'header-transparent'} `}>
           <div className="container d-flex  align-items-center">
             <div>
-              <button className="btn-get-started scrollto">ورود و ثبت نام</button>
+              <button onClick={() => {
+                navigate('/dashboard')
+              }}
+                className="btn-get-started scrollto"
+              >
+                {token ? 'حساب کاربری' : 'ورود و ثبت نام'}
+              </button>
             </div>
 
             <section class="top-nav" >
@@ -56,11 +62,11 @@ const Index = () => {
               </label>
               <ul class="menu">
 
-                <li><a className="nav-link scrollto active" href="#hero">صفحه اصلی</a></li>
-                <li><a className="nav-link scrollto" href="#about">درباره ما</a></li>
-                <li><a className="nav-link scrollto" href="#contact">ارتباط با ما</a></li>
-                <li><a className="nav-link scrollto" href="#features">دانلود اپلیکیشن</a></li>
-                <li className='d-xl-none'><a className="nav-link scrollto " href="#features">ورود و ثبت نام</a></li>
+                <li><a className="nav-link scrollto active" href="/">صفحه اصلی</a></li>
+                <li><a className="nav-link scrollto" href="/">درباره ما</a></li>
+                <li><a className="nav-link scrollto" href="/">ارتباط با ما</a></li>
+                <li><a className="nav-link scrollto" href="/">دانلود اپلیکیشن</a></li>
+                <li className='d-md-none'><a className="nav-link scrollto " href="/">ورود و ثبت نام</a></li>
 
               </ul>
             </section>

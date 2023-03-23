@@ -409,8 +409,7 @@ body {
       display: none;
     }
   }
-  
-  .navbar-mobile {
+    .navbar-mobile {
     position: fixed;
     overflow: hidden;
     top: 0;
@@ -1517,7 +1516,11 @@ body {
   margin: 0 1rem;
   overflow: hidden;
 }
-
+@media (max-width: 990px) {
+  .menu > li {
+    font-size: small;
+  }
+}
 .menu-button-container {
   display: none;
   height: 100%;

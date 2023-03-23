@@ -8,6 +8,7 @@ import {
   cilDoor,
   cilDrop,
   cilHotTub,
+  cilList,
   cilNotes,
   cilPencil,
   cilPlus,
@@ -45,6 +46,12 @@ const adminSideNav = [
     name: 'تراکنش های درانتظار',
     to: '/adminDashboard/requestedTrans',
     icon: <CIcon icon={cilHotTub} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'کنترل ورژن',
+    to: '/adminDashboard/versionControl',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
   },
   // {
   //   component: CNavTitle,
