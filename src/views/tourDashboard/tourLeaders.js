@@ -176,6 +176,7 @@ const tourLeaders = () => {
                                 deleteleader({ id: leader._id }).then((res) => {
                                   if (res.status === 200) {
                                     setstatus2(Math.random(0))
+                                    window.location.reload()
                                   }
                                   swal(res.data.message)
                                 })
