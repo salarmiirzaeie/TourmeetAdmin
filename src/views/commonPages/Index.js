@@ -63,10 +63,14 @@ const Index = () => {
               <ul class="menu">
 
                 <li><a className="nav-link scrollto active" href="/">صفحه اصلی</a></li>
-                <li><a className="nav-link scrollto" href="/">درباره ما</a></li>
+                {/* <li><a className="nav-link scrollto" href="/">درباره ما</a></li> */}
                 <li><a className="nav-link scrollto" href="/">ارتباط با ما</a></li>
                 <li><a className="nav-link scrollto" href="/">دانلود اپلیکیشن</a></li>
-                <li className='d-md-none'><a className="nav-link scrollto " href="/">ورود و ثبت نام</a></li>
+                <li className='d-md-none'>
+                  <a className="nav-link scrollto "
+                    onClick={() => { navigate('/dashboard') }}>
+                    {token ? 'حساب کاربری' : 'ورود و ثبت نام'}
+                  </a></li>
 
               </ul>
             </section>

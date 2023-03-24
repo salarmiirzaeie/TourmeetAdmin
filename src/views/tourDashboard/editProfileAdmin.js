@@ -77,7 +77,7 @@ const editProfileAdmin = () => {
     //     .required('لطفا نوع تور را انتخاب کنید !'),
     // }),
     onSubmit: (values, { setSubmitting }) => {
-      values.email =  values.email.toLowerCase()
+      values.email = values.email.toLowerCase()
 
       editProfile(values).then((res) => {
         setTimeout(() => {
@@ -109,7 +109,7 @@ const editProfileAdmin = () => {
                     <CCardImage
                       className="  w-50"
                       orientation="top"
-                      src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+                      src={`https://api.tourmeet.ir/uploads/defaultProfile1.jpg`}
                     />
                   </CCol>
                 ) : (
@@ -118,7 +118,7 @@ const editProfileAdmin = () => {
                     <CCol key={i} xs={6} md={4} xl={3}>
                       <CCardImage
                         orientation="top"
-                        src={`http://localhost:3333/uploads/profilePhotos/${item.name}`}
+                        src={`https://api.tourmeet.ir/uploads/profilePhotos/${item.name}`}
                       />
                       <CButton
                         onClick={() => {
@@ -149,7 +149,7 @@ const editProfileAdmin = () => {
                     setTimeout(async () => {
                       await uploadprofilephoto(files).then(async (res) => {
                         if (res.status === 200) {
-                         window.location.reload()
+                          window.location.reload()
                         } else {
                           swal('ops!', res.data.message, 'failure')
                         }

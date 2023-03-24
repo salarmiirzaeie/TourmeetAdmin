@@ -40,12 +40,12 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         {profilePhoto === undefined ? (
           <CAvatar
-            src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+            src={`https://api.tourmeet.ir/uploads/defaultProfile1.jpg`}
             size="md"
           />
         ) : (
           <CAvatar
-            src={`http://localhost:3333/uploads/profilePhotos/${profilePhoto?.name}`}
+            src={`https://api.tourmeet.ir/uploads/profilePhotos/${profilePhoto?.name}`}
             size="md"
           />
         )}
@@ -53,7 +53,7 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
       <CDropdownMenu className="pt-0" placement="bottom-end" >
         <CDropdownHeader className="bg-light fw-semibold py-2">پروفایل</CDropdownHeader>
 
-        <CDropdownItem href="/#/dashboard/permissionsPage" className="p-3">
+        <CDropdownItem href="/#/dashboard/permissionsPage" className="p-3" >
           <CIcon icon={cilCreditCard} className="me-2" />
           {'مجوزها'}
           <CBadge
@@ -65,7 +65,7 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
           </CBadge>
         </CDropdownItem>
         <CDropdownHeader className="bg-light fw-semibold py-2">تنظیمات</CDropdownHeader>
-        <CDropdownItem href="/#/dashboard/profileAdmin">
+        <CDropdownItem href="/#/dashboard/profileAdmin" >
           <CIcon icon={cilUser} className="me-2" />
           پروفایل
         </CDropdownItem>

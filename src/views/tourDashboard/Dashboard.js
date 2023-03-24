@@ -48,7 +48,7 @@ const Dashboard = () => {
         <CCardHeader>دسترسی سریع</CCardHeader>
         <CCardBody>
           <CRow>
-            <CCol lg={4} md={4} onClick={() => navigate('/dashboard/createPost')} >
+            <CCol className='mb-3' lg={4} md={4} onClick={() => navigate('/dashboard/createPost')} >
               <CButton
                 style={{ justifyContent: "center" }}
                 color="primary"
@@ -63,7 +63,7 @@ const Dashboard = () => {
               </CButton>
             </CCol>
 
-            <CCol onClick={() => navigate('/dashboard/myTours')} xs>
+            <CCol className='mb-3' lg={4} md={4} onClick={() => navigate('/dashboard/myTours')} >
               <CButton
                 color="light"
                 // xs={{ cols: 1 }}
@@ -77,7 +77,7 @@ const Dashboard = () => {
               </CButton>
             </CCol>
 
-            <CCol onClick={() => navigate('/dashboard/withdraw')} xs>
+            <CCol className='mb-3' lg={4} md={4} onClick={() => navigate('/dashboard/withdraw')} >
               <CButton
                 color="info"
                 // xs={{ cols: 1 }}
@@ -96,7 +96,7 @@ const Dashboard = () => {
       <CCard className="mb-4">
         <CCardHeader>اعلانات</CCardHeader>
         <CCardBody>
-          {permissionLength.permissionlenth === 0 ? (
+          {permissionLength.permissionlenth === 2 ? (
             <CAlert color="primary">
               <CAlertHeading component="h4">ثبت مجوز ها</CAlertHeading>
               <hr />

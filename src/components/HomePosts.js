@@ -23,7 +23,7 @@ export const HomePosts = (res) => {
           <CCard onClick={() => navigate(`${res.adress}${post._id}`)}>
             <CCardImage
               orientation="top"
-              src={`http://localhost:3333/uploads/thumbnails/${post.thumbnail[0]}`}
+              src={`https://api.tourmeet.ir/uploads/thumbnails/${post.thumbnail[0]}`}
             />
             <CCardBody>
               <CCardTitle>{post.title}</CCardTitle>
@@ -37,7 +37,7 @@ export const HomePosts = (res) => {
               <CListGroupItem>{truncate(post.body, 15)}</CListGroupItem>
             </CListGroup>
             <CCardFooter>
-              <small className="text-medium-emphasis">{formDate(post.createdAt) }</small>
+              <small className="text-medium-emphasis">{formDate(post.createdAt)}</small>
             </CCardFooter>
           </CCard>
         </CCol>

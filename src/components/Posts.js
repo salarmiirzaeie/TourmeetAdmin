@@ -26,7 +26,7 @@ export const Posts = (res) => {
             <CCard onClick={() => navigate(`${res.adress}${post._id}`)}>
               <CCardImage
                 orientation="top"
-                src={`http://localhost:3333/uploads/thumbnails/${post.thumbnail[0]}`}
+                src={`https://api.tourmeet.ir/uploads/thumbnails/${post.thumbnail[0]}`}
               />
               <CCardBody>
                 <CCardTitle>{post.title}</CCardTitle>
@@ -44,7 +44,7 @@ export const Posts = (res) => {
                 <CListGroupItem>
                   <small>وضعیت : </small>
                   <CBadge color={post.status === 'Recruiting' ? 'primary' : 'danger'}>
-                    {persianStatus(post.status) }
+                    {persianStatus(post.status)}
                   </CBadge>
                 </CListGroupItem>
               </CListGroup>

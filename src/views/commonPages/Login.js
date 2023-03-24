@@ -39,7 +39,7 @@ const Login = () => {
     }),
 
     onSubmit: (values, { setSubmitting }) => {
-      values.email= values.email.toLowerCase()
+      values.email = values.email.toLowerCase()
       login(values).then((res) => {
         console.log(res)
         setTimeout(() => {
@@ -63,9 +63,9 @@ const Login = () => {
   })
 
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <div className="bg-light min-vh-100 d-flex flex-row align-items-center ">
       <CContainer>
-        <CRow className="justify-content-center rounded">
+        <CRow className="justify-content-center rounded mx-1">
           <CCol md={9}>
             <CRow>
               <CCol className="bg-white" xs={12} sm={6} lg={6}>
@@ -147,8 +147,8 @@ const Login = () => {
                     <h2>ثبت نام</h2>
                     <br />
                     <p>
-                      کاربر عزیز، با ثبت نام به عنوان تور لیدر، میتوانید تور های خود را با میلیون ها
-                      کاربر به اشتراک بگذارید.
+                      کاربر عزیز، با ثبت نام به عنوان تور گردان، میتوانید تور های خود را با میلیون ها
+                      گردشگر به اشتراک بگذارید.
                     </p>
                     <br />
                     <br />

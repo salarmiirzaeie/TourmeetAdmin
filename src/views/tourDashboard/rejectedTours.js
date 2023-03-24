@@ -13,7 +13,7 @@ import { myPosts } from 'src/services/postService'
 import { useSelector } from 'react-redux'
 import { Posts } from 'src/components/Posts'
 
-const rejectedTours= () => {
+const rejectedTours = () => {
   const userId = useSelector((state) => state.profileState.userId)
   const [posts, setposts] = useState([])
   useEffect(() => {
@@ -28,10 +28,13 @@ const rejectedTours= () => {
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>تورهای شما</CCardHeader>
+            <CCardHeader>تورهای رد شده</CCardHeader>
             <CCardBody>
-              <Posts adress={'/dashboard/postPage/'} posts={posts} />
-             
+              {posts.length === 0 ? (
+                <h3 className='m-3'>هیچ تور رد شده ای نداری دوست من !</h3>
+              ) : (
+                <Posts adress={'/dashboard/postPage/'} posts={posts} />
+              )}
             </CCardBody>
           </CCard>
         </CCol>

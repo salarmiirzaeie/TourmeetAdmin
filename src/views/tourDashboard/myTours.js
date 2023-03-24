@@ -30,15 +30,12 @@ const myTours = () => {
           <CCard className="mb-4">
             <CCardHeader>تورهای شما</CCardHeader>
             <CCardBody>
-              <Posts adress={'/dashboard/postPage/'} posts={posts} />
-              {/* <br />
-              <CPagination className="justify-content-center" aria-label="Page navigation example">
-                <CPaginationItem disabled>Previous</CPaginationItem>
-                <CPaginationItem>1</CPaginationItem>
-                <CPaginationItem>2</CPaginationItem>
-                <CPaginationItem>3</CPaginationItem>
-                <CPaginationItem>Next</CPaginationItem>
-              </CPagination> */}
+              {posts.length === 0 ? (
+                <h3 className='m-3'>هیچ تور ثبت شده ای نداری دوست من !</h3>
+              ) : (
+                <Posts adress={'/dashboard/postPage/'} posts={posts} />
+              )}
+
             </CCardBody>
           </CCard>
         </CCol>

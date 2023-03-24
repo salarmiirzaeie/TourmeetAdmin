@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiPort = 'http://localhost:3333/users'
+const apiPort = 'https://api.tourmeet.ir/users'
 const gettoken = async () => {
   let token = await localStorage.getItem('token');
   return token;
@@ -43,7 +43,7 @@ export const changePassword = async data => {
     });
   return res;
 };
-export const resetPassword =async (data) => {
+export const resetPassword = async (data) => {
   const res = axios
     .post(`${apiPort}/reset-password/${await gettoken()}`, data, {
       headers: {
@@ -74,7 +74,7 @@ export const acceptTour = async (data) => {
     })
   return res
 }
-export const editProfile = async(data) => {
+export const editProfile = async (data) => {
   const res = axios
     .post(`${apiPort}/edit-profile`, data, {
       headers: {
