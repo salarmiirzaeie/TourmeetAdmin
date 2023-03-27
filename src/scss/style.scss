@@ -196,6 +196,12 @@ body {
     }
   }
   
+  @media (max-width: 768px) {
+    #header .homlog{
+      display: none;
+    }
+  }
+  
   #header .DastNevis-font{
     flex-grow: 2
     

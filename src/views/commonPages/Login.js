@@ -67,7 +67,27 @@ const Login = () => {
       <CContainer>
         <CRow className="justify-content-center rounded mx-1">
           <CCol md={9}>
-            <CRow>
+            <CRow className='d-flex flex-row-reverse'>
+              
+              <CCol className="bg-primary" xs={12} sm={6} lg={6}>
+                <CCardBody className="text-center text-white py-4">
+                  <div>
+                    <h2>ثبت نام</h2>
+                    <br />
+                    <p>
+                      کاربر عزیز، با ثبت نام به عنوان تور گردان، میتوانید تور های خود را با میلیون ها
+                      گردشگر به اشتراک بگذارید.
+                    </p>
+                    <br />
+                    <br />
+                    <Link to="/register">
+                      <CButton color="primary" className="mt-3" active tabIndex={-1}>
+                        ثبت نام کن !
+                      </CButton>
+                    </Link>
+                  </div>
+                </CCardBody>
+              </CCol>
               <CCol className="bg-white" xs={12} sm={6} lg={6}>
                 <CCardBody>
                   {/* validate={(formik.values) => {
@@ -139,25 +159,6 @@ const Login = () => {
                       </CCol>
                     </CRow>
                   </CForm>
-                </CCardBody>
-              </CCol>
-              <CCol className="bg-primary" xs={12} sm={6} lg={6}>
-                <CCardBody className="text-center text-white py-4">
-                  <div>
-                    <h2>ثبت نام</h2>
-                    <br />
-                    <p>
-                      کاربر عزیز، با ثبت نام به عنوان تور گردان، میتوانید تور های خود را با میلیون ها
-                      گردشگر به اشتراک بگذارید.
-                    </p>
-                    <br />
-                    <br />
-                    <Link to="/register">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>
-                        ثبت نام کن !
-                      </CButton>
-                    </Link>
-                  </div>
                 </CCardBody>
               </CCol>
             </CRow>

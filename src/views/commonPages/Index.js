@@ -113,7 +113,7 @@ const Index = () => {
                 }}></i>
             </nav> */}
             {/* <!-- .navbar --> */}
-            <div id="logo">
+            <div id="logo" className='homlog'>
               <h1 className='DastNevis-font'>تورمیت</h1>
               {/* <a href="index.html"><img src={require("./assets/img/logo.png")} alt="" /></a> */}
             </div>
