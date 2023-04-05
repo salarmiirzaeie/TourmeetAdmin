@@ -15,8 +15,8 @@ const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 const Login = React.lazy(() => import('./views/commonPages/Login'))
 const Index = React.lazy(() => import('./views/commonPages/Index'))
 const Register = React.lazy(() => import('./views/commonPages/Register'))
-const Page404 = React.lazy(() => import('./views/commonPages/Page404'))
-const Page500 = React.lazy(() => import('./views/commonPages/Page500'))
+const Peyment = React.lazy(() => import('./views/commonPages/Peyment'))
+const CallbackPage = React.lazy(() => import('./views/commonPages/CallbackPage'))
 const ForgetPassword = React.lazy(() => import('./views/commonPages/ForgetPassword'))
 const EnterNumb = React.lazy(() => import('./views/commonPages/EnterNumb'))
 const Changepass = React.lazy(() => import('./views/commonPages/Changepass'))
@@ -32,8 +32,8 @@ const App = () => {
           <Route exact path="/login" name="Login Page" element={<Login />} />
           <Route exact path="/" name="Index" element={<Index />} />
           <Route exact path="/register" name="Register Page" element={<Register />} />
-          <Route exact path="/404" name="Page 404" element={<Page404 />} />
-          <Route exact path="/500" name="Page 500" element={<Page500 />} />
+          <Route exact path="/peyment" name="Page 404" element={<Peyment />} />
+          <Route exact path="/500" name="Page 500" element={<CallbackPage />} />
           <Route exact path="/forgetpassword" name="forgetpassword" element={<ForgetPassword />} />
           <Route exact path="/EnterNumb/:id" name="EnterNumb" element={<EnterNumb />} />
           <Route exact path="/changepass/:token" name="Changepass" element={<Changepass />} />

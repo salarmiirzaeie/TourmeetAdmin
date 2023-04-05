@@ -1,7 +1,6 @@
 {
   "name": "TourmeetAdmin",
   "version": "1.0.0",
- 
   "scripts": {
     "build": "react-scripts build",
     "changelog": "auto-changelog --starting-version 4.1.0 --commit-limit false --hide-credit",
@@ -41,6 +40,7 @@
     "react-router-dom": "^6.3.0",
     "redux": "4.2.0",
     "redux-persist": "^6.0.0",
+    "request-promise": "^4.2.6",
     "simplebar-react": "^2.3.7",
     "sweetalert": "^2.1.2",
     "yup": "^0.32.11"

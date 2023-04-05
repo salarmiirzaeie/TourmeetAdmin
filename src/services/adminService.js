@@ -19,6 +19,18 @@ export const createTransactions = async (data) => {
     })
   return res
 }
+export const paymony = async data => {
+  console.log(data)
+  const res = axios
+    .post(`https://api.zarinpal.com/pg/v4/payment/request.json`, data)
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
 export const getRequestedPosts = async () => {
   const res = axios
     .get(`${apiPort}/requestedPosts`, {
