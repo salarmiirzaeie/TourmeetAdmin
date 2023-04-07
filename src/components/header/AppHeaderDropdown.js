@@ -40,12 +40,12 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         {profilePhoto === undefined ? (
           <CAvatar
-            src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+            src={`https://api.tourmeet.ir/uploads/defaultProfile1.jpg`}
             size="md"
           />
         ) : (
           <CAvatar
-            src={`http://localhost:3333/uploads/profilePhotos/${profilePhoto?.name}`}
+            src={`https://api.tourmeet.ir/uploads/profilePhotos/${profilePhoto?.name}`}
             size="md"
           />
         )}

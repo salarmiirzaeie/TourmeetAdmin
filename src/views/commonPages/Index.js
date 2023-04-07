@@ -55,12 +55,12 @@ const Index = () => {
               </button>
             </div>
 
-            <section class="top-nav" >
+            <section className="top-nav" >
               <input id="menu-toggle" type="checkbox" />
-              <label class='menu-button-container' for="menu-toggle">
-                <div class='menu-button'></div>
+              <label className='menu-button-container' htmlFor="menu-toggle">
+                <div className='menu-button'></div>
               </label>
-              <ul class="menu">
+              <ul className="menu">
 
                 <li><a className="nav-link scrollto active" href="/">صفحه اصلی</a></li>
                 {/* <li><a className="nav-link scrollto" href="/">درباره ما</a></li> */}
@@ -504,7 +504,7 @@ const Index = () => {
             <div className="faq-question">
               <input id="q1" type="checkbox" className="panel" />
               <div className="plus">+</div>
-              <label for="q1" className="panel-title mx-4">
+              <label htmlFor="q1" className="panel-title mx-4">
                 آیا میتوان از سایت برای مشاهده تور های گردشگری استفاده کرد ؟
               </label>
               <p className="panel-content">
@@ -517,7 +517,7 @@ const Index = () => {
             <div className="faq-question">
               <input id="q2" type="checkbox" className="panel" />
               <div className="plus">+</div>
-              <label for="q2" className="panel-title mx-4">
+              <label htmlFor="q2" className="panel-title mx-4">
                 چطور اپلیکیشن تورمیت را نصب کنیم؟
               </label>
               <p className="panel-content">
@@ -529,7 +529,7 @@ const Index = () => {
             <div className="faq-question">
               <input id="q3" type="checkbox" className="panel" />
               <div className="plus">+</div>
-              <label for="q3" className="panel-title mx-4">
+              <label htmlFor="q3" className="panel-title mx-4">
                 اگر برگزار کننده یا صاحب تور هستیم چگونه تور های خود را ثبت کنیم ؟
               </label>
               <p className="panel-content">
@@ -728,11 +728,13 @@ const Index = () => {
       </main>
       {/* <!-- End #main --> */}
 
+      <a referrerPolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=333225&amp;Code=nD9Cc3gyS6U7flz1s3ez"><img referrerPolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=333225&amp;Code=nD9Cc3gyS6U7flz1s3ez" alt="" style={{ 'cursor': 'pointer' }} id="nD9Cc3gyS6U7flz1s3ez" /></a>
       {/* <!-- ======= Footer ======= --> */}
       <footer id="footer">
         <div className="container">
           <div className="row">
             <div className="col-lg- text-lg-center">
+
               <div>کلیه حقوق این سایت محفوظ است.</div>
               <div className="credits">
                 {/* <!--
