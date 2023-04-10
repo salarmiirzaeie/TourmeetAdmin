@@ -818,6 +818,7 @@ body {
     background: #fff;
     padding: 60px 0 0 0;
     overflow: hidden;
+    direction: ltr;
   }
   
   #features .features-img {
@@ -1366,9 +1367,10 @@ body {
   --------------------------------*/
   #contact {
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
-    padding: 60px 0;
+    padding: 40px 0;
     overflow: hidden;
     direction: rtl;
+    background-color: #cbfffe;
   }
   
   #contact .contact-about h3 {
@@ -1427,8 +1429,24 @@ body {
   #contact .info i {
     font-size: 32px;
     color: #1dc8cd;
-    float: left;
+    float: right;
     line-height: 0;
+  }
+  #contactt {
+    padding: 10px 0;
+    overflow: hidden;
+    direction: rtl;
+  }
+  #contactt .info i {
+    font-size: 32px;
+    color: #1dc8cd;
+    float: right;
+    line-height: 0;
+  }
+  #contactt .info p {
+    padding: 0 0 10px 42px;
+    line-height: 28px;
+    font-size: 14px;
   }
   
   #contact .info p {
@@ -1462,7 +1480,7 @@ body {
   # Footer
   --------------------------------------------------------------*/
   #footer {
-    background: #fff;
+    background-color: #cbfffe;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
     padding: 30px 0;
     color: #333;
@@ -1620,4 +1638,16 @@ body {
 .d-md-none{
   cursor: pointer;
 
+}
+.sendBtn{
+  background: linear-gradient(45deg, #1de099, #1dc8cd);
+    border: 0;
+    border-radius: 20px;
+    padding: 8px 30px;
+    color: #fff;
+}
+.marketImg img{
+    padding: 2px;
+    border: 2px solid #d9e2e7;
+    border-radius: 4px;
 }
