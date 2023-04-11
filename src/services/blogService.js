@@ -37,6 +37,17 @@ export const paymony = async data => {
     });
   return res;
 };
+export const verify = async data => {
+  const res = axios
+    .post(`${apiPort}/varify`, data)
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
 export const getcities = data => {
   const res = axios
     .get(`${apiPort}cities/${data}`)

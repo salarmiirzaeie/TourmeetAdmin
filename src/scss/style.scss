@@ -1652,7 +1652,7 @@ body {
     border-radius: 4px;
 }
 .transactionStatus{
-  height: 200px;
+  height: auto;
   padding: 20px;
   margin-top: 80px;
   margin-left: 20px;
@@ -1663,6 +1663,7 @@ body {
   box-shadow:  -24px -24px 47px #c5c5c5,
                24px 24px 47px #fbfbfb;
 }
-.status{
-  background-color: #1de099;
+.transactionIcon{
+font-size: 30px;
+color: #08da47;
 }
