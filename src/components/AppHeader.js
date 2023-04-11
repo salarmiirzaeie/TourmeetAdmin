@@ -43,7 +43,7 @@ const AppHeader = () => {
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
         <CHeaderNav className="d-none d-md-flex me-auto">
-          
+
 
         </CHeaderNav>
         <CHeaderNav className="ms-3">
@@ -52,6 +52,7 @@ const AppHeader = () => {
           <AppHeaderDropdown
             profilePhoto={profile?.profilePhotos[0]}
             isAccept={acceptOrNot(profile?.isAccept)}
+
           />
         </CHeaderNav>
       </CContainer>

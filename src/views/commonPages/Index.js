@@ -38,9 +38,6 @@ const Index = () => {
 
   return (
     <div>
-      {/* <Helmet>
-        <script src="../../assetsjs/main.js" type="text/javascript" />
-      </Helmet> */}
       <div>
         {/* <!-- ======= Header ======= --> */}
         <div id="header" className={`fixed-top d-flex flex-start justify-content-center align-items-center ${visible ? null : 'header-transparent'} `}>
@@ -55,17 +52,17 @@ const Index = () => {
               </button>
             </div>
 
-            <section class="top-nav" >
+            <section className="top-nav" >
               <input id="menu-toggle" type="checkbox" />
-              <label class='menu-button-container' for="menu-toggle">
-                <div class='menu-button'></div>
+              <label className='menu-button-container' htmlFor="menu-toggle">
+                <div className='menu-button'></div>
               </label>
-              <ul class="menu">
+              <ul className="menu">
 
                 <li><a className="nav-link scrollto active" href="/">صفحه اصلی</a></li>
                 {/* <li><a className="nav-link scrollto" href="/">درباره ما</a></li> */}
-                <li><a className="nav-link scrollto" href="/">ارتباط با ما</a></li>
-                <li><a className="nav-link scrollto" href="/">دانلود اپلیکیشن</a></li>
+                <li><a className="nav-link scrollto" href="/#/contact">ارتباط با ما</a></li>
+                <li><a className="nav-link scrollto" href="/#/download">دانلود اپلیکیشن</a></li>
                 <li className='d-md-none'>
                   <a className="nav-link scrollto "
                     onClick={() => { navigate('/dashboard') }}>
@@ -128,9 +125,9 @@ const Index = () => {
             <h2 className="DastNevis-font">تورمیت</h2>
             <p>تور های تفریحی و گردشگری یک تا چند روزه </p>
             {/* <a href="#about" className="btn-get-started scrollto">دانلود اپلیکیشن</a> */}
-            <button href="#about" className="btn-get-started scrollto">
+            <a href="/#/download" ><button className="btn-get-started scrollto">
               دانلود اپلیکیشن
-            </button>
+            </button></a>
           </div>
 
           <div className="product-screens">
@@ -224,7 +221,7 @@ const Index = () => {
                 <div className="row">
                   <div className="col-lg-6 col-md-6 box" data-aos="fade-up">
                     <div className="icon">
-                      <i className="bi bi-currency-dollar"></i>
+                      <i className="bi bi-currency-dollar "></i>
                     </div>
                     <h4 className="title">رایگان</h4>
                     <p className="description">
@@ -338,9 +335,10 @@ const Index = () => {
                 </p>
               </div>
               <div className="col-lg-3 cta-btn-container text-center">
-                <button className="cta-btn align-middle" href="/">
+                <a href="/#/download" ><button className="cta-btn align-middle">
                   دانلود برای اندروید و ios
-                </button>
+                </button></a>
+
               </div>
             </div>
           </div>
@@ -504,7 +502,7 @@ const Index = () => {
             <div className="faq-question">
               <input id="q1" type="checkbox" className="panel" />
               <div className="plus">+</div>
-              <label for="q1" className="panel-title mx-4">
+              <label htmlFor="q1" className="panel-title mx-4">
                 آیا میتوان از سایت برای مشاهده تور های گردشگری استفاده کرد ؟
               </label>
               <p className="panel-content">
@@ -517,7 +515,7 @@ const Index = () => {
             <div className="faq-question">
               <input id="q2" type="checkbox" className="panel" />
               <div className="plus">+</div>
-              <label for="q2" className="panel-title mx-4">
+              <label htmlFor="q2" className="panel-title mx-4">
                 چطور اپلیکیشن تورمیت را نصب کنیم؟
               </label>
               <p className="panel-content">
@@ -529,7 +527,7 @@ const Index = () => {
             <div className="faq-question">
               <input id="q3" type="checkbox" className="panel" />
               <div className="plus">+</div>
-              <label for="q3" className="panel-title mx-4">
+              <label htmlFor="q3" className="panel-title mx-4">
                 اگر برگزار کننده یا صاحب تور هستیم چگونه تور های خود را ثبت کنیم ؟
               </label>
               <p className="panel-content">
@@ -680,7 +678,32 @@ const Index = () => {
         <section id="contact">
           <div className="container" data-aos="fade-up">
             <div className="row">
-              <div className="col-lg-12 col-md-12">
+              <div className="col-lg-4 col-md-6  mb-4">
+                <h4>درباره ما</h4>
+                <p>
+                  تورمیت یک پلتفرم رایگان برای  سازماندهی و یکپارچه سازی برای دسترسی آسان به تمامی تور های تفریحی و گردشگری برای تمامی افراد است. با نصب اپلیکیشن گردشگران میتوانند به تمامی تور های متنوع تفریحی در سرتاسر کشور دسترسی پیدا کنند. </p>
+              </div>
+              {/* <div className="col-lg-4 col-md-6 text-center mb-4">
+                <div className="info">
+                  <div >
+                    <i className="bi bi-geo-alt mx-3 "></i>
+                    <p>آدرس دفتر: تبریز - میرداماد - بینش 2</p>
+                  </div>
+
+                  <div>
+                    <i className="bi bi-envelope mx-3"></i>
+                    <p>ایمیل : info@tourmeet.com</p>
+                  </div>
+
+                  <div>
+                    <i className="bi bi-phone mx-3"></i>
+                    <p>تلفن پشتیبان : 09046342064</p>
+                  </div>
+
+                </div>
+              </div> */}
+
+              <div className="col-lg-5 col-md-6 mt-3">
                 <div className="contact-about">
                   <h3 className="text-center">مارا در شبکه های اجتماعی دنبال کنید.</h3>
                   <br />
@@ -695,44 +718,32 @@ const Index = () => {
                     <a href="/" className="instagram">
                       <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="/" className="linkedin">
+                    <a href="https://www.linkedin.com/company/tourmeet" className="linkedin">
                       <i className="bi bi-linkedin"></i>
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* <div className="col-lg-6 col-md-6">
-                <div className="info">
-                  <div >
-                    <i className="bi bi-geo-alt"></i>
-                    <p>آدرس دفتر: تبریز - میرداماد - بینش 2</p>
-                  </div>
 
-                  <div>
-                    <i className="bi bi-envelope"></i>
-                    <p>ایمیل : sinamadadi.work@gmail.com</p>
-                  </div>
 
-                  <div>
-                    <i className="bi bi-phone"></i>
-                    <p>تلفن پشتیبان : 09046342064</p>
-                  </div>
+              <div className="col-lg-3 col-md-12 text-center">
+                <p>اعتماد شما افتخار ما</p>
+                <a referrerPolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=333225&amp;Code=nD9Cc3gyS6U7flz1s3ez"><img referrerPolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=333225&amp;Code=nD9Cc3gyS6U7flz1s3ez" alt="" style={{ 'cursor': 'pointer' }} id="nD9Cc3gyS6U7flz1s3ez" /></a>
+              </div>
 
-                </div>
-              </div> */}
             </div>
           </div>
         </section>
         {/* <!-- End Contact Section --> */}
       </main>
       {/* <!-- End #main --> */}
-
       {/* <!-- ======= Footer ======= --> */}
       <footer id="footer">
         <div className="container">
           <div className="row">
             <div className="col-lg- text-lg-center">
+
               <div>کلیه حقوق این سایت محفوظ است.</div>
               <div className="credits">
                 {/* <!--

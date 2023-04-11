@@ -7,10 +7,8 @@ const loading = (
     <div className="sk-spinner sk-spinner-pulse"></div>
   </div>
 )
-
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
-
 // Pages
 const Login = React.lazy(() => import('./views/commonPages/Login'))
 const Index = React.lazy(() => import('./views/commonPages/Index'))
@@ -20,6 +18,9 @@ const CallbackPage = React.lazy(() => import('./views/commonPages/CallbackPage')
 const ForgetPassword = React.lazy(() => import('./views/commonPages/ForgetPassword'))
 const EnterNumb = React.lazy(() => import('./views/commonPages/EnterNumb'))
 const Changepass = React.lazy(() => import('./views/commonPages/Changepass'))
+const ContactUs = React.lazy(() => import('./views/commonPages/ContactUs'))
+const AppDownload = React.lazy(() => import('./views/commonPages/AppDownload'))
+const RedirectPage = React.lazy(() => import('./views/commonPages/RedirectPage'))
 
 const App = () => {
   const token = localStorage.getItem('token')
@@ -37,6 +38,9 @@ const App = () => {
           <Route exact path="/forgetpassword" name="forgetpassword" element={<ForgetPassword />} />
           <Route exact path="/EnterNumb/:id" name="EnterNumb" element={<EnterNumb />} />
           <Route exact path="/changepass/:token" name="Changepass" element={<Changepass />} />
+          <Route exact path="/contact" name="ContactUs" element={<ContactUs />} />
+          <Route exact path="/download" name="AppDownload" element={<AppDownload />} />
+          <Route exact path="/redirectPage" name="RedirectPage" element={<RedirectPage />} />
           <Route path="*" name="Home" element={<DefaultLayout />} />
         </Routes>
       </Suspense>

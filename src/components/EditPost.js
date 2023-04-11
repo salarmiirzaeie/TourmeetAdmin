@@ -118,7 +118,7 @@ const EditPost = (data) => {
                                     <CCarouselItem key={i}>
                                         <img
                                             className="d-block w-50 rounded mx-auto"
-                                            src={`http://localhost:3333/uploads/thumbnails/${name}`}
+                                            src={`https://api.tourmeet.ir/uploads/thumbnails/${name}`}
                                         />
                                     </CCarouselItem>
                                 ))}
