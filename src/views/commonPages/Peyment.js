@@ -9,19 +9,15 @@ import {
   CRow,
   CSpinner,
 } from '@coreui/react'
-import { paymony } from 'src/services/adminService'
-
+import { paymony } from 'src/services/blogService'
+import { useNavigate } from 'react-router-dom'
 const Peyment = () => {
   useEffect(() => {
-    paymony({
-      merchant_id: 'a47aea2b-27f3-41d9-a00c-dda053737e5c',
-      Amount: 1000,
-      callback_url: 'http://www.toumeet.ir',
-      description: 'Hello NodeJS API.',
-      
-    }).then((res) => {
-      console.log(res)
-    })
+ paymony({}).then((res)=>{
+  window.location.replace(res.data)
+console.log(res)
+
+ })
   }, [])
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">

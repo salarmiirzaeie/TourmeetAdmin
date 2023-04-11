@@ -26,6 +26,17 @@ export const getPost = (data) => {
     })
   return res
 }
+export const paymony = async data => {
+  const res = axios
+    .post(`${apiPort}paymony`, data)
+    .then(response => {
+      return response;
+    })
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
 export const getcities = data => {
   const res = axios
     .get(`${apiPort}cities/${data}`)
