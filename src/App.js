@@ -20,6 +20,7 @@ const EnterNumb = React.lazy(() => import('./views/commonPages/EnterNumb'))
 const Changepass = React.lazy(() => import('./views/commonPages/Changepass'))
 const ContactUs = React.lazy(() => import('./views/commonPages/ContactUs'))
 const AppDownload = React.lazy(() => import('./views/commonPages/AppDownload'))
+const RedirectPage = React.lazy(() => import('./views/commonPages/RedirectPage'))
 
 const App = () => {
   const token = localStorage.getItem('token')
@@ -39,6 +40,7 @@ const App = () => {
           <Route exact path="/changepass/:token" name="Changepass" element={<Changepass />} />
           <Route exact path="/contact" name="ContactUs" element={<ContactUs />} />
           <Route exact path="/download" name="AppDownload" element={<AppDownload />} />
+          <Route exact path="/redirectPage" name="RedirectPage" element={<RedirectPage />} />
           <Route path="*" name="Home" element={<DefaultLayout />} />
         </Routes>
       </Suspense>

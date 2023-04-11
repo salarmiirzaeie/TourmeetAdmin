@@ -1651,3 +1651,16 @@ body {
     border: 2px solid #d9e2e7;
     border-radius: 4px;
 }
+.transactionStatus{
+  height: 200px;
+  padding: 20px;
+  margin: 80px;
+  text-align: center;
+  border-radius: 45px;
+  background: #e0e0e0;
+  box-shadow:  -24px -24px 47px #c5c5c5,
+               24px 24px 47px #fbfbfb;
+}
+.status{
+  background-color: #1de099;
+}
