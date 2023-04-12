@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { verify } from 'src/services/blogService'
 import '../../assets/vendor/bootstrap/css/bootstrap.min.css'
 import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css'
@@ -8,12 +7,19 @@ import { cilCheck, cilCheckCircle, cilXCircle } from '@coreui/icons'
 
 const RedirectPage = () => {
   const address = window.location.href
+  const urlparams = new URLSearchParams(address)
   const [stat, setmstate] = useState(0)
-
+  const [data, setdata] = useState('')
   useEffect(() => {
-    verify(address).then((res) => {
+    verify({
+      Authority: urlparams.get('Authority'),
+      userId: urlparams.get('UserId'),
+      postId: urlparams.get('postId'),
+      Status: urlparams.get('Status')
+    }).then((res) => {
       if (res.status === 200) {
         setmstate(1)
+        setdata(res.data.title)
       } else {
         setmstate(2)
       }
@@ -27,7 +33,9 @@ const RedirectPage = () => {
           <>
             <CIcon icon={cilCheckCircle} size="3xl" style={{ color: 'green' }} />
             <h3>پرداخت با موفقیت انجام شد</h3>
-            <p style={{ color: 'gray' }}>همسفر عزیز، شما با موفقیت به تور گیسوم پیوستید.</p>
+            <p style={{ color: 'gray' }}>
+              همسفر عزیز، شما با موفقیت به <strong className="bold">{data}</strong> پیوستید.
+            </p>
             <p>
               هم اکنون میتوانید با مراجعه به قسمت تور های من در اپلیکیشن، وضعیت تور های خود را
               مشاهده نمایید.

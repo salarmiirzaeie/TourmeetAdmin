@@ -180,7 +180,7 @@ const createpost = () => {
               <CFormInput
                 type="number"
                 name="price"
-                min={10000}
+                min={1000}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.price}

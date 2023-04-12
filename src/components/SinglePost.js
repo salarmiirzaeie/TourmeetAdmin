@@ -118,7 +118,7 @@ const SinglePost = ({ data }) => {
               <CCol key={i} xs={12} md={4} xl={3} className='mb-2'>
                 <CCardImage
                   orientation="top"
-                  src={`https://api.tourmeet.ir/uploads/thumbnails/${item}`}
+                  src={`http://localhost:3333/uploads/thumbnails/${item}`}
                 />
                 {editMode ? (
                   <CButton

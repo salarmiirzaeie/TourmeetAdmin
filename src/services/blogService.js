@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiPort = 'https://api.tourmeet.ir/'
+const apiPort = 'http://localhost:3333/'
 const token = localStorage.getItem('token')
 export const getIndex = () => {
   const res = axios
@@ -39,7 +39,7 @@ export const paymony = async data => {
 };
 export const verify = async data => {
   const res = axios
-    .post(`${apiPort}/varify`, data)
+    .post(`http://192.168.43.153:3333/varify`, data)
     .then(response => {
       return response;
     })
