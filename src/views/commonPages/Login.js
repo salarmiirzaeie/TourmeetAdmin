@@ -41,7 +41,7 @@ const Login = () => {
     onSubmit: (values, { setSubmitting }) => {
       values.email = values.email.toLowerCase()
       login(values).then((res) => {
-        console.log(res)
+        //console.log(res)
         setTimeout(() => {
           if (res.status == 206) {
             localStorage.setItem('token', res.data.token)
@@ -68,7 +68,7 @@ const Login = () => {
         <CRow className="justify-content-center rounded mx-1">
           <CCol md={9}>
             <CRow className='d-flex flex-row-reverse'>
-              
+
               <CCol className="bg-primary" xs={12} sm={6} lg={6}>
                 <CCardBody className="text-center text-white py-4">
                   <div>

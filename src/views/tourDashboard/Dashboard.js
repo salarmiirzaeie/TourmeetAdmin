@@ -96,7 +96,7 @@ const Dashboard = () => {
       <CCard className="mb-4">
         <CCardHeader>اعلانات</CCardHeader>
         <CCardBody>
-          {permissionLength.permissionlenth === 2 ? (
+          {permissionLength.permissionlenth === 0 ? (
             <CAlert color="primary">
               <CAlertHeading component="h4">ثبت مجوز ها</CAlertHeading>
               <hr />

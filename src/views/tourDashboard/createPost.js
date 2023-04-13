@@ -29,9 +29,10 @@ const createpost = () => {
   const editorRef = useRef(null)
   const log = () => {
     if (editorRef.current) {
-      console.log(editorRef.current.getContent())
+      //console.log(editorRef.current.getContent())
     }
   }
+  const thisDay = new DateObject({ calendar: persian }).set("date");
   const [btnReset, setBtnReset] = useState(false)
   const [file, setfile] = useState([])
   const weekDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
@@ -75,7 +76,7 @@ const createpost = () => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
       values.date = value?.toDate()
-      console.log(values)
+      //console.log(values)
       createPost(values).then((res) => {
         setTimeout(() => {
           if (res.status == 200) {
@@ -85,7 +86,7 @@ const createpost = () => {
               title: 'تور شما با موفقیت ایجاد شد',
               // text: 'تور شما با موفقیت ایجاد شد'
             })
-            console.log(res.data.post)
+            //console.log(res.data.post)
             formik.resetForm()
             navigate(`/dashboard/postPage/${res.data.post._id}`)
           } else {
@@ -95,7 +96,6 @@ const createpost = () => {
       })
     },
   })
-
   return (
     <>
       <CCard className="mb-4">
@@ -237,7 +237,7 @@ const createpost = () => {
                 containerStyle={{
                   width: '100%',
                 }}
-                minDate={new DateObject({ calendar: persian }).set('day')}
+                minDate={new DateObject({ calendar: persian }).set('day', thisDay.day)}
                 weekDays={weekDays}
                 inputClass="custom-input"
                 calendar={persian}

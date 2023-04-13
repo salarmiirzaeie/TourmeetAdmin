@@ -23,7 +23,7 @@ const RedirectPage = () => {
       } else {
         setmstate(2)
       }
-      console.log(res)
+      //console.log(res)
     })
   }, [])
   return (

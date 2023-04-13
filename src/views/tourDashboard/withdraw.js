@@ -27,14 +27,14 @@ import swal from 'sweetalert'
 import { createTransactions, getincome, usercards } from 'src/services/adminService'
 
 const withdraw = () => {
-  const input=useRef()
+  const input = useRef()
   const [money, setmoney] = useState({})
   const [cards, setcards] = useState([])
   useEffect(() => {
     getincome().then((res) => {
       if (res.status === 200) {
         setmoney(res.data)
-        console.log(res.data)
+        //console.log(res.data)
       }
     })
     usercards().then((res) => {
@@ -55,8 +55,8 @@ const withdraw = () => {
         .required('لطفا قیمت را وارد کنید !'),
     }),
     onSubmit: (values) => {
-      // console.log("object");
-      values.card=input.current.value
+      // //console.log("object");
+      values.card = input.current.value
       setTimeout(() => {
         createTransactions(values).then((res) => {
           swal('Good job!', res.data.message)
@@ -132,7 +132,7 @@ const withdraw = () => {
             <CForm onSubmit={formik.handleSubmit}>
               <CFormLabel>کارت</CFormLabel>
               <CFormSelect
-              ref={input}
+                ref={input}
                 name="card"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -170,7 +170,7 @@ const withdraw = () => {
                   // onClick={() => formik.handleSubmit}
                   onClick={() => {
                     formik.handleSubmit
-                    // console.log('pox')
+                    // //console.log('pox')
                   }}
                   type="submit"
                   disabled
@@ -183,7 +183,7 @@ const withdraw = () => {
                   // onClick={() => formik.handleSubmit}
                   onClick={() => {
                     formik.handleSubmit
-                    // console.log('pox')
+                    // //console.log('pox')
                   }}
                   type="submit"
                   disabled={formik.isSubmitting}

@@ -46,7 +46,7 @@ const EditPost = (data) => {
 
     const weekDays = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
     const [value, setValue] = useState()
-    // console.log(data.data.title);
+    // //console.log(data.data.title);
     const formik = useFormik({
         initialValues: {
             title: data.data.title,
@@ -85,12 +85,12 @@ const EditPost = (data) => {
             const files = Array.prototype.slice.call(file)
             values.thumbnail = files
             let data = { id, values }
-            console.log(values)
+            //console.log(values)
             setTimeout(() => {
 
                 editPost(data).then((res) => {
                     if (res.status == 200) {
-                        console.log(res)
+                        //console.log(res)
                         // navigate('/dashboard/myTours')
                         // window.location.reload()
                         swal('Good job!', res.data.message, 'success')
@@ -118,7 +118,7 @@ const EditPost = (data) => {
                                     <CCarouselItem key={i}>
                                         <img
                                             className="d-block w-50 rounded mx-auto"
-                                            src={`http://localhost:3333/uploads/thumbnails/${name}`}
+                                            src={`https://api.tourmeet.ir/uploads/thumbnails/${name}`}
                                         />
                                     </CCarouselItem>
                                 ))}
@@ -141,7 +141,7 @@ const EditPost = (data) => {
                                 value={formik.values.title}
                                 {...formik.getFieldProps('title')}
                             />
-                            {/* {console.log()} */}
+                            {/* {//console.log()} */}
                             {formik.touched.title && formik.errors.title ? (
                                 <div style={{ color: 'red', margin: 10 }} >{formik.errors.title}</div>
                             ) : null}
@@ -346,7 +346,7 @@ const EditPost = (data) => {
                                                 .catch(() => { })
                                         })
                                             .catch(() => {
-                                                console.log('pox')
+                                                //console.log('pox')
                                             })
                                     }}
                                 >

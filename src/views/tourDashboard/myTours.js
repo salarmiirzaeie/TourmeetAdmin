@@ -16,7 +16,7 @@ const myTours = () => {
   const [posts, setposts] = useState([])
   useEffect(() => {
     myPosts().then((res) => {
-      console.log(res.data)
+      //console.log(res.data)
 
       res.data = res.data.filter((p) => p.isAccept !== 'reject')
       setposts(res.data)

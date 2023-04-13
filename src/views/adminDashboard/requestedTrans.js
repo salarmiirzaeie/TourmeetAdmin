@@ -19,7 +19,7 @@ const requestedTrans = () => {
     getalltrans().then((res) => {
       if (res.status === 200) {
         settrsnz(res.data)
-        console.log(res.data)
+        //console.log(res.data)
       }
     })
   }, [])
@@ -44,26 +44,26 @@ const requestedTrans = () => {
                   <CTableRow key={i}>
                     <CTableHeaderCell scope="row">{item.amount}</CTableHeaderCell>
 
-                    <CTableDataCell>{formDate(item.createdAt) }</CTableDataCell>
+                    <CTableDataCell>{formDate(item.createdAt)}</CTableDataCell>
                     <CTableDataCell>
-                    <CButton onClick={()=>{Navigate('login')}}>کاربر</CButton>
+                      <CButton onClick={() => { Navigate('login') }}>کاربر</CButton>
                     </CTableDataCell>
-                     
+
                     <CTableDataCell>{!item.paired ? 'درحال بررسی' : 'پرداخت شده'}</CTableDataCell>
                     <CTableDataCell>{item.card?.shaba},{item?.card?.card},{item?.card?.bankname}</CTableDataCell>
                     <CTableDataCell>
-                        <CButton
-                          className="btn btn-success"
-                          onClick={() => {
-                            setpair({ id: item._id,data:true }).then((res) => {
-                              if (res.status === 200) {
-                                window.location.reload()
-                              }
-                            })
-                          }}
-                        >
-                          تایید
-                        </CButton>
+                      <CButton
+                        className="btn btn-success"
+                        onClick={() => {
+                          setpair({ id: item._id, data: true }).then((res) => {
+                            if (res.status === 200) {
+                              window.location.reload()
+                            }
+                          })
+                        }}
+                      >
+                        تایید
+                      </CButton>
                     </CTableDataCell>
                   </CTableRow>
                 ))}

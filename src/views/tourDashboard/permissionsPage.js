@@ -25,7 +25,7 @@ const permissionsPage = () => {
   useEffect(() => {
     getPermissions().then((res) => {
       setPhotos(res.data)
-      console.log(res.data)
+      //console.log(res.data)
     })
   }, [status])
   return (
@@ -39,7 +39,7 @@ const permissionsPage = () => {
                 <CButton
                   onClick={() => {
                     const files = Array.prototype.slice.call(file)
-                    console.log(files)
+                    //console.log(files)
                     addPermissions(files).then((res) => {
                       if (res.status === 200) {
                         window.location.reload()

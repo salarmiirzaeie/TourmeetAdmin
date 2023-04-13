@@ -43,7 +43,7 @@ const tourLeaders = () => {
     getleaders().then((res) => {
       if (res.status === 200) {
         setleaders(res.data)
-        console.log(res.data)
+        //console.log(res.data)
       }
     })
   }, [status2])
@@ -76,10 +76,10 @@ const tourLeaders = () => {
                 onClick={() => {
                   if (input.current.value !== '') {
                     getusersearch(input.current.value).then((res) => {
-                      console.log(res)
+                      //console.log(res)
                       if (res.status === 200) {
                         setusers(res.data)
-                        console.log(res.data)
+                        //console.log(res.data)
                         setstatus(0)
                       }
                       if (res.status === 405) {
@@ -107,7 +107,7 @@ const tourLeaders = () => {
                       <CRow>
                         <CCol>
                           <CAvatar
-                            src={`http://localhost:3333/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
+                            src={`https://api.tourmeet.ir/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
                           />
                         </CCol>
                         <CCol>
@@ -160,7 +160,7 @@ const tourLeaders = () => {
                         <CTableRow key={i}>
                           <CTableHeaderCell scope="row">
                             <CAvatar
-                              src={`http://localhost:3333/uploads/profilePhotos/${leader.profilephotoss[0]
+                              src={`https://api.tourmeet.ir/uploads/profilePhotos/${leader.profilephotoss[0]
                                 ? leader.profilephotoss[0].name
                                 : 'defaultProfile.jpg'
                                 }`}

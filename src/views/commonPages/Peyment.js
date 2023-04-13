@@ -13,11 +13,11 @@ import { paymony } from 'src/services/blogService'
 import { useNavigate } from 'react-router-dom'
 const Peyment = () => {
   useEffect(() => {
- paymony({}).then((res)=>{
-  window.location.replace(res.data)
-console.log(res)
+    paymony({}).then((res) => {
+      window.location.replace(res.data)
+      //console.log(res)
 
- })
+    })
   }, [])
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">

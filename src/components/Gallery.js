@@ -36,7 +36,7 @@ const Gallery = (data) => {
             </CButton>
             <CCardImage
               orientation="top"
-              src={`http://localhost:3333/uploads/thumbnails/${post.name}`}
+              src={`https://api.tourmeet.ir/uploads/thumbnails/${post.name}`}
             />
           </CCol>
         ))}

@@ -20,7 +20,7 @@ const requestedTours = () => {
     getRequestedTours().then((res) => {
       if (res.status === 200) {
         setposts(res?.data)
-        console.log(res.data);
+        //console.log(res.data);
 
       }
     })

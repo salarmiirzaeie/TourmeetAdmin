@@ -70,7 +70,7 @@ const Statistics = () => {
     getSinglePost(route.id).then((res) => {
       if (res.status === 200) {
         setpost(res.data)
-        console.log(res.data)
+        //console.log(res.data)
       }
     })
   }, [])
@@ -153,7 +153,7 @@ const Statistics = () => {
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar
-                          src={`http://localhost:3333/uploads/profilePhotos/${item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
+                          src={`https://api.tourmeet.ir/uploads/profilePhotos/${item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
                             }`}
                         />
                       </CTableDataCell>

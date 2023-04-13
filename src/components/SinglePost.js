@@ -40,6 +40,7 @@ import { cilTrash } from '@coreui/icons'
 import { deletethumb } from 'src/services/adminService'
 
 const SinglePost = ({ data }) => {
+  const thisDay = new DateObject({ calendar: persian }).set("date");
   const navigate = useNavigate()
   const [editMode, setEditMode] = useState(false)
   const [file, setfile] = useState([])
@@ -47,7 +48,7 @@ const SinglePost = ({ data }) => {
   let id = data._id
   const weekDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
   const [value, setValue] = useState()
-  console.log(data);
+  //console.log(data);
   const formik = useFormik({
     initialValues: {
       title: data.title,
@@ -89,11 +90,11 @@ const SinglePost = ({ data }) => {
       values.date = value?.toDate()
 
       let data = { id, values }
-      console.log(values)
+      //console.log(values)
       setTimeout(() => {
         editPost(data).then((res) => {
           if (res.status == 200) {
-            console.log(res)
+            //console.log(res)
             // navigate('/dashboard/myTours')
             swal('Good job!', res.data.message, 'success')
             window.location.reload()
@@ -118,7 +119,7 @@ const SinglePost = ({ data }) => {
               <CCol key={i} xs={12} md={4} xl={3} className='mb-2'>
                 <CCardImage
                   orientation="top"
-                  src={`http://localhost:3333/uploads/thumbnails/${item}`}
+                  src={`https://api.tourmeet.ir/uploads/thumbnails/${item}`}
                 />
                 {editMode ? (
                   <CButton
@@ -153,7 +154,7 @@ const SinglePost = ({ data }) => {
               value={formik.values.title}
               {...formik.getFieldProps('title')}
             />
-            {/* {console.log()} */}
+            {/* {//console.log()} */}
             {formik.touched.title && formik.errors.title ? (
               <div style={{ color: 'red', margin: 10 }}>{formik.errors.title}</div>
             ) : null}
@@ -251,7 +252,7 @@ const SinglePost = ({ data }) => {
               containerStyle={{
                 width: '100%',
               }}
-              minDate={new DateObject({ calendar: persian }).set('day')}
+              minDate={new DateObject({ calendar: persian }).set('day', thisDay.day)}
               weekDays={weekDays}
               inputClass="custom-input"
               calendar={persian}
@@ -379,7 +380,7 @@ const SinglePost = ({ data }) => {
                   // .finally(() => {
                   //   deletePost(data._id)
                   //     .then((res) => {
-                  //       console.log(res.status)
+                  //       //console.log(res.status)
                   //       if (res.status == 200) {
                   //         navigate('/dashboard/myTours')
                   //       } else {
@@ -389,7 +390,7 @@ const SinglePost = ({ data }) => {
                   //     .catch(() => { })
                   // })
                   .catch(() => {
-                    // console.log('hey')
+                    // //console.log('hey')
                   })
               }}
             >

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiPort = 'http://localhost:3333/'
+const apiPort = 'https://api.tourmeet.ir/'
 const token = localStorage.getItem('token')
 export const getIndex = () => {
   const res = axios
@@ -13,11 +13,11 @@ export const getIndex = () => {
   return res
 }
 export const getPost = (data) => {
-  // console.log(data)
+  // //console.log(data)
   const res = axios
     .get(`${apiPort}post/${data}`, {})
     .then((response) => {
-      // console.log(response.data)
+      // //console.log(response.data)
 
       return response
     })
@@ -64,7 +64,7 @@ export const getprovinces = () => {
   const res = axios
     .get(`${apiPort}provinces`)
     .then(response => {
-      // console.log(response.data)
+      // //console.log(response.data)
 
       return response;
     })

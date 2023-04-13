@@ -35,7 +35,7 @@ import * as Yup from 'yup'
 import { addcard, deletecard, usercards } from 'src/services/adminService'
 
 const Cards = () => {
-  const [disabel,setdisable]=useState(true)
+  const [disabel, setdisable] = useState(true)
   function iso13616Prepare(iban) {
     iban = iban
     iban = iban.toUpperCase()
@@ -343,7 +343,7 @@ const Cards = () => {
         let input = $(this)
         setTimeout(function () {
           let shaba = input.val()
-          console.log(shaba)
+          //console.log(shaba)
           if (shaba.length === 0) {
             input.parent().removeClass('has-error')
             input.parent().removeClass('has-error')
@@ -351,7 +351,7 @@ const Cards = () => {
 
             return
           }
-          if (shaba.length !== 16 ) {
+          if (shaba.length !== 16) {
             input.parent().addClass('has-error')
             input.focus()
             input.css('border-color', 'red')
@@ -383,18 +383,18 @@ const Cards = () => {
   const [cards, setcards] = useState([])
   useEffect(() => {
     usercards().then((res) => {
-      console.log(res)
+      //console.log(res)
       if (res.status === 200) {
         setcards(res.data)
       }
     })
   }, [])
-  const validationSchema =()=> Yup.object({
+  const validationSchema = () => Yup.object({
 
     card: Yup.number().min(5).max(10).required(),
     shaba: Yup.number().min(5).max(10).required(),
   });
-  
+
   return (
     <CRow>
       <CCol xs>
