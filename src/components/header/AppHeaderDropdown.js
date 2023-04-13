@@ -35,7 +35,6 @@ const AppHeaderDropdown = ({ isAccept, profilePhoto }) => {
   const dispatch = useDispatch()
   return (
     <CDropdown variant="nav-item">
-      {//console.log(profilePhoto)}
 
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         {profilePhoto === undefined ? (
