@@ -39,7 +39,7 @@ export const paymony = async data => {
 };
 export const verify = async data => {
   const res = axios
-    .post(`http://192.168.43.153:3333/varify`, data)
+    .post(`${apiPort}varify`, data)
     .then(response => {
       return response;
     })

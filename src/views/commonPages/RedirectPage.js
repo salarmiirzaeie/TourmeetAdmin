@@ -54,6 +54,11 @@ const RedirectPage = () => {
             </p>
           </>
         ) : null}
+        <button className='btn btn-info shadow'
+          onClick={() => {
+            window.location.href = `tourmeet://chat/${urlparams.get('postId')}`
+          }}
+        >بازگشت به اپلیکیشن</button>
       </div>
     </div>
   )
