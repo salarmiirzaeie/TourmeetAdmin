@@ -172,7 +172,7 @@ const SinglePost = ({ data }) => {
             ) : null}
             <CFormLabel style={{ paddingTop: 10 }}>ظرفیت</CFormLabel>
             <CFormInput
-              disabled={data?.joinedUsers?.length > 0 ? true : false}
+              // disabled={data?.joinedUsers?.length > 0 ? true : false}
               type="number"
               name="capacity"
               min={10}
