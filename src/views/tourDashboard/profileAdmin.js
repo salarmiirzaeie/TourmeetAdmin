@@ -38,13 +38,13 @@ const profileAdmin = () => {
                 <CCardImage
                   className="rounded-circle w-50 mt-3"
                   orientation="top"
-                  src={`http://localhost:3333/uploads/defaultProfile1.jpg`}
+                  src={`https://api.tourmeet.ir/uploads/defaultProfile1.jpg`}
                 />
               ) : (
                 <CCardImage
                   className="rounded-circle w-50 mt-3"
                   orientation="top"
-                  src={`http://localhost:3333/uploads/profilePhotos/${profile.profilePhotos[0].name}`}
+                  src={`https://api.tourmeet.ir/uploads/profilePhotos/${profile.profilePhotos[0].name}`}
                 />
               )}
             </CCol>
