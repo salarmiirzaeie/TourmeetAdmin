@@ -7,6 +7,7 @@ const requestedTours = React.lazy(() => import('../views/adminDashboard/requeste
 const requestedTourPage = React.lazy(() => import('../views/adminDashboard/requestedTourPage'))
 const requestedTrans = React.lazy(() => import('../views/adminDashboard/requestedTrans'))
 const versionControl = React.lazy(() => import('../views/adminDashboard/versionControl'))
+const allcompanies = React.lazy(() => import('../views/adminDashboard/allcompanies'))
 
 const adminRoutes = [
   { path: '/', exact: true, name: 'Home' },
@@ -17,6 +18,7 @@ const adminRoutes = [
   { path: '/adminDashboard/requestedTrans', name: 'requestedTrans', element: requestedTrans },
   { path: '/adminDashboard/requestedTourPage/:id', name: 'requestedTourPage', element: requestedTourPage },
   { path: '/adminDashboard/versionControl', name: 'versionControl', element: versionControl },
+  { path: '/adminDashboard/allcompanies', name: 'allcompanies', element: allcompanies },
 
 ]
 

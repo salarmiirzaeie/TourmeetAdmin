@@ -53,6 +53,12 @@ const adminSideNav = [
     to: '/adminDashboard/versionControl',
     icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
   },
+  {
+    component: CNavItem,
+    name: ' شرکت ها',
+    to: '/adminDashboard/allcompanies',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+  },
   // {
   //   component: CNavTitle,
   //   name: 'Extras',

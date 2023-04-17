@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiPort = 'https://api.tourmeet.ir/dashboard'
+const apiPort = 'http://localhost:3333/dashboard'
 const gettoken = async () => {
   let token = await localStorage.getItem('token')
   return token
@@ -99,6 +99,21 @@ export const addPermissions = async (data) => {
 export const deleteleader = async (data) => {
   const res = axios
     .put(`${apiPort}/delete-leader`, data, {
+      headers: {
+        Authorization: `Bearer ${await gettoken()}`,
+      },
+    })
+    .then((response) => {
+      return response
+    })
+    .catch((err) => {
+      return err.response
+    })
+  return res
+}
+export const deletecampbyadmin = async (data) => {
+  const res = axios
+    .delete(`${apiPort}/deletecampbyadmin/${data}`, {
       headers: {
         Authorization: `Bearer ${await gettoken()}`,
       },
