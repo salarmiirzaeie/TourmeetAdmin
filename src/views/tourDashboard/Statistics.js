@@ -153,7 +153,7 @@ const Statistics = () => {
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar
-                          src={`https://api.tourmeet.ir/uploads/profilePhotos/${item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
+                          src={`http://localhost:3333/uploads/profilePhotos/${item.profilephotoss[0] ? item.profilephotoss[0]?.name : 'defaultProfile.jpg'
                             }`}
                         />
                       </CTableDataCell>

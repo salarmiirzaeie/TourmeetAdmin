@@ -53,7 +53,7 @@ const Register = () => {
     onSubmit: (values, { setSubmitting }) => {
       setTimeout(() => {
         values.type = 'tour'
-        values.email =  values.email.toLowerCase()
+        values.email = values.email.toLowerCase()
         values.city = select.current.value
         register(values).then((res) => {
           if (res.status == 201) {
@@ -141,10 +141,10 @@ const Register = () => {
                       name="password"
                       {...formik.getFieldProps('password')}
                     />
-                    {formik.touched.password && formik.errors.password ? (
-                      <div style={{ color: 'red', margin: 10 }}>{formik.errors.password}</div>
-                    ) : null}
                   </CInputGroup>
+                  {formik.touched.password && formik.errors.password ? (
+                    <div style={{ color: 'red', margin: 10 }}>{formik.errors.password}</div>
+                  ) : null}
                   <CInputGroup className="mb-4">
                     <CInputGroupText>
                       <CIcon icon={cilLockLocked} />
@@ -159,12 +159,12 @@ const Register = () => {
                       value={formik.values.confirmPassword}
                       {...formik.getFieldProps('confirmPassword')}
                     />
-                    {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                      <div style={{ color: 'red', margin: 10 }}>
-                        {formik.errors.confirmPassword}
-                      </div>
-                    ) : null}
                   </CInputGroup>
+                  {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                    <div style={{ color: 'red', margin: 10 }}>
+                      {formik.errors.confirmPassword}
+                    </div>
+                  ) : null}
                   <div className="d-grid">
                     <CButton
                       type="submit"
