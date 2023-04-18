@@ -164,21 +164,17 @@ export const joinTour = async (data) => {
     })
   return res
 }
-export const getGalley = async (data) => {
+export const getCampGallery = data => {
   const res = axios
-    .get(`${apiPort}/get-gallery/${data}`, {
-      headers: {
-        Authorization: `Bearer ${await gettoken()}`,
-      },
+    .get(`${apiPort}/getCampGallery/${data}`)
+    .then(response => {
+      return response;
     })
-    .then((response) => {
-      return response
-    })
-    .catch((err) => {
-      return err.response
-    })
-  return res
-}
+    .catch(err => {
+      return err.response;
+    });
+  return res;
+};
 
 export const deletegallery = async (data) => {
   const res = axios
