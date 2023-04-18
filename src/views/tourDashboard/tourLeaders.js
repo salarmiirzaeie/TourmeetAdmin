@@ -107,7 +107,7 @@ const tourLeaders = () => {
                       <CRow>
                         <CCol>
                           <CAvatar
-                            src={`https://api.tourmeet.ir/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
+                            src={`http://localhost:3333/uploads/profilePhotos/${user.profilePhotos[0]?.name}`}
                           />
                         </CCol>
                         <CCol>
@@ -160,7 +160,7 @@ const tourLeaders = () => {
                         <CTableRow key={i}>
                           <CTableHeaderCell scope="row">
                             <CAvatar
-                              src={`https://api.tourmeet.ir/uploads/profilePhotos/${leader.profilephotoss[0]
+                              src={`http://localhost:3333/uploads/profilePhotos/${leader.profilephotoss[0]
                                 ? leader.profilephotoss[0].name
                                 : 'defaultProfile.jpg'
                                 }`}

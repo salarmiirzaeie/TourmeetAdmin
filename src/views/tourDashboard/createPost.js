@@ -13,6 +13,7 @@ import {
   CFormSelect,
   CForm,
   CListGroup,
+  CPopover,
 } from '@coreui/react'
 // import { Editor } from '@tinymce/tinymce-react'
 
@@ -37,12 +38,14 @@ const createpost = () => {
   const [file, setfile] = useState([])
   const weekDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
   const [value, setValue] = useState()
+  const [endvalue, setendValue] = useState()
   const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       title: '',
       body: '',
       capacity: '',
+      manualjoinedcount: 0,
       price: '',
       date: Date.now(),
       durationTime: 1,
@@ -62,10 +65,14 @@ const createpost = () => {
       capacity: Yup.number()
         .max(1000, 'ظرفیت تور بیشتر از حد مجاز است !')
         .required('لطفا ظرفیت تور را وارد کنید !'),
+      manualjoinedcount: Yup.number()
+        .max(1000, 'ظرفیت تور بیشتر از حد مجاز است !')
+        .required('لطفا تعداد افرادی که از طریق شما به تور عضو شده اند را وارد کنید !'),
       price: Yup.number()
         .max(10000000, 'قیمت بیشتر از حد مجاز است !')
         .required('لطفا قیمت را وارد کنید !'),
-      date: Yup.number().required('لطفا تاریخ تور را انتخاب کنید !'),
+      date: Yup.number().required('لطفا تاریخ رفت تور را انتخاب کنید !'),
+      // enddate: Yup.number().required('لطفا تاریخ برگشت تور را انتخاب کنید !'),
       // durationTime: Yup.string()
       //   .required('لطفا بازه تور را انتخاب کنید !'),
       type: Yup.string()
@@ -76,6 +83,7 @@ const createpost = () => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
       values.date = value?.toDate()
+      values.enddate = endvalue?.toDate()
       //console.log(values)
       createPost(values).then((res) => {
         setTimeout(() => {
@@ -116,6 +124,13 @@ const createpost = () => {
                 <div style={{ color: 'red', margin: 10 }}>{formik.errors.title}</div>
               ) : null}
               <CFormLabel style={{ paddingTop: 15 }}>توضیحات</CFormLabel>
+              <CPopover
+                content="در این قسمت تمامی اطلاعات در مورد سفر باید ذکر شود. مثل: وسایل ضروری، طول مسیر، سخت یا آسان بودن برنامه، بیمه، محل و زمان دقیق حرکت و..."
+                placement="bottom"
+              >
+                {/* <a className='mx-2' style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>(راهنما)</a> */}
+                <CButton className='mx-2' color="info" size="sm" shape="rounded-pill" variant="outline">راهنما</CButton>
+              </CPopover>
               <CFormTextarea
                 name="body"
                 onChange={formik.handleChange}
@@ -176,6 +191,19 @@ const createpost = () => {
               {formik.touched.capacity && formik.errors.capacity ? (
                 <div style={{ color: 'red', margin: 10 }}>{formik.errors.capacity}</div>
               ) : null}
+              <CFormLabel style={{ paddingTop: 15 }}>تعداد افراد عضو شده به صورت دستی</CFormLabel>
+              <CFormInput
+                type="number"
+                name="manualjoinedcount"
+                min={0}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.capacity}
+                {...formik.getFieldProps('manualjoinedcount')}
+              />
+              {formik.touched.manualjoinedcount && formik.errors.manualjoinedcount ? (
+                <div style={{ color: 'red', margin: 10 }}>{formik.errors.manualjoinedcount}</div>
+              ) : null}
               <CFormLabel style={{ paddingTop: 15 }}>قیمت(تومان)</CFormLabel>
               <CFormInput
                 type="number"
@@ -223,7 +251,7 @@ const createpost = () => {
                 <option value="desert">کویر</option>
                 <option value="historical">اماکن تاریخی</option>
               </CFormSelect>
-              <CFormLabel style={{ paddingTop: 15 }}>تاریخ برگذاری</CFormLabel>
+              <CFormLabel style={{ paddingTop: 15 }}>تاریخ رفت</CFormLabel>
               <br />
               <DatePicker
                 className="form-control input-group-lg"
@@ -245,6 +273,31 @@ const createpost = () => {
                 calendarPosition="bottom-center"
                 value={value}
                 onChange={setValue}
+                required
+              />
+
+              <CFormLabel style={{ paddingTop: 15 }}>تاریخ برگشت</CFormLabel>
+              <br />
+              <DatePicker
+                className="form-control input-group-lg"
+                style={{
+                  width: '100%',
+                  boxSizing: 'border-box',
+                  height: '35px',
+                  textAlign: 'center',
+                  opacity: 0.5,
+                }}
+                containerStyle={{
+                  width: '100%',
+                }}
+                minDate={new DateObject({ calendar: persian }).set('day', thisDay.day)}
+                weekDays={weekDays}
+                inputClass="custom-input"
+                calendar={persian}
+                locale={persian_fa}
+                calendarPosition="bottom-center"
+                value={endvalue}
+                onChange={setendValue}
                 required
               />
               <CFormLabel style={{ paddingTop: 15 }}>عکس</CFormLabel>
@@ -269,8 +322,8 @@ const createpost = () => {
                 disabled={formik.isSubmitting}
               >
                 <CSpinner
-                  // hidden={formik.isSubmitting ? false : true}
-                  hidden={!btnReset}
+                  hidden={formik.isSubmitting ? false : true}
+                  // hidden={!btnReset}
                   component="span"
                   size="sm"
                   aria-hidden="true"

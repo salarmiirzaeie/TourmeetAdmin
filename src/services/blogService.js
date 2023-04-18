@@ -1,5 +1,5 @@
 import axios from 'axios'
-const apiPort = 'https://api.tourmeet.ir/'
+const apiPort = 'http://localhost:3333/'
 const gettoken = async () => {
   let token = await localStorage.getItem('token')
   return token
@@ -63,7 +63,7 @@ export const getcities = data => {
     });
   return res;
 };
-export const getallcompany = async() => {
+export const getallcompany = async () => {
   const res = axios
     .get(`${apiPort}getallcamps`, {
       headers: {

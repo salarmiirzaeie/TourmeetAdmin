@@ -117,10 +117,11 @@ const Login = () => {
                         autoComplete="mail"
                         {...formik.getFieldProps('email')}
                       />
-                      {formik.touched.email && formik.errors.email ? (
-                        <div style={{ color: 'red', margin: 10 }}>{formik.errors.email}</div>
-                      ) : null}
+
                     </CInputGroup>
+                    {formik.touched.email && formik.errors.email ? (
+                      <div className='mb-3 mx-2' style={{ color: 'red' }}>{formik.errors.email}</div>
+                    ) : null}
 
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -136,10 +137,10 @@ const Login = () => {
                         name="password"
                         {...formik.getFieldProps('password')}
                       />
-                      {formik.touched.password && formik.errors.password ? (
-                        <div style={{ color: 'red', margin: 10 }}>{formik.errors.password}</div>
-                      ) : null}
                     </CInputGroup>
+                    {formik.touched.password && formik.errors.password ? (
+                      <div className='mb-3 mx-2' style={{ color: 'red' }}>{formik.errors.password}</div>
+                    ) : null}
                     <CRow>
                       <CCol xs={6}>
                         <CButton

@@ -28,7 +28,7 @@ const Permissions = ({ data }) => {
             <CCol key={i} xs>
               <CCardImage
                 orientation="top"
-                src={`https://api.tourmeet.ir/uploads/permissions/${post.name}`}
+                src={`http://localhost:3333/uploads/permissions/${post.name}`}
               />
             </CCol>
           ))}

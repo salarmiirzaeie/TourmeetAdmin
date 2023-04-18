@@ -26,7 +26,7 @@ export const Organizers = (res) => {
               <CCol xs={12} md={3} xl={3}>
                 <CCardImage
                   orientation="top"
-                  src={`https://api.tourmeet.ir/uploads/${user?.profilePhoto}`}
+                  src={`http://localhost:3333/uploads/${user?.profilePhoto}`}
                 />
               </CCol>
               <CCol xs={12} md={9} xl={9}>

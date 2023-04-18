@@ -48,12 +48,15 @@ const SinglePost = ({ data }) => {
   let id = data._id
   const weekDays = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
   const [value, setValue] = useState()
+  const [endvalue, setendValue] = useState()
+
   //console.log(data);
   const formik = useFormik({
     initialValues: {
       title: data.title,
       body: data.body,
       capacity: data.capacity,
+      manualjoinedcount: data.manualjoinedcount,
       durationTime: data.durationTime,
       date: data.date,
       price: data.price,
@@ -88,6 +91,7 @@ const SinglePost = ({ data }) => {
       const files = Array.prototype.slice.call(file)
       values.thumbnail = files
       values.date = value?.toDate()
+      values.enddate = endvalue?.toDate()
 
       let data = { id, values }
       //console.log(values)
@@ -119,7 +123,7 @@ const SinglePost = ({ data }) => {
               <CCol key={i} xs={12} md={4} xl={3} className='mb-2'>
                 <CCardImage
                   orientation="top"
-                  src={`https://api.tourmeet.ir/uploads/thumbnails/${item}`}
+                  src={`http://localhost:3333/uploads/thumbnails/${item}`}
                 />
                 {editMode ? (
                   <CButton
@@ -184,6 +188,20 @@ const SinglePost = ({ data }) => {
             {formik.touched.capacity && formik.errors.capacity ? (
               <div style={{ color: 'red', margin: 10 }}>{formik.errors.capacity}</div>
             ) : null}
+            <CFormLabel style={{ paddingTop: 10 }}>تعداد افراد عضو شده به صورت دستی</CFormLabel>
+            <CFormInput
+              // disabled={data?.joinedUsers?.length > 0 ? true : false}
+              type="number"
+              name="manualjoinedcount"
+              min={0}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.manualjoinedcount}
+              {...formik.getFieldProps('manualjoinedcount')}
+            />
+            {formik.touched.manualjoinedcount && formik.errors.manualjoinedcount ? (
+              <div style={{ color: 'red', margin: 10 }}>{formik.errors.manualjoinedcount}</div>
+            ) : null}
 
             <CFormLabel style={{ paddingTop: 15 }}>قیمت(تومان)</CFormLabel>
             <CFormInput
@@ -237,7 +255,7 @@ const SinglePost = ({ data }) => {
               <option value="desert">کویر</option>
               <option value="historical">اماکن تاریخی</option>
             </CFormSelect>
-            <CFormLabel style={{ paddingTop: 10 }}>تاریخ برگذاری</CFormLabel>
+            <CFormLabel style={{ paddingTop: 10 }}>تاریخ رفت</CFormLabel>
             <br />
             <DatePicker
               disabled={data?.joinedUsers?.length > 0 ? true : false}
@@ -263,6 +281,32 @@ const SinglePost = ({ data }) => {
               onChange={setValue}
             />
             <br />
+
+            <CFormLabel style={{ paddingTop: 15 }}>تاریخ برگشت</CFormLabel>
+            <br />
+            <DatePicker
+              disabled={data?.joinedUsers?.length > 0 ? true : false}
+              className="form-control input-group-lg"
+              style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                height: '35px',
+                textAlign: 'center',
+                opacity: 0.5,
+              }}
+              containerStyle={{
+                width: '100%',
+              }}
+              minDate={new DateObject({ calendar: persian }).set('day', thisDay.day)}
+              weekDays={weekDays}
+              inputClass="custom-input"
+              calendar={persian}
+              locale={persian_fa}
+              calendarPosition="bottom-center"
+              value={endvalue}
+              onChange={setendValue}
+              required
+            />
             <CFormLabel style={{ paddingTop: 10 }}>عکس</CFormLabel>
             <CInputGroup className="mb-3">
               <CFormInput
@@ -319,10 +363,20 @@ const SinglePost = ({ data }) => {
             </CListGroupItem>
 
             <CListGroupItem className="justify-content-between d-flex">
-              <CCardText className="text-dark m-0">تاریخ</CCardText>
+              <CCardText className="text-dark m-0">تعداد افراد عضو شده به صورت دستی</CCardText>
+              <p className="m-0"> {data.manualjoinedcount} نفر</p>
+            </CListGroupItem>
+
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">تاریخ رفت</CCardText>
               <p className="m-0"> {formDate(data.date)}</p>
             </CListGroupItem>
 
+            <CListGroupItem className="justify-content-between d-flex">
+              <CCardText className="text-dark m-0">تاریخ برگشت</CCardText>
+              <p className="m-0"> {formDate(data.enddate)}</p>
+            </CListGroupItem>
+            {/* {console.log(data)} */}
             <CListGroupItem className="justify-content-between d-flex">
               <CCardText className="text-dark m-0">مدت زمان</CCardText>
               <p className="m-0"> {persianDuration(data.durationTime)}</p>
