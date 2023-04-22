@@ -22,17 +22,19 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const galleryPage = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const userId = useSelector((state) => state.profileState.userId)
   const [file, setfile] = useState([])
-  const [photos,setPhotos]=useState([])
-  useEffect(() => {
-    getGalley(userId).then((res) => {
-      setPhotos(res.data)
-    })
-  }, [])
+  const [photos, setPhotos] = useState([])
+  // useEffect(() => {
+  //   getGalley(userId).then((res) => {
+  //     setPhotos(res.data)
+  //   })
+  // }, [])
+  //THIS PAGE HAS BEEN DISABELED !
   return (
     <>
+
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
@@ -41,9 +43,9 @@ const galleryPage = () => {
               <CInputGroup className="mb-3">
                 <CButton
                   onClick={() => {
-                   const files = Array.prototype.slice.call(file)
-                    const data={files,userId}
-                    addToGallery(data).then((res) => {navigate(0)})
+                    const files = Array.prototype.slice.call(file)
+                    const data = { files, userId }
+                    addToGallery(data).then((res) => { navigate(0) })
                   }}
                 >
                   Upload
